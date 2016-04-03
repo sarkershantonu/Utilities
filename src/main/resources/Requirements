@@ -1,0 +1,16 @@
+-> Selenium Browser Management
+
+1. Manage browser to run parallel
+ -> Avoid single environment multiple browser controlling
+ -> Single Browser will run in one execution environment (not pushed by test code)
+        -> Managed by Selenium HUB
+2. Manage cookie/cache
+3. Supporting Multiple Browsers
+-> Firefox
+-> IE
+-> Chrome
+-> Opera
+-> safari
+-> Appium// -> android Native/Chrome instance
+-> PhantomJS(GhostDriver)
+
