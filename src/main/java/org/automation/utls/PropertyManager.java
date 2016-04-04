@@ -6,10 +6,7 @@ import java.util.Properties;
 /**
  * Created by shantonu on 4/2/16.
  */
-public class PropertyReader {
-
-
-
+public class PropertyManager {
 
     private static Properties properties =  new Properties();;
     private static OutputStream output = null;
