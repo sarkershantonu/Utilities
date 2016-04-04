@@ -1,6 +1,6 @@
 package org.manage.browser;
 
-import org.automation.utls.PropertyReader;
+import org.automation.utls.PropertyManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,9 +8,11 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.ref.PhantomReference;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -35,10 +37,13 @@ public class BrowserFactory {
     }
     */
 
-    public WebDriver createBrowser(){
+    public WebDriver getABrowser(){
 
         if(nameOfBrowser=="firefox"){
             aBrowser = new FirefoxDriver();
+        }
+        else if(nameOfBrowser=="edge"){
+            aBrowser = new EdgeDriver();
         }
         else if(nameOfBrowser=="ie"){
             File iedriver = new File(GetIePath());
@@ -57,10 +62,11 @@ public class BrowserFactory {
         }
         else if(nameOfBrowser=="phantomjs"){
             // Todo ->
-        }
+            //aBrowser = new
+            }
         else if(nameOfBrowser=="browserstack"){
             try {
-                return new RemoteWebDriver(new URL(browserstackURL), setCapabilities());
+                return new RemoteWebDriver(new URL(browserstackURL), setCapabilitiesForBrowserstack());
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
@@ -80,7 +86,7 @@ public class BrowserFactory {
 
     private String getTheProperties(){
         try {
-            return new PropertyReader().getProperty("browser.properties","selenium.browser");
+            return PropertyManager.getProperty("browser.properties","selenium.browser");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -89,20 +95,27 @@ public class BrowserFactory {
 
     private String GetIePath(){
         try {
-            return new PropertyReader().getProperty("browser.properties","selenium.browser.ie.serverpath");
+            return PropertyManager.getProperty("browser.properties","selenium.browser.ie.path");
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public DesiredCapabilities setCapabilities(){
+    private DesiredCapabilities setCapabilitiesForBrowserstack(){
+        capabilities = new DesiredCapabilities();
         capabilities.setCapability("browser", "Firefox");
         capabilities.setJavascriptEnabled(true);
         capabilities.setCapability("browser_version", "41.0");
         capabilities.setCapability("os", "linux");
         //capabilities.setCapability("os_version", "7");
         capabilities.setCapability("browserstack.debug", "true");
+        return capabilities;
+    }
+    private DesiredCapabilities setCapabilitiesForPhantomJS(){
+        capabilities = DesiredCapabilities.phantomjs();
+        capabilities.setJavascriptEnabled(true);
+        capabilities.setCapability("takesScreenshot", true);
         return capabilities;
     }
 }

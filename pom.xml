@@ -5,11 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.shantonu.opensource</groupId>
-    <artifactId>TestFramework</artifactId>
+    <artifactId>AutomationUI</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <selenium.version>2.53.0</selenium.version>
+        <surefire.version>2.19.1</surefire.version>
     </properties>
 
     <dependencies>
@@ -18,6 +19,21 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>${selenium.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-remote-driver</artifactId>
+            <version>${selenium.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -25,6 +41,21 @@
         </dependency>
 
     </dependencies>
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${surefire.version}</version>
+            <configuration>
+                <systemPropertyVariables>
+                    <propertiesDirectory>${project.build.directory}/resources</propertiesDirectory>
+                </systemPropertyVariables>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 
 
 </project>
