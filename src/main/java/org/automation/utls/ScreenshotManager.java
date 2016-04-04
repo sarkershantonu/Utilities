@@ -1,4 +1,4 @@
-package core.api.selenium;
+package org.automation.utls;
 
 public class ScreenshotManager {
 
