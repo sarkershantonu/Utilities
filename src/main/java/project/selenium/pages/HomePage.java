@@ -5,6 +5,6 @@ import project.selenium.PageBase;
 
 public class HomePage extends PageBase{
 
-    private BrowserFactory myFactory = new BrowserFactory("firefox");
+
 
 }
