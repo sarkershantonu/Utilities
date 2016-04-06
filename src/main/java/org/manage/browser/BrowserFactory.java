@@ -9,10 +9,10 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.opera.OperaDriver;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.ref.PhantomReference;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -25,11 +25,11 @@ public class BrowserFactory {
     public static final String AUTOMATE_KEY = "yourKey";
     public static final String browserstackURL = "http://" + USERNAME + ":" + AUTOMATE_KEY + "@hub.browserstack.com/wd/hub";
 
-    private WebDriver aBrowser ;
+    private static WebDriver aBrowser ;
     private String nameOfBrowser2 = "ie";
     private String nameOfBrowser1 ;
-    private String nameOfBrowser =  getTheProperties();
-    DesiredCapabilities capabilities = null;
+    private static String nameOfBrowser =  getTheProperties();
+    private static DesiredCapabilities capabilities = null;
 
     /*
     public BrowserFactory(String nameOfBro){
@@ -37,13 +37,16 @@ public class BrowserFactory {
     }
     */
 
-    public WebDriver getABrowser(){
+    public static WebDriver getABrowser(){
 
         if(nameOfBrowser=="firefox"){
             aBrowser = new FirefoxDriver();
         }
         else if(nameOfBrowser=="edge"){
             aBrowser = new EdgeDriver();
+        }
+        else if(nameOfBrowser=="opera"){
+            aBrowser = new OperaDriver();
         }
         else if(nameOfBrowser=="ie"){
             File iedriver = new File(GetIePath());
@@ -66,7 +69,7 @@ public class BrowserFactory {
             }
         else if(nameOfBrowser=="browserstack"){
             try {
-                return new RemoteWebDriver(new URL(browserstackURL), setCapabilitiesForBrowserstack());
+                return new RemoteWebDriver(new URL(browserstackURL), );
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
@@ -84,7 +87,7 @@ public class BrowserFactory {
         return aBrowser;
     }
 
-    private String getTheProperties(){
+    private static String getTheProperties(){
         try {
             return PropertyManager.getProperty("browser.properties","selenium.browser");
         } catch (IOException e) {
@@ -93,7 +96,7 @@ public class BrowserFactory {
         return null;
     }
 
-    private String GetIePath(){
+    private static String GetIePath(){
         try {
             return PropertyManager.getProperty("browser.properties","selenium.browser.ie.path");
         } catch (IOException e) {
@@ -102,7 +105,7 @@ public class BrowserFactory {
         return null;
     }
 
-    private DesiredCapabilities setCapabilitiesForBrowserstack(){
+    private static DesiredCapabilities setCapabilitiesForBrowserstack(){
         capabilities = new DesiredCapabilities();
         capabilities.setCapability("browser", "Firefox");
         capabilities.setJavascriptEnabled(true);
@@ -112,10 +115,21 @@ public class BrowserFactory {
         capabilities.setCapability("browserstack.debug", "true");
         return capabilities;
     }
-    private DesiredCapabilities setCapabilitiesForPhantomJS(){
+    private  static DesiredCapabilities setCapabilitiesForPhantomJS(){
         capabilities = DesiredCapabilities.phantomjs();
         capabilities.setJavascriptEnabled(true);
         capabilities.setCapability("takesScreenshot", true);
         return capabilities;
+    }
+
+    private static DesiredCapabilities getCapabilities(String remoteBrowserName){
+
+        if(remoteBrowserName=="browserstack"){
+
+        }
+
+
+        return capabilities;
+
     }
 }
