@@ -10,15 +10,17 @@
 
     <properties>
         <selenium.version>2.53.0</selenium.version>
+        <appium.version>3.4.1</appium.version>
+        <saucelab.version>2.1.21</saucelab.version>
         <surefire.version>2.19.1</surefire.version>
     </properties>
 
     <dependencies>
-        <dependency>
+     <!--   <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -39,6 +41,30 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+
+        <!-- Sauce Lab series for helpers -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${appium.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.saucelabs</groupId>
+            <artifactId>sauce_java_common</artifactId>
+            <version>${saucelab.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.saucelabs</groupId>
+            <artifactId>sauce_junit</artifactId>
+            <version>${saucelab.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.saucelabs</groupId>
+            <artifactId>saucerest</artifactId>
+            <version>1.0.32</version>
+        </dependency>
+
 
     </dependencies>
 

@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 /**
  * Created by shantonu on 4/2/16.
+ * Maintain Singleton behavior for driver object
  */
 public class Browser {
 
@@ -27,5 +28,11 @@ public class Browser {
     public static void refresh(){
         driver.navigate().refresh();
 
+    }
+    public static void quit(){
+        driver.quit();// necessary for browser stack
+    }
+    private static void initiDriver(){
+        //// TODO: initation of driver items like screen resolation, timeout etc.  
     }
 }

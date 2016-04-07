@@ -11,6 +11,9 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.opera.OperaDriver;
 
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.android.AndroidDriver;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -20,10 +23,8 @@ import java.net.URL;
 /**
  * Created by shantonu on 4/2/16.
  */
-public class BrowserFactory {
-    public static final String USERNAME = "shantonu";
-    public static final String AUTOMATE_KEY = "yourKey";
-    public static final String browserstackURL = "http://" + USERNAME + ":" + AUTOMATE_KEY + "@hub.browserstack.com/wd/hub";
+class BrowserFactory {
+
 
     private static WebDriver aBrowser ;
     private String nameOfBrowser2 = "ie";
@@ -31,6 +32,7 @@ public class BrowserFactory {
     private static String nameOfBrowser =  getTheProperties();
     private static DesiredCapabilities capabilities = null;
 
+    private static String internalRemoteDriverConfig = "remote-firefox";
     /*
     public BrowserFactory(String nameOfBro){
         this.nameOfBrowser1 = nameOfBro;
@@ -60,28 +62,38 @@ public class BrowserFactory {
         else if(nameOfBrowser=="safari"){
             aBrowser = new SafariDriver();
         }
-        else if(nameOfBrowser=="Appium"){
-            // Todo ->
-        }
-        else if(nameOfBrowser=="phantomjs"){
-            // Todo ->
-            //aBrowser = new
+        else if(nameOfBrowser=="appium-ios"){
+            try {
+                aBrowser = new IOSDriver(new URL(AppiumCapabilities.appiumURL),DesiredcapabilityFactory.getCapability("appium-ios") );
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
             }
+        }
+        else if(nameOfBrowser=="appium-android"){
+            try {
+                aBrowser = new AndroidDriver(new URL(AppiumCapabilities.appiumURL),DesiredcapabilityFactory.getCapability("appium-android") );
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        }
         else if(nameOfBrowser=="browserstack"){
             try {
-                return new RemoteWebDriver(new URL(browserstackURL), );
+                return new RemoteWebDriver(new URL(BrowserStackCapabilities.browserstackURL),DesiredcapabilityFactory.getCapability("browserstack") );
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
         }
         else if(nameOfBrowser=="soucelab"){
-            // Todo ->
 
+            try {
+                return new RemoteWebDriver(new URL(SauceLabCapabilities.sauceLabURL),DesiredcapabilityFactory.getCapability("saucelabs") );
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
         else
         {
-            // Todo ->
-            //aBrowser = new HtmlUnitDriver();
+            return new RemoteWebDriver(DesiredcapabilityFactory.getCapability(internalRemoteDriverConfig));
         }
 
         return aBrowser;
@@ -105,31 +117,7 @@ public class BrowserFactory {
         return null;
     }
 
-    private static DesiredCapabilities setCapabilitiesForBrowserstack(){
-        capabilities = new DesiredCapabilities();
-        capabilities.setCapability("browser", "Firefox");
-        capabilities.setJavascriptEnabled(true);
-        capabilities.setCapability("browser_version", "41.0");
-        capabilities.setCapability("os", "linux");
-        //capabilities.setCapability("os_version", "7");
-        capabilities.setCapability("browserstack.debug", "true");
-        return capabilities;
-    }
-    private  static DesiredCapabilities setCapabilitiesForPhantomJS(){
-        capabilities = DesiredCapabilities.phantomjs();
-        capabilities.setJavascriptEnabled(true);
-        capabilities.setCapability("takesScreenshot", true);
-        return capabilities;
-    }
-
-    private static DesiredCapabilities getCapabilities(String remoteBrowserName){
-
-        if(remoteBrowserName=="browserstack"){
-
-        }
 
 
-        return capabilities;
 
-    }
 }
