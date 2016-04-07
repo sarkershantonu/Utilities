@@ -1,6 +1,6 @@
 package org.manage.browser;
 
-import org.automation.utls.PropertyReader;
+import org.automation.utls.PropertyManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,6 +8,11 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.opera.OperaDriver;
+
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.android.AndroidDriver;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,27 +23,32 @@ import java.net.URL;
 /**
  * Created by shantonu on 4/2/16.
  */
-public class BrowserFactory {
-    public static final String USERNAME = "shantonu";
-    public static final String AUTOMATE_KEY = "yourKey";
-    public static final String browserstackURL = "http://" + USERNAME + ":" + AUTOMATE_KEY + "@hub.browserstack.com/wd/hub";
+class BrowserFactory {
 
-    private WebDriver aBrowser ;
+
+    private static WebDriver aBrowser ;
     private String nameOfBrowser2 = "ie";
     private String nameOfBrowser1 ;
-    private String nameOfBrowser =  getTheProperties();
-    DesiredCapabilities capabilities = null;
+    private static String nameOfBrowser =  getTheProperties();
+    private static DesiredCapabilities capabilities = null;
 
+    private static String internalRemoteDriverConfig = "remote-firefox";
     /*
     public BrowserFactory(String nameOfBro){
         this.nameOfBrowser1 = nameOfBro;
     }
     */
 
-    public WebDriver createBrowser(){
+    public static WebDriver getABrowser(){
 
         if(nameOfBrowser=="firefox"){
             aBrowser = new FirefoxDriver();
+        }
+        else if(nameOfBrowser=="edge"){
+            aBrowser = new EdgeDriver();
+        }
+        else if(nameOfBrowser=="opera"){
+            aBrowser = new OperaDriver();
         }
         else if(nameOfBrowser=="ie"){
             File iedriver = new File(GetIePath());
@@ -52,57 +62,62 @@ public class BrowserFactory {
         else if(nameOfBrowser=="safari"){
             aBrowser = new SafariDriver();
         }
-        else if(nameOfBrowser=="Appium"){
-            // Todo ->
+        else if(nameOfBrowser=="appium-ios"){
+            try {
+                aBrowser = new IOSDriver(new URL(AppiumCapabilities.appiumURL),DesiredcapabilityFactory.getCapability("appium-ios") );
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
-        else if(nameOfBrowser=="phantomjs"){
-            // Todo ->
+        else if(nameOfBrowser=="appium-android"){
+            try {
+                aBrowser = new AndroidDriver(new URL(AppiumCapabilities.appiumURL),DesiredcapabilityFactory.getCapability("appium-android") );
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
         else if(nameOfBrowser=="browserstack"){
             try {
-                return new RemoteWebDriver(new URL(browserstackURL), setCapabilities());
+                return new RemoteWebDriver(new URL(BrowserStackCapabilities.browserstackURL),DesiredcapabilityFactory.getCapability("browserstack") );
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
         }
         else if(nameOfBrowser=="soucelab"){
-            // Todo ->
 
+            try {
+                return new RemoteWebDriver(new URL(SauceLabCapabilities.sauceLabURL),DesiredcapabilityFactory.getCapability("saucelabs") );
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
         else
         {
-            // Todo ->
-            //aBrowser = new HtmlUnitDriver();
+            return new RemoteWebDriver(DesiredcapabilityFactory.getCapability(internalRemoteDriverConfig));
         }
 
         return aBrowser;
     }
 
-    private String getTheProperties(){
+    private static String getTheProperties(){
         try {
-            return new PropertyReader().getProperty("browser.properties","selenium.browser");
+            return PropertyManager.getProperty("browser.properties","selenium.browser");
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    private String GetIePath(){
+    private static String GetIePath(){
         try {
-            return new PropertyReader().getProperty("browser.properties","selenium.browser.ie.serverpath");
+            return PropertyManager.getProperty("browser.properties","selenium.browser.ie.path");
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public DesiredCapabilities setCapabilities(){
-        capabilities.setCapability("browser", "Firefox");
-        capabilities.setJavascriptEnabled(true);
-        capabilities.setCapability("browser_version", "41.0");
-        capabilities.setCapability("os", "linux");
-        //capabilities.setCapability("os_version", "7");
-        capabilities.setCapability("browserstack.debug", "true");
-        return capabilities;
-    }
+
+
+
 }
