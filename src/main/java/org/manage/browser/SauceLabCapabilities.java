@@ -31,8 +31,9 @@ class SauceLabCapabilities {
     static DesiredCapabilities getCapabilities(DesiredCapabilities capabilities, String config){
 
         if(config=="win7.ie8.1024x768") {
-            DesiredCapabilities.internetExplorer();
+            capabilities =  DesiredCapabilities.internetExplorer();
             capabilities.setCapability("platform", "Windows 7");
+            capabilities.setCapability("version", "8.0");
             setCommon(capabilities, "pc");
         }
 
@@ -68,7 +69,7 @@ class SauceLabCapabilities {
             capabilities.setCapability("deviceOrientation", "portrait");
         }
         else if (deviceType=="pc"){
-            capabilities.setCapability("screenResolution", "1024x768");
+            capabilities.setCapability("screenResolution", resulation);
 
         }else if(deviceType=="tab"){
 

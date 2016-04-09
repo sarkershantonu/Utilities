@@ -11,8 +11,10 @@ class DesiredcapabilityFactory {
 
     private static DesiredCapabilities capabilities;
     private DesiredcapabilityFactory(){}
+
     public static DesiredCapabilities getCapability(String nameOfBrowser){
         capabilities = new DesiredCapabilities();
+
         if(nameOfBrowser=="browserstack"){
             BrowserStackCapabilities.getCapabilities(capabilities,"win7.ff41.1024x768");
         }

@@ -30,6 +30,8 @@ class BrowserFactory {
     private String nameOfBrowser2 = "ie";
     private String nameOfBrowser1 ;
     private static String nameOfBrowser =  getTheProperties();
+
+    //todo => desire capability property reading for name of browser
     private static DesiredCapabilities capabilities = null;
 
     private static String internalRemoteDriverConfig = "remote-firefox";
@@ -62,6 +64,23 @@ class BrowserFactory {
         else if(nameOfBrowser=="safari"){
             aBrowser = new SafariDriver();
         }
+
+        else if(nameOfBrowser=="browserstack"){
+            try {
+                // todo , get this capability config from property
+                return new RemoteWebDriver(new URL(BrowserStackCapabilities.browserstackURL),DesiredcapabilityFactory.getCapability("browserstack") );
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        }
+        else if(nameOfBrowser=="soucelab"){
+
+            try {
+                return new RemoteWebDriver(new URL(SauceLabCapabilities.sauceLabURL),DesiredcapabilityFactory.getCapability("saucelabs") );
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        }
         else if(nameOfBrowser=="appium-ios"){
             try {
                 aBrowser = new IOSDriver(new URL(AppiumCapabilities.appiumURL),DesiredcapabilityFactory.getCapability("appium-ios") );
@@ -72,21 +91,6 @@ class BrowserFactory {
         else if(nameOfBrowser=="appium-android"){
             try {
                 aBrowser = new AndroidDriver(new URL(AppiumCapabilities.appiumURL),DesiredcapabilityFactory.getCapability("appium-android") );
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-        }
-        else if(nameOfBrowser=="browserstack"){
-            try {
-                return new RemoteWebDriver(new URL(BrowserStackCapabilities.browserstackURL),DesiredcapabilityFactory.getCapability("browserstack") );
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-        }
-        else if(nameOfBrowser=="soucelab"){
-
-            try {
-                return new RemoteWebDriver(new URL(SauceLabCapabilities.sauceLabURL),DesiredcapabilityFactory.getCapability("saucelabs") );
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
