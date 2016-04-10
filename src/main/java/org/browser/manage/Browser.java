@@ -1,7 +1,6 @@
-package org.manage.browser;
+package org.browser.manage;
 
 
-import com.sun.javafx.perf.PerformanceTracker;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 

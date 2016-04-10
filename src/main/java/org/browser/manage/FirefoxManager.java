@@ -1,4 +1,4 @@
-package org.manage.browser;
+package org.browser.manage;
 
 /**
  * Created by shantonu on 4/7/16.

@@ -1,56 +1,53 @@
-package org.manage.browser;
+package org.browser.manage;
 
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
  * Created by shantonu on 4/7/16.
- * this class is responsible for all browser stack configuration based capabilities
- * main link=> https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/
  *
+ * As this is part of soucelab, see SauceLabCapabilities comments to get details
  */
-class SauceLabCapabilities {
-
+class AppiumCapabilities {
     private static final String USERNAME = "shantonu";
     private static final String ACCESS_KEY = "yourKey";
     // todo -> make this reading from properties
-    public static final String sauceLabURL = "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
-
-
+    public static final String appiumURL = "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
     /**
      * souce lab capabilities  https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/
      * add as much as you can to add
      * @param capabilities
-     * @param config format => osName.browsername.resolution
+     * @param config format => osName.device.appiumVersion.moce(hybrid/app/web)
      *               No dot for versions, dot reserverd as seperator
+     *todo => need to check all items and decide this
      *
      * @return => returned what changed.
-     * Sample 3 configuration given
+     * Sample 2 configuration given
      *todo => Add as much as you can
+     *full => https://wiki.saucelabs.com/display/DOCS/Test+Configuration+Options
      */
     static DesiredCapabilities getCapabilities(DesiredCapabilities capabilities, String config){
 
-        if(config=="win7.ie8.1024x768") {
-            capabilities =  DesiredCapabilities.internetExplorer();
-            capabilities.setCapability("platform", "Windows 7");
-            capabilities.setCapability("version", "8.0");
-            setCommon(capabilities, "pc");
+        if(config=="and41.htc1x.appium151.hybrid") {
+            capabilities = DesiredCapabilities.android();
+            capabilities.setCapability("appiumVersion", "1.5.1");
+            capabilities.setCapability("deviceName","HTC One X Emulator");
+            capabilities.setCapability("deviceOrientation", "portrait");
+            capabilities.setCapability("browserName", "");
+            capabilities.setCapability("platformVersion","4.1");
+            capabilities.setCapability("platformName","Android");
+            capabilities.setCapability("automationName","Selendroid");
         }
 
-        else if(config=="win7.ff41.1024x768"){
-            capabilities = DesiredCapabilities.firefox();
-            capabilities.setCapability("version", "45.0");
-            capabilities.setCapability("platform", "window 7");
-
-            setCommon(capabilities, "pc");
-        }
-        else if(config=="iphone6.iphone.mobile"){
+        else if(config=="ops92.ipadretina.appium151.app"){
             capabilities = DesiredCapabilities.iphone();
-            capabilities.setCapability("platform", "OS X 10.10");
-            capabilities.setCapability("version", "9.2");
-            capabilities.setCapability("deviceName","iPhone 6");
-            setCommon(capabilities, "iphone");
+            capabilities.setCapability("appiumVersion", "1.5.1");
+            capabilities.setCapability("deviceName","iPad Simulator");
+            capabilities.setCapability("deviceOrientation", "portrait");
+            capabilities.setCapability("platformVersion","9.2");
+            capabilities.setCapability("platformName", "iOS");
+            capabilities.setCapability("app","sauce-storage:www.google.com");//www.google.com is app url
         }
+
         // // TODO: add more
         return capabilities;
     }
@@ -63,17 +60,11 @@ class SauceLabCapabilities {
      * todo => as as much as you can , see settings in https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/ and add common configs
      */
     private static DesiredCapabilities setCommon(DesiredCapabilities capabilities, String deviceType){
-        String resulation = "1024x768";
 
         if(deviceType=="mobile"){
             capabilities.setCapability("deviceOrientation", "portrait");
         }
-        else if (deviceType=="pc"){
-            capabilities.setCapability("screenResolution", resulation);
-
-        }else if(deviceType=="tab"){
-
-        }else if (deviceType=="mac"){
+        else if(deviceType=="tab") {
 
         }
         else if (deviceType=="android"){
