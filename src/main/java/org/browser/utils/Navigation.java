@@ -26,7 +26,9 @@ public class Navigation {
     }
     public void refresh(){
         driver.navigate().refresh();
-
+    }
+    private void makeFullScreen() {
+        driver.manage().window().maximize();
     }
     public  Map<String, Object> getAllNavigationTiming(){
         timing = new HashMap<String, Object>();
