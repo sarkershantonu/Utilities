@@ -53,4 +53,12 @@ Day 1 : 2 April
 
 Day 2 : April 9 :
 
-1.
+1.Performance nevigation util -> moved to browser.util packages
+browser.util package will be contain all in browser uilts
+    1. navigation timing
+    2. js/ajax utils
+this will commonly need driver objects
+
+2. It was wrong to add functionality in browser which all ready had by driver, so removing back/forward/refresh
+3. Seperating navigation timing to util
+4. Renamed package from manage.browser to browser.manage
