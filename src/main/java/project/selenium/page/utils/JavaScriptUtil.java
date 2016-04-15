@@ -39,4 +39,9 @@ public class JavaScriptUtil extends UtilBase {
     public  boolean waitForJQueryProcessing(int timeOutInSeconds){
         return waitForJavaScriptCondition(jqueryProcessString,timeOutInSeconds);
     }
+    public void RunJavaScript(String js){
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript(js);
+    }
+
 }

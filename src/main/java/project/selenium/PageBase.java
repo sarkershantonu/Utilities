@@ -23,6 +23,7 @@ public abstract class PageBase {
     public <T extends PageBase> void initElement(T t){
         PageFactory.initElements(driver,t);
     }
+
     public PageBase verifyLoaded(){
        WebDriverWait wait = new WebDriverWait(driver, Browser.DEFAULT_WAIT_4_PAGE);
         wait.until(new ExpectedCondition<Boolean>() {

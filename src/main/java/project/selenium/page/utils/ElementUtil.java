@@ -63,14 +63,14 @@ public class ElementUtil extends UtilBase{
             });
             isPresent = isTextPresent(super.driver, by, text);
             Browser.resetImplicitWait();
-            return isPresent;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return isPresent;
     }
+
     public WebElement waitForElementRefresh(final By by, int timeOutInSeconds) {
-        WebElement element;
+        WebElement element=null;
         try{
             Browser.nullifyImplicitWait();
             new WebDriverWait(super.driver, timeOutInSeconds) {}.until(new ExpectedCondition<Boolean>() {
@@ -81,15 +81,15 @@ public class ElementUtil extends UtilBase{
                 }});
             element = super.driver.findElement(by);
             Browser.resetImplicitWait();
-            return element; //return the element
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return element;
     }
 
     public List<WebElement> waitForListElementsPresent(final By by, int timeOutInSeconds) {
-        List<WebElement> elements;
+        List<WebElement> elements=null;
         try{
             Browser. nullifyImplicitWait();
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
@@ -102,14 +102,19 @@ public class ElementUtil extends UtilBase{
 
             elements = driver.findElements(by);
             Browser. resetImplicitWait();
-            return elements; //return the element
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return elements;
+    }
+    public WebElement waitForElement(WebElement aElement, int timeOutInSeconds){
+        WebDriverWait wait =  new WebDriverWait(driver,timeOutInSeconds);
+        wait.until(ExpectedConditions.visibilityOf(aElement));
+        return aElement;
     }
     public WebElement waitForElementPresent(final By by, int timeOutInSeconds) {
-        WebElement element;
+        WebElement element=null;
         try{
             Browser. nullifyImplicitWait();
 
@@ -117,23 +122,23 @@ public class ElementUtil extends UtilBase{
             element = wait.until(ExpectedConditions.presenceOfElementLocated(by));
 
             Browser. resetImplicitWait();
-            return element; //return the element
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return element;
     }
     public WebElement waitForElement(final By by, int timeOutInSeconds) {
-        WebElement element;
+        WebElement element = null;
         try{
             Browser. nullifyImplicitWait();
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
             Browser. resetImplicitWait();
-            return element; //return the element
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return element;
     }
 }
