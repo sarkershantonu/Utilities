@@ -108,11 +108,7 @@ public class ElementUtil extends UtilBase{
         }
         return elements;
     }
-    public WebElement waitForElement(WebElement aElement, int timeOutInSeconds){
-        WebDriverWait wait =  new WebDriverWait(driver,timeOutInSeconds);
-        wait.until(ExpectedConditions.visibilityOf(aElement));
-        return aElement;
-    }
+
     public WebElement waitForElementPresent(final By by, int timeOutInSeconds) {
         WebElement element=null;
         try{
@@ -140,5 +136,10 @@ public class ElementUtil extends UtilBase{
             e.printStackTrace();
         }
         return element;
+    }
+    public WebElement waitForElement(WebElement aElement, int timeOutInSeconds){
+        WebDriverWait wait =  new WebDriverWait(driver,timeOutInSeconds);
+        wait.until(ExpectedConditions.visibilityOf(aElement));
+        return aElement;
     }
 }
