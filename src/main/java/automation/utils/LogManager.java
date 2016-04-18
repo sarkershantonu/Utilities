@@ -1,4 +1,4 @@
-package org.automation.utls;
+package automation.utils;
 
 public class LogManager {
 

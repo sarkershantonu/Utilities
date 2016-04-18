@@ -1,4 +1,4 @@
-package org.automation.utls;
+package automation.utils;
 
 import java.io.*;
 import java.util.Properties;
@@ -6,7 +6,7 @@ import java.util.Properties;
 /**
  * Created by shantonu on 4/2/16.
  */
-public class PropertyManager {
+public class PropertyUtil {
 
     private static Properties properties =  new Properties();
     private static OutputStream output = null;

@@ -1,4 +1,4 @@
-package org.automation.utls;
+package automation.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
