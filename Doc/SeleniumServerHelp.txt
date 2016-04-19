@@ -1,0 +1,1 @@
+This contains all commands to run selenium server
