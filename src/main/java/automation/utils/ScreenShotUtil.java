@@ -43,9 +43,40 @@ public class ScreenShotUtil extends UtilBase {
             takeScreenShotByJS(screenShot);
         }
 
+        return saveScreenShot(screenShot, isError);
+
+
+    }
+
+    /***
+     * TOdo saving to dile
+     * @param screenShot
+     * @param isError
+     * @return
+     */
+    private String saveScreenShot(File screenShot, boolean isError) {
         return null;
+    }
 
-
+    /**
+     * This actually get links for image working with Jenkins , preapered for windows environment
+     * todo => make generic conversion to linux systems , file seperator portion only
+     * @param screen
+     * @return
+     */
+    private String getScreenShotLink(File screen){
+        String absScreen  = screen.getAbsolutePath();
+        String url = PropertyUtil.getSystemProperty("BUILD_URL");
+        if(url!=null){
+            return "<a href=\'"
+                    +url
+                    +"artifact/"
+                    +absScreen.substring(absScreen.indexOf("target"),absScreen.length()).replaceAll("\\\\", "/")+"\' target=\'_blank\'>"
+                    +"screenshot"
+                    +"</a>";
+        }else {
+            return "<a href=\'" + absScreen + "\' target=\'_blank\' >" + "screenshot" + "</a>";
+        }
     }
     private void writeScreenshotToFile(byte[] content, File file){
 
@@ -65,6 +96,7 @@ public class ScreenShotUtil extends UtilBase {
     /**
      * This is fully based on JS library used by project.. 100% project specific. use different library if you need to
      * @param screenShot
+     * Todo => hafl done, need to cm\omplete
      */
 
     private void takeScreenShotByJS(File screenShot){
@@ -100,7 +132,7 @@ public class ScreenShotUtil extends UtilBase {
             new JavaScriptUtil(driver).getJsExecutor().executeScript(base64js_getImage, new Object[0]);
         }
         }catch (Exception e){
-            //todo default exception => JS library cant take screeshot
+            //todo default exception => error injecting library for screenshots
         }
 
     }
