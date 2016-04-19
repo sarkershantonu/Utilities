@@ -48,4 +48,10 @@ public class PropertyUtil {
         return  properties.getProperty(nameOfProperty);
     }
 
+    public static String getSystemProperty(String name){
+        return System.getProperty(name);
+    }
+    public static void setSystemProperty(String name, String value){
+        System.setProperty(name,value);
+    }
 }

@@ -1,5 +1,6 @@
 package project.selenium.page.utils;
 
+import automation.utils.UtilBase;
 import org.browser.manage.Browser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * Created by shantonu on 4/10/16.
  */
-public class ElementUtil extends UtilBase{
+public class ElementUtil extends UtilBase {
     public ElementUtil(WebDriver aDriver) {
         super(aDriver);
     }
@@ -56,7 +57,6 @@ public class ElementUtil extends UtilBase{
             new WebDriverWait(super.driver, timeOutInSeconds) {
             }.until(new ExpectedCondition<Boolean>() {
 
-                @Override
                 public Boolean apply(WebDriver driverObject) {
                     return isTextPresent(driverObject, by, text); //is the Text in the DOM
                 }
@@ -74,7 +74,7 @@ public class ElementUtil extends UtilBase{
         try{
             Browser.nullifyImplicitWait();
             new WebDriverWait(super.driver, timeOutInSeconds) {}.until(new ExpectedCondition<Boolean>() {
-                @Override
+
                 public Boolean apply(WebDriver driverObject) {
                     driverObject.navigate().refresh(); //refresh the page ****************
                     return isElementPresentAndDisplay(driverObject, by);
@@ -94,7 +94,7 @@ public class ElementUtil extends UtilBase{
             Browser. nullifyImplicitWait();
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
             wait.until((new ExpectedCondition<Boolean>() {
-                @Override
+
                 public Boolean apply(WebDriver driverObject) {
                     return areElementsPresent(driverObject, by);
                 }

@@ -1,7 +1,23 @@
 package automation.utils;
 
 import automation.utils.UtilBase;
+
+import org.apache.commons.collections.iterators.ObjectArrayIterator;
+import org.apache.commons.io.FileUtils;
+import org.browser.manage.Browser;
+import org.browser.utils.PageSourceUtil;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import project.selenium.page.utils.JavaScriptUtil;
+import project.selenium.page.utils.PageUtil;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by shantonu on 4/19/16.
@@ -9,5 +25,115 @@ import org.openqa.selenium.WebDriver;
 public class ScreenShotUtil extends UtilBase {
     public ScreenShotUtil(WebDriver aDriver) {
         super(aDriver);
+    }
+    public String takeScreenShot(String name, boolean isError){
+        StringBuilder fileNama = getFileName(name,isError);
+        File screenShot = new File(fileNama.toString());
+        screenShot.getParentFile().mkdir();
+        new PageUtil(this.driver).waitForPageLoad();
+        if(!new PageUtil(this.driver).isPageLoaded()){
+            File srcFile = (File) ((TakesScreenshot) Browser.getInstance()).getScreenshotAs(OutputType.FILE);
+            try{
+                FileUtils.copyFile(srcFile,screenShot);
+            } catch (IOException e) {
+                //todo default exception managemebt
+            }
+        }else
+        {
+            takeScreenShotByJS(screenShot);
+        }
+
+        return null;
+
+
+    }
+    private void writeScreenshotToFile(byte[] content, File file){
+
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            out.write(content);
+            out.close();
+
+        } catch (FileNotFoundException e) {
+           //todo , default behavior
+        } catch (IOException e) {
+            // todo default behavior
+        }
+
+    }
+
+    /**
+     * This is fully based on JS library used by project.. 100% project specific. use different library if you need to
+     * @param screenShot
+     */
+
+    private void takeScreenShotByJS(File screenShot){
+        String screenshotjs;
+        String base64js_getImage;
+        String base64_imageContant;
+
+        try{
+        screenshotjs = new JavaScriptUtil(this.driver).readJsLibrary("html2canvas.min.js");
+        /**The main JS => Change this if it does not works
+         * function injectHtml2Canvas()
+         {
+         {
+         %s
+         }
+         }
+         var script = document.createElement('script');
+         script.appendChild(document.createTextNode('('+ injectHtml2Canvas +')();'));
+         (document.body || document.head || document.documentElement).appendChild(script);
+         */
+        base64js_getImage = String.format("function injectHtml2Canvas()\n                "
+                +"{{\n%s\n}}\n \n                "
+                +"var script = document.createElement(\'script\');\n                "
+                +"script.appendChild(document.createTextNode(\'(\'+ injectHtml2Canvas +\')();\'));\n                "
+                +"(document.body || document.head || document.documentElement).appendChild(script);", new Object[]{screenshotjs});
+        base64_imageContant =  "return window.html2canvas != undefined;";
+
+        boolean i = Convert.objectToBoolean(
+                new JavaScriptUtil(driver).getJsExecutor().executeScript(
+                        base64_imageContant,new Object[0]))
+                .booleanValue();
+        if(!i){
+            new JavaScriptUtil(driver).getJsExecutor().executeScript(base64js_getImage, new Object[0]);
+        }
+        }catch (Exception e){
+            //todo default exception => JS library cant take screeshot
+        }
+
+    }
+    private StringBuilder getFileName(String testname, boolean isError){
+        SimpleDateFormat date = ConfigHelper.dateFormat;
+        SimpleDateFormat time  = ConfigHelper.timeFormat;
+        StringBuilder file = new StringBuilder();
+        Date screenDate = new Date();
+        String path = PropertyUtil.getSystemProperty("screenshot.folder");
+        if(path!=null){
+            file.append(path).append(PropertyUtil.getSystemProperty("file.separator"));
+        }
+        file.append(PropertyUtil.getSystemProperty("user.dir"));
+        file.append(PropertyUtil.getSystemProperty("file.separator"))
+                .append("target")
+                .append(PropertyUtil.getSystemProperty("file.separator"))
+                .append(date.format(screenDate));
+        if(isError){
+            file.append(PropertyUtil.getSystemProperty("file.separator")).append("error_");
+        }else
+        {
+            file.append(PropertyUtil.getSystemProperty("file.separator")).append("screenshot_");
+        }
+        file.append(testname+"_").append(time.format(screenDate));
+        file = FileManager.trimLimit(file);
+        file.append(ConfigHelper.screenshotType);
+        return file;
+    }
+
+
+}
+class Convert {
+    public static Boolean objectToBoolean(Object o) {
+        return new Boolean(true);//todo
     }
 }

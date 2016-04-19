@@ -1,6 +1,6 @@
 package automation.steps;
 
-import org.automation.utls.PropertyManager;
+import automation.utils.PropertyManager;
 import org.junit.Test;
 
 import java.io.IOException;

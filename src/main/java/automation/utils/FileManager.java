@@ -23,4 +23,12 @@ public class FileManager {
         }
         return value;
     }
+    public static StringBuilder trimLimit(StringBuilder filePath){
+
+        if(filePath.length()>251)
+        {
+            filePath.replace(0, filePath.length(), filePath.substring(0,251));
+        }
+        return filePath;
+    }
 }

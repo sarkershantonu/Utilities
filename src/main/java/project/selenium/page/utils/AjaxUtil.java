@@ -1,5 +1,6 @@
 package project.selenium.page.utils;
 
+import automation.utils.UtilBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

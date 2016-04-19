@@ -5,8 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class PageBase {
+    protected Logger log = LoggerFactory.getLogger(this.getClass());
     protected String name;
     protected String url;
     protected WebDriver driver;
@@ -45,6 +48,7 @@ public abstract class PageBase {
         });
         return this;
     }
+
 
 }
 

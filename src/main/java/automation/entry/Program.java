@@ -1,6 +1,6 @@
 package automation.entry;
 
-import org.automation.utls.PropertyManager;
+import automation.utils.PropertyManager;
 
 import java.io.IOException;
 

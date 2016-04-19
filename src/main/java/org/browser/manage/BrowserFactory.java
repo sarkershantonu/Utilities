@@ -1,6 +1,6 @@
 package org.browser.manage;
 
-import org.automation.utls.PropertyManager;
+import automation.utils.PropertyManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
