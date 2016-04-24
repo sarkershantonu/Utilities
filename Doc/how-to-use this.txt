@@ -8,3 +8,14 @@ in your office when ever you get new project for automation and you decide to ru
 Bonus,
 1. via maven you can run in any CI
 2. via shell script , you can have webdriver grid setup.
+
+
+
+Allure intregration :
+
+Allure report framework , junit port added , you can use this for test NG also, just change in POM.XML
+
+Allure does not keep history, shows only current. So, if you are testing via CI, you need to keep history seperately in different workspace.
+
+If you run locally, just Use jetty pliguns(may change tha port of jettey)
+Allure is Angular Java APP, so any Java app server can run this. So , if you have multiple host testing, you can intregrate them together (webdriver hib/node)
