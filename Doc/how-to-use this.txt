@@ -1,0 +1,10 @@
+Target :
+
+in your office when ever you get new project for automation and you decide to run via Maven-junit,
+-> you can clone this project,
+-> change only project pages & tests.
+-> Use exsisting test organization
+
+Bonus,
+1. via maven you can run in any CI
+2. via shell script , you can have webdriver grid setup.
