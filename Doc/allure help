@@ -1,0 +1,34 @@
+Good article here
+http://www.perfect-test.com/index.php/en/technologies-menu-en/technologies-other-menu-eng/38-allure-report-eng
+
+Source : https://github.com/allure-framework/allure-core/tree/master/allure-java-annotations/src/main/java/ru/yandex/qatools/allure/annotations
+
+Summary :
+Annotations for test organization : (no need to make weired big name of test methods. we can pass method + parameters in annotation)
+
+@TestCaseId
+
+@Parameter => i preffer Junit parameter over this, but not a bad choice.
+
+@Title
+
+@Description
+
+@Issue => ids of issue tracker
+
+@Issues => hooking multiple issue
+
+@Severity
+
+@Stories
+
+@Features
+
+@Step => the most important usages. We will make all tests reusable with this and make a predefined workflow with group of steps.
+
+parameters =
+{method} => takes method name
+{0}, {1}, ... => takes all method parameter respectively converted to text
+
+
+@Attachment
