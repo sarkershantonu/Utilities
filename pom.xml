@@ -13,6 +13,9 @@
         <appium.version>3.4.1</appium.version>
         <saucelab.version>2.1.21</saucelab.version>
         <surefire.version>2.19.1</surefire.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <allure.version>1.5.0.RC2</allure.version>
+        <aspectj.version>1.8.8</aspectj.version>
     </properties>
 
     <dependencies>
