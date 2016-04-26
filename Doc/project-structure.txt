@@ -7,13 +7,13 @@ src
     test
         java
             Steps
-                Pagewise steps
+                Page Specific steps
             Workflows (all possible path that an user can do)
                 UserManagement
                     Login
                     Registration
                     Profile Management
-                Business Features(example economise site)
+                Business Features(think of an e-commerce site)
                     BuyItems
                     SellItems
                     money transaction
@@ -25,17 +25,19 @@ src
                     Item profile
                 Shipping management
                 Dispute management
-
             Suites
                 StaticValidations
                      Link Validations
                      Resource Validation(CSS/JS)
                      Data validation
                      Rendering
+                     Theme Validations
+                     Add validation
                 Regression
+                Target Regression
                 Compatibility
-                TargetRegrassion
-            Groupped Tests
+                Usability(pre defined)
+            Grouped Tests
                 Release Specific Tests
                 Change Requests Tests
                 Bug specific tests
@@ -43,8 +45,8 @@ src
                 Acceptance Tests
                 Functional Tests
                 Performance Test
-                    Nevigation Timing for each page
-                    Single User Performance(SLA wise, response time, throughput, error rate for API layer)
+                    Navigation Timing for each page
+                    Single User Performance(SLA wise, response time, throughput, error rate )
                 Security Tests (selenium driven security tests)
                     Injection
                     XSS
