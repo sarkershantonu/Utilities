@@ -1,0 +1,39 @@
+This is team initial duty for knowledge gathering
+
+Selenium :
+1. POM
+2. Driver management
+3.
+
+Testing :
+1. Testing Peramid
+2. Testing V Diagram
+3. Workflow, Grouped tests, Test suit
+4. Test Case properties
+
+Maintainable code :
+1. Layered architecture
+2. Generics
+3. SOLID principle
+4. Java, Packaging
+5.
+
+This framework :
+1. Driver managemebt
+2. Properties
+3. Page Utild
+4. Common Utils
+
+
+
+
+Write your first test :
+
+How to run test locally from IDE:
+
+
+How to run test from Command Line :
+
+How to run the test from Jenkins:
+
+How to use entry -> main method to make standalone Jar for test run using maven
