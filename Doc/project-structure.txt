@@ -1,0 +1,55 @@
+src
+    main
+        java
+            common libraries
+            Project specific libraries
+            Main Method Class to have CLI parametrized support
+    test
+        java
+            Steps
+                Pagewise steps
+            Workflows (all possible path that an user can do)
+                UserManagement
+                    Login
+                    Registration
+                    Profile Management
+                Business Features(example economise site)
+                    BuyItems
+                    SellItems
+                    money transaction
+                    item sending status
+                    Feedback
+                    Security
+                Messaging
+                Item Management
+                    Item profile
+                Shipping management
+                Dispute management
+
+            Suites
+                StaticValidations
+                     Link Validations
+                     Resource Validation(CSS/JS)
+                     Data validation
+                     Rendering
+                Regression
+                Compatibility
+                TargetRegrassion
+            Groupped Tests
+                Release Specific Tests
+                Change Requests Tests
+                Bug specific tests
+            Tests
+                Acceptance Tests
+                Functional Tests
+                Performance Test
+                    Nevigation Timing for each page
+                    Single User Performance(SLA wise, response time, throughput, error rate for API layer)
+                Security Tests (selenium driven security tests)
+                    Injection
+                    XSS
+                    CSRF
+                    Authentication
+                Module Test
+                Component tests
+                Unit Tests(data + UI)
