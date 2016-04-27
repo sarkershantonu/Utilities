@@ -1,13 +1,33 @@
 src
     main
         java
-            common libraries
+            common libraries (can be shared among multiple project in same company/organization)
+                Tracing
+                Logging
+                Alert/Notification
+                Screenshots
+                BugReporting
+                    Auto Bug reports/entry
+                DB support
+                Common Interfaces
+                TestRetry
+                BrowserManagement
+                    Security
             Project specific libraries
-            Main Method Class to have CLI parametrized support
+                Pages(including page parts, logical seperation)
+                Events/Actions
+                Utils/Helpers
+                    JS/Ajax
+                    Wait
+                    Popup
+                    Scrolling
+                Test Data support
+            MainEntry(Class to have CLI parametrized support)
     test
         java
-            Steps
-                Page Specific steps
+            Steps(all allowed events form page/component)
+                Page wise
+                Component wise
             Workflows (all possible path that an user can do)
                 UserManagement
                     Login
@@ -37,13 +57,7 @@ src
                 Target Regression
                 Compatibility
                 Usability(pre defined)
-            Grouped Tests
-                Release Specific Tests
-                Change Requests Tests
-                Bug specific tests
-            Tests
-                Acceptance Tests
-                Functional Tests
+                Acceptance
                 Performance Test
                     Navigation Timing for each page
                     Single User Performance(SLA wise, response time, throughput, error rate )
@@ -52,6 +66,13 @@ src
                     XSS
                     CSRF
                     Authentication
+            Grouped Tests
+                Release Specific Tests
+                Change Requests Tests
+                Bug specific tests
+            Tests (try to follow V diagram rules)
+                System/Functional Tests
+                Intregration Tests(only scope of configuration)
                 Module Test
                 Component tests
                 Unit Tests(data + UI)
