@@ -34,16 +34,27 @@ public class FirefoxManager {
     }
 
     public FirefoxManager(){
-        profile = new FirefoxProfile();
+
     }
-    public void enableFirefoxPlugins(String pathToXPI) throws IOException {
+    public FirefoxProfile enableFirefoxPlugins(String pathToXPI) throws IOException {
+        profile = new FirefoxProfile();
         File extention = new File(pathToXPI);
         profile.addExtension(extention);
+        return profile;
     }
 
     public WebDriver getFirefoxWithProfile(String nameOfProfile){
         driver = new FirefoxDriver(getProfile(nameOfProfile));
         return  driver ;
+    }
+    public WebDriver getFirefoxWithProfile(FirefoxProfile nameOfProfile){
+        driver = new FirefoxDriver(nameOfProfile);
+        return  driver ;
+    }
+
+    public WebDriver getFirfoxWithProfileAndPlugins(String nameOfProfile, String pathToXPI) throws IOException {
+        FirefoxProfile pro = enableFirefoxPlugins(pathToXPI);
+        return  getFirefoxWithProfile(pro) ;
     }
 
     public FirefoxProfile getProfile(String nameOfProfile){
