@@ -1,13 +1,88 @@
 package org.browser.manage;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
+import org.openqa.selenium.firefox.internal.Streams;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.io.File;
+import java.io.IOException;
+
 /**
  * Created by shantonu on 4/7/16.
- * this is spatial class to maintain security feature support for secure application
+ * this is spatial class to maintain
+ * Custom firefox drivers (local + remote)
+ * security feature support for secure application
  * Initial plan for using firefox only
  * todo =>
  * 1.  Firefox profile management
  * 2. Common Session management & protection
  * Example : http://www.stubhub.com/, try recording with selenium, it will prompt for sensing JS activity by selenium
  */
-class FirefoxManager {
+public class FirefoxManager {
+    private FirefoxProfile profile;
+    private WebDriver driver;
+    private String pathTofirefox;
+
+    public String getFirefoxPath(){return pathTofirefox;}
+    public void setFirefoxPath(String path){
+        this.pathTofirefox = path;
+        System.setProperty("webdriver.firefox.bin", pathTofirefox);
+    }
+
+    public FirefoxManager(){
+        profile = new FirefoxProfile();
+    }
+    public void enableFirefoxPlugins(String pathToXPI) throws IOException {
+        File extention = new File(pathToXPI);
+        profile.addExtension(extention);
+    }
+
+    public WebDriver getFirefoxWithProfile(String nameOfProfile){
+        driver = new FirefoxDriver(getProfile(nameOfProfile));
+        return  driver ;
+    }
+
+    public FirefoxProfile getProfile(String nameOfProfile){
+        ProfilesIni profileIni=  new ProfilesIni();
+        if(null!=nameOfProfile){
+            profile = profileIni.getProfile(nameOfProfile);
+        }
+        else
+            profile =profileIni.getProfile( fetDefaultProfileName());
+
+        return  profile;
+    }
+
+    public WebDriver getRemoteFirefoxWithCapabilities(DesiredCapabilities capabilities){
+        driver = new RemoteWebDriver(capabilities);
+        return driver;
+
+    }
+    public WebDriver getRemoteFirefoxWithProfileAndCapabilities(DesiredCapabilities capabilities, String profileName){
+        profile = getProfile(profileName); //default profile loading
+        capabilities.setCapability(FirefoxDriver.PROFILE,profile);
+        driver = new RemoteWebDriver(capabilities);
+        return driver;
+    }
+
+    public WebDriver getRemoteFirefoxWithCapabilities(){
+        driver = new RemoteWebDriver(DesiredCapabilities.firefox());
+        return driver;
+
+    }
+    public WebDriver getRemoteFirefoxWithProfileAndCapabilities(){
+        profile = getProfile(null); //default profile loading
+        DesiredCapabilities cap = DesiredCapabilities.firefox();
+        cap.setCapability(FirefoxDriver.PROFILE,profile);
+        driver = new RemoteWebDriver(cap);
+        return driver;
+    }
+    private String fetDefaultProfileName() {
+        return null;// todo from properties.
+    }
+
 }
