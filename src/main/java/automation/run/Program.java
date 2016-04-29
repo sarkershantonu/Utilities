@@ -1,4 +1,4 @@
-package automation.entry;
+package automation.run;
 
 import automation.utils.PropertyManager;
 
