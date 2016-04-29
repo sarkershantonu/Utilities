@@ -13,7 +13,7 @@ import java.io.IOException;
  * Created by shantonu on 4/29/16.
  * See firefox manager, same thing for chrome
  * TOdo apply like as firefox manager
- *
+ *all possible combination of
  */
 
 public class ChromeManager {
@@ -21,7 +21,7 @@ public class ChromeManager {
     private WebDriver driver;
     private String pathToChrome;
 
-    public ChromeOptions enableFirefoxPlugins(String pathToCRX) throws IOException {
+    public ChromeOptions enableChromePlugins(String pathToCRX) throws IOException {
         File extention = new File(pathToCRX);
         options.addExtensions(extention);
         return options;
@@ -32,7 +32,7 @@ public class ChromeManager {
         return driver;
     }
     public WebDriver getDriverWithExtention(String pathToCRX) throws IOException {
-        return getDriverWithOption(enableFirefoxPlugins(pathToCRX));
+        return getDriverWithOption(enableChromePlugins(pathToCRX));
     }
 
     public WebDriver getRemoteDriverWithOptionAndCapabilities(ChromeOptions options, DesiredCapabilities capabilities){
