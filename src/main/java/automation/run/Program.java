@@ -1,7 +1,6 @@
 package automation.run;
 
-import automation.utils.PropertyManager;
-
+import automation.utils.PropertyUtil;
 import java.io.IOException;
 
 /**
@@ -23,7 +22,7 @@ public class Program {
 
     private static void writeAProperty(){
         try {
-            PropertyManager.setProperty("./src/main/resources/browser.properties", "test.add.property", System.currentTimeMillis()+"ValueOfOtem");
+            PropertyUtil.setProperty("./src/main/resources/browser.properties", "test.add.property", System.currentTimeMillis()+"ValueOfOtem");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -32,7 +31,7 @@ public class Program {
     private static void readAProperty(){
         try {
 
-            System.out.println(PropertyManager.getProperty("./src/test/resources/testing.properties","browser.default"));
+            System.out.println(PropertyUtil.getProperty("./src/test/resources/testing.properties","browser.default"));
         } catch (IOException e) {
             e.printStackTrace();
         }

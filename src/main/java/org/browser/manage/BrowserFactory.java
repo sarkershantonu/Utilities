@@ -1,6 +1,6 @@
 package org.browser.manage;
 
-import automation.utils.PropertyManager;
+import automation.utils.PropertyUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -105,7 +105,7 @@ class BrowserFactory {
 
     private static String getTheProperties(){
         try {
-            return PropertyManager.getProperty("browser.properties","selenium.browser");
+            return PropertyUtil.getProperty("browser.properties","selenium.browser");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -114,7 +114,7 @@ class BrowserFactory {
 
     private static String GetIePath(){
         try {
-            return PropertyManager.getProperty("browser.properties","selenium.browser.ie.path");
+            return PropertyUtil.getProperty("browser.properties","selenium.browser.ie.path");
         } catch (IOException e) {
             e.printStackTrace();
         }
