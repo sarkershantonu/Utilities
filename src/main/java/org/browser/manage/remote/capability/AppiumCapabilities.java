@@ -7,11 +7,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
  *
  * As this is part of soucelab, see SauceLabCapabilities comments to get details
  */
-class AppiumCapabilities {
-    private static final String USERNAME = "shantonu";
-    private static final String ACCESS_KEY = "yourKey";
-    // todo -> make this reading from properties
-    public static final String appiumURL = "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
+public class AppiumCapabilities {
+
     /**
      * souce lab capabilities  https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/
      * add as much as you can to add

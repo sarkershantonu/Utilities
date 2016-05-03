@@ -7,11 +7,16 @@ import org.openqa.selenium.remote.DesiredCapabilities;
  * This class is responsible for getting all capabilities(local + remote)
  * TODO => get all compatibility configuration from property file
  */
-class DesiredcapabilityFactory {
+public class DesiredcapabilityFactory {
 
     private static DesiredCapabilities capabilities;
     private DesiredcapabilityFactory(){}
 
+    /**
+     *
+     * @param nameOfBrowser
+     * @return
+     */
     public static DesiredCapabilities getCapability(String nameOfBrowser){
         capabilities = new DesiredCapabilities();
 
@@ -87,6 +92,14 @@ class DesiredcapabilityFactory {
         return capabilities;
     }
 
+    /**
+     * Big todo for inhouse capability entries
+     * will be reading from property , and node wise config
+     * @return
+     */
+    public static DesiredCapabilities getInhouseCapbilities(String config){
+        return capabilities;
+    }
 
 
 }

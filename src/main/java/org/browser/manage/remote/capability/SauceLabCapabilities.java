@@ -9,12 +9,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
  * main link=> https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/
  *
  */
-class SauceLabCapabilities {
+public class SauceLabCapabilities {
 
-    private static final String USERNAME = "shantonu";
-    private static final String ACCESS_KEY = "yourKey";
-    // todo -> make this reading from properties
-    public static final String sauceLabURL = "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
 
 
     /**

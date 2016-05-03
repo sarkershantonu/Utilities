@@ -1,10 +1,8 @@
 package org.browser.manage;
 
 import automation.utils.PropertyUtil;
-import org.browser.manage.capability.AppiumCapabilities;
-import org.browser.manage.capability.BrowserStackCapabilities;
-import org.browser.manage.capability.DesiredcapabilityFactory;
-import org.browser.manage.capability.SauceLabCapabilities;
+import org.browser.manage.remote.capability.DesiredcapabilityFactory;
+import org.browser.utils.RemoteConfig;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -38,7 +36,7 @@ class BrowserFactory {
     //todo => desire capability property reading for name of browser
     private static DesiredCapabilities capabilities = null;
 
-    private static String internalRemoteDriverConfig = "remote-firefox";
+    private static String internalRemoteDriverConfig = "node1.firefox.1920x1080";
     /*
     public BrowserFactory(String nameOfBro){
         this.nameOfBrowser1 = nameOfBro;
@@ -72,7 +70,7 @@ class BrowserFactory {
         else if(nameOfBrowser=="browserstack"){
             try {
                 // todo , get this capability config from property
-                return new RemoteWebDriver(new URL(BrowserStackCapabilities.browserstackURL), DesiredcapabilityFactory.getCapability("browserstack") );
+                return new RemoteWebDriver(new URL(RemoteConfig.browserstack_URL), DesiredcapabilityFactory.getCapability("browserstack") );
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
@@ -80,28 +78,33 @@ class BrowserFactory {
         else if(nameOfBrowser=="soucelab"){
 
             try {
-                return new RemoteWebDriver(new URL(SauceLabCapabilities.sauceLabURL),DesiredcapabilityFactory.getCapability("saucelabs") );
+                return new RemoteWebDriver(new URL(RemoteConfig.saucelabs_URL),DesiredcapabilityFactory.getCapability("saucelabs") );
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
         }
         else if(nameOfBrowser=="appium-ios"){
             try {
-                aBrowser = new IOSDriver(new URL(AppiumCapabilities.appiumURL),DesiredcapabilityFactory.getCapability("appium-ios") );
+                aBrowser = new IOSDriver(new URL(RemoteConfig.appium_URL),DesiredcapabilityFactory.getCapability("appium-ios") );
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
         }
         else if(nameOfBrowser=="appium-android"){
             try {
-                aBrowser = new AndroidDriver(new URL(AppiumCapabilities.appiumURL),DesiredcapabilityFactory.getCapability("appium-android") );
+                aBrowser = new AndroidDriver(new URL(RemoteConfig.appium_URL), DesiredcapabilityFactory.getCapability("appium-android") );
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
         }
         else
         {
-            return new RemoteWebDriver(DesiredcapabilityFactory.getCapability(internalRemoteDriverConfig));
+
+            try {
+                return new RemoteWebDriver(new URL(RemoteConfig.inouse_hubUrl), DesiredcapabilityFactory.getInhouseCapbilities(internalRemoteDriverConfig));
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
 
         return aBrowser;

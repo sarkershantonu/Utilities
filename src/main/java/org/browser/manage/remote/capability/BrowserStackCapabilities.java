@@ -7,12 +7,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
  * Created by shantonu on 4/7/16.
  * this class is responsible for all browser stack configuration based capabilities
  */
-class BrowserStackCapabilities {
+public class BrowserStackCapabilities {
 
-    private static final String USERNAME = "shantonu";
-    private static final String AUTOMATE_KEY = "yourKey";
-    // todo -> make this reading from properties
-    public static final String browserstackURL = "http://" + USERNAME + ":" + AUTOMATE_KEY + "@hub.browserstack.com/wd/hub";
 
 
     /**
