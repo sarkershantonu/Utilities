@@ -1,4 +1,4 @@
-package org.browser.manage;
+package org.browser.manage.local;
 
 
 

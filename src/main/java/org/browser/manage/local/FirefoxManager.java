@@ -1,4 +1,4 @@
-package org.browser.manage;
+package org.browser.manage.local;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
