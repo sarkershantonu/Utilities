@@ -11,7 +11,7 @@ import java.net.URL;
  * Created by shantonu on 5/2/16.
  * This will maintain all inhouse Selenium Remote Driver setup for grid
  */
-class InHouseSeGridDriver {
+class InHouseGridDriver {
     //todo, get all of this from property
     public static String hubIp="172.16.170.138";
     public static String hubport="4444";
@@ -20,5 +20,4 @@ class InHouseSeGridDriver {
     public static WebDriver getDriver(DesiredCapabilities capabilities) throws MalformedURLException {
         return new RemoteWebDriver(new URL(hubUrl), capabilities);
     }
-
 }
