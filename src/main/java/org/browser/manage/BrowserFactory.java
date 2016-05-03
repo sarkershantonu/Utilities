@@ -1,6 +1,10 @@
 package org.browser.manage;
 
 import automation.utils.PropertyUtil;
+import org.browser.manage.capability.AppiumCapabilities;
+import org.browser.manage.capability.BrowserStackCapabilities;
+import org.browser.manage.capability.DesiredcapabilityFactory;
+import org.browser.manage.capability.SauceLabCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -68,7 +72,7 @@ class BrowserFactory {
         else if(nameOfBrowser=="browserstack"){
             try {
                 // todo , get this capability config from property
-                return new RemoteWebDriver(new URL(BrowserStackCapabilities.browserstackURL),DesiredcapabilityFactory.getCapability("browserstack") );
+                return new RemoteWebDriver(new URL(BrowserStackCapabilities.browserstackURL), DesiredcapabilityFactory.getCapability("browserstack") );
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
