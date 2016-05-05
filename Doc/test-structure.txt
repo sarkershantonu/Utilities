@@ -1,0 +1,10 @@
+
+
+
+we organize the whole test in following ways
+                        Acceptance
+                  Suits------------Suits-> Items that does not changes
+                  Group------------Group->Items that changes
+             Tests----------------------Tests->test with detail assertions
+     Workflows-------------------------------Workflows->groupped steps to do specific task, no validation groupped but will have output
+Steps--------------------------------------------------Steps -> specific step with contains sanity checks
