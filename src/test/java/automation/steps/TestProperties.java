@@ -1,6 +1,6 @@
 package automation.steps;
 
-import automation.utils.PropertyManager;
+import automation.utils.PropertyUtil;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -17,7 +17,7 @@ public class TestProperties {
     public void testProperties() throws IOException{
 
         //String pop = PropertyManager.getProperty(System.getProperty("propertiesDirectory")+"browser.properties","selenium.browser");
-        String property = PropertyManager.getProperty("/src/main/resources/browser.properties","selenium.browser");
+        String property = PropertyUtil.getProperty("/src/main/resources/browser.properties","selenium.browser");
         assertEquals("firefox",property);
     }
     @Test
