@@ -1,4 +1,4 @@
-package automation.steps;
+package automation.tests.unit;
 
 import automation.utils.PropertyUtil;
 import org.junit.Test;

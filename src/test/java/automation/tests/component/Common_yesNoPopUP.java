@@ -1,4 +1,4 @@
-package automation.tests.Module.UI;
+package automation.tests.component;
 
 /**
  * Created by shantonu on 5/5/16.
