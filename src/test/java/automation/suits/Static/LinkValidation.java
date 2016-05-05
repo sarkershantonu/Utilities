@@ -1,4 +1,4 @@
-package automation.suits;
+package automation.suits.Static;
 
 /**
  * Created by shantonu on 5/5/16.
