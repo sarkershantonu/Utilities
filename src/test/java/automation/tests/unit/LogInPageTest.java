@@ -6,7 +6,8 @@ import ru.yandex.qatools.allure.annotations.Title;
 /**
  * Created by shantonu on 5/5/16.
  */
-public class LogInPage {
+public class LogInPageTest {
+
     @BeforeClass
     public static void  initClass(){
 
