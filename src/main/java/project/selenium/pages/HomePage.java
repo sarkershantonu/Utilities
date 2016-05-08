@@ -16,7 +16,7 @@ public class HomePage extends PageBase{
     public WebElement searchButton;
 
 
-    public ActionBase click = new Click();
+    public Click click = new Click();
 
 
     @Override

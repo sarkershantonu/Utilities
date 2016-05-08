@@ -1,0 +1,11 @@
+
+
+Naming Convension :
+
+Tests Section : >>>>>>>>>>>>>> 
+Test end with _test
+Steps end with _steps
+Workflows end with _flows // need to discuess and apply as the project grows
+Suites/Group end with _suit(and may be _group)
+Accetance end with _acceptance
+
