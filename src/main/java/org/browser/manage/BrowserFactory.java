@@ -101,7 +101,7 @@ class BrowserFactory {
         {
 
             try {
-                return new RemoteWebDriver(new URL(RemoteConfig.inouse_hubUrl), DesiredcapabilityFactory.getInhouseCapbilities(internalRemoteDriverConfig));
+                return new RemoteWebDriver(new URL(RemoteConfig.inhouse_hubUrl), DesiredcapabilityFactory.getInhouseCapabilities(internalRemoteDriverConfig));
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }

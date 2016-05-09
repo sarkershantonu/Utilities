@@ -20,9 +20,9 @@ public class RemoteConfig {
     // todo -> make this reading from properties
     public static final String saucelabs_URL = "http://" + saucelabs_USERNAME + ":" + saucelabs_ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
 
-    public static String inouse_hubIp="172.16.170.138";
-    public static String inouse_hubport="4444";
-    public static String inouse_hubUrl = "http://"+inouse_hubIp+":"+inouse_hubport+"/wd/hub";
+    public static String inhouse_hubIp="172.16.170.138";
+    public static String inhouse_hubport="4444";
+    public static String inhouse_hubUrl = "http://"+inhouse_hubIp+":"+inhouse_hubport+"/wd/hub";
 
 
 }

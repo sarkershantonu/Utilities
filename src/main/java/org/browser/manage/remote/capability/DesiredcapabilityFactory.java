@@ -97,7 +97,7 @@ public class DesiredcapabilityFactory {
      * will be reading from property , and node wise config
      * @return
      */
-    public static DesiredCapabilities getInhouseCapbilities(String config){
+    public static DesiredCapabilities getInhouseCapabilities(String config){
         return capabilities;
     }
 
