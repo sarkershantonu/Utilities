@@ -3,7 +3,6 @@ package project.selenium.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import project.selenium.PageBase;
-import project.selenium.actions.ActionBase;
 import project.selenium.actions.Click;
 
 
