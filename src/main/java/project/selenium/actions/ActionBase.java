@@ -7,4 +7,5 @@ import org.openqa.selenium.WebElement;
  */
 public interface ActionBase {
     void perform(WebElement element);
+    void perform(WebElement element, int second) ;
 }
