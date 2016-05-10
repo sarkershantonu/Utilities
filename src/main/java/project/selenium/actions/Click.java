@@ -10,16 +10,22 @@ import project.selenium.page.utils.JavaScriptUtil;
  */
 public class Click<T extends PageBase> extends MouseBase<T> {
 
+    private static String clickJS = "arguments[0].click();";
     public Click(T t) {
         super(t);
     }
     @Override
-    T perform(WebElement element, int second) {
+    T on(WebElement element, int second) {
         element.click();
         return page;
     }
-    T performByJS(WebElement element, int second) {
-        new JavaScriptUtil(Browser.getInstance()).getJsExecutor().
+    T byJS(WebElement element, int second) {
+        try {
+            new JavaScriptUtil(Browser.getInstance()).getJsExecutor().executeScript(clickJS, new Object[]{element});
+        }catch (Exception e)
+        {
+            //todo make own exception type and add logging
+        }
         return page;
     }
 

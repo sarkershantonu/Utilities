@@ -17,11 +17,13 @@ public abstract class PageBase {
     public abstract void setPageLoadText(String pageLoadText);
 
     public PageBase(){
-
+        this.driver = Browser.getInstance();
+        initElement(this);
     }
     public PageBase(WebDriver aDriver){
         this();
         this.driver =aDriver;
+        initElement(this);
     }
     public <T extends PageBase> void initElement(T t){
         PageFactory.initElements(driver,t);

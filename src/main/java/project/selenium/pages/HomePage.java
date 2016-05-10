@@ -14,12 +14,9 @@ public class HomePage extends PageBase{
     @FindBy(xpath = "")//property loading or after parsing or static
     public WebElement searchButton;
 
-
-    public Click click = new Click();
-
-
     @Override
     public void setPageLoadText(String pageLoadText) {
         // todo
     }
+    public Click<HomePage> click = new Click<HomePage>(this);
 }

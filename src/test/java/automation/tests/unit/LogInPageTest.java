@@ -1,6 +1,8 @@
 package automation.tests.unit;
 
 import org.junit.BeforeClass;
+import org.junit.Test;
+import project.selenium.pages.HomePage;
 import ru.yandex.qatools.allure.annotations.Title;
 
 /**
@@ -12,4 +14,12 @@ public class LogInPageTest {
     public static void  initClass(){
 
     }
+
+    @Test
+    public void testFirst(){
+        HomePage home = new HomePage();
+        home.click.on(home.searchButton);
+    }
+
+
 }

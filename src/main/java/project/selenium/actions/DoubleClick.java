@@ -15,7 +15,7 @@ public class DoubleClick<T extends PageBase> extends MouseBase<T> {
     }
 
     @Override
-    T perform(WebElement element, int second) {
+    T on(WebElement element, int second) {
         action = new Actions(Browser.getInstance());
         action.doubleClick(element);
         return page;

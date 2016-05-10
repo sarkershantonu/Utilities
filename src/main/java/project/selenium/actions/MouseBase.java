@@ -11,11 +11,12 @@ import project.selenium.PageBase;
 public abstract class MouseBase<T extends PageBase> {
     protected Actions action;
     protected T page;
+
     protected MouseBase(T t){
         this.page=t;
     }
-    public T perform(WebElement element){
-        return perform(element, 0);
+    public T on(WebElement element){
+        return on(element, 0);
     }
 
     /***
@@ -24,5 +25,5 @@ public abstract class MouseBase<T extends PageBase> {
      * @param second => wait on web element
      * @return
      */
-    abstract T  perform(WebElement element, int second) ;
+    abstract T  on(WebElement element, int second) ;
 }
