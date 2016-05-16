@@ -1,0 +1,29 @@
+This contains help regarding using lombok to create faster page objects in very organized way.
+
+
+
+Page Object  :
+
+1. Provate default constructor
+2. Page base has default public constructor takes webdriver
+3. Default page element will be initilized
+
+Principle :
+1. A page will contain all page part as provate member of web element. lomboak @Getter will have access
+
+
+
+Lombok:
+
+
+
+Home Page (demo.opencart)
+        Have Common Items
+            Top Bar
+            Footer Section
+            Search Section
+            Menu Bar
+            Advertise Panel in bottom
+        Four Product Preview Item
+        Banner Preview
+

@@ -35,11 +35,15 @@ public abstract class PageBase {
      * Init all web elements
      * @param t
      * @param <T>
+     *
      */
     public <T extends PageBase> void initElement(T t){
         PageFactory.initElements(driver,t);
     }
 
+    /**
+     * Todo => instead of checking only one Text, we need to implement all page item found loading. Which ensures page loading not just source parsing.
+     */
     public PageBase verifyLoaded(){
        WebDriverWait wait = new WebDriverWait(driver, Browser.DEFAULT_WAIT_4_PAGE);
         wait.until(new ExpectedCondition<Boolean>() {

@@ -140,6 +140,7 @@
                 <stopPort>1234</stopPort>
             </configuration>
         </plugin>
+        <!--lombok support , need compiler and its own plugins with GOAL and encoading-->
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
