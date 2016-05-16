@@ -1,5 +1,5 @@
 
-
+This doc is for new tester joining in team.
 Naming Convension :
 
 Tests Section : >>>>>>>>>>>>>>
