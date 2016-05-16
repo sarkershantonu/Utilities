@@ -13,7 +13,13 @@ public abstract class PageBase {
     protected String name;
     protected String url;
     protected WebDriver driver;
-    protected String pageLoadedText ="";
+
+
+    /**
+     * The text proves the page is loaded
+     * @param pageLoadText
+     */
+    private String pageLoadedText ="";
     public abstract void setPageLoadText(String pageLoadText);
 
     public PageBase(){
@@ -21,10 +27,15 @@ public abstract class PageBase {
         initElement(this);
     }
     public PageBase(WebDriver aDriver){
-        this();
         this.driver =aDriver;
         initElement(this);
     }
+
+    /**
+     * Init all web elements
+     * @param t
+     * @param <T>
+     */
     public <T extends PageBase> void initElement(T t){
         PageFactory.initElements(driver,t);
     }
@@ -50,7 +61,5 @@ public abstract class PageBase {
         });
         return this;
     }
-
-
 }
 
