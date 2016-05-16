@@ -12,11 +12,6 @@ Principle :
 1. A page will contain all page part as provate member of web element. lomboak @Getter will have access
 
 
-
-Lombok:
-
-
-
 Home Page (demo.opencart)
         Have Common Items
             Top Bar
@@ -27,3 +22,45 @@ Home Page (demo.opencart)
         Four Product Preview Item
         Banner Preview
 
+
+Lombok:
+
+Lomboak Note :
+POM section :
+<pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+                <version>1.16.8.0</version>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+
+And adding plugins :
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <compilerVersion>1.8</compilerVersion>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok-maven-plugin</artifactId>
+            <version>1.16.8.0</version>
+            <configuration>
+                <encoding>UTF-8</encoding>
+            </configuration>
+            <executions>
+                <execution>
+                    <phase>generate-sources</phase>
+                    <goals>
+                        <goal>testDelombok</goal>
+                        <goal>delombok</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
