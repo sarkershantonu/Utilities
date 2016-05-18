@@ -1,19 +1,17 @@
 package project.selenium.pages;
 
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import project.selenium.PageBase;
 import project.selenium.actions.Click;
+import project.selenium.pages.common.SearchPanel;
 
 
 public class HomePage extends PageBase{
 
-    @FindBy(xpath = "")
-    public WebElement searchTextBox;
-
-    @FindBy(xpath = "")//property loading or after parsing or static
-    public WebElement searchButton;
-
+    private @Getter
+    SearchPanel search;
     @Override
     public void setPageLoadText(String pageLoadText) {
         // todo

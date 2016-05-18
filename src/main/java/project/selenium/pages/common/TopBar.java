@@ -7,9 +7,9 @@ import project.selenium.PageBase;
 /**
  * Created by shantonu on 5/16/16.
  */
-public interface TopBar
+public class TopBar
 {
     @FindBy(xpath = "")//property loading or after parsing or static
-    WebElement searchButton = null;
+    WebElement searchButton;
 
 }
