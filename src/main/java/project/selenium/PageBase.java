@@ -1,5 +1,7 @@
 package project.selenium;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.browser.manage.Browser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -10,9 +12,9 @@ import org.slf4j.LoggerFactory;
 
 public abstract class PageBase {
     protected Logger log = LoggerFactory.getLogger(this.getClass());
-    protected String name;
-    protected String url;
-    protected WebDriver driver;
+    @Getter @Setter protected String name;
+    @Getter @Setter protected String url;
+    private WebDriver driver;
 
 
     /**
@@ -20,7 +22,9 @@ public abstract class PageBase {
      * @param pageLoadText
      */
     private String pageLoadedText ="";
-    public abstract void setPageLoadText(String pageLoadText);
+
+    //todo , need fto decide how to validate load
+    // public abstract void setPageLoadText(String pageLoadText);
 
     public PageBase(){
         this.driver = Browser.getInstance();

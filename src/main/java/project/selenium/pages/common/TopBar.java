@@ -1,5 +1,6 @@
 package project.selenium.pages.common;
 
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import project.selenium.PageBase;
@@ -10,6 +11,6 @@ import project.selenium.PageBase;
 public class TopBar
 {
     @FindBy(xpath = "")//property loading or after parsing or static
-    WebElement searchButton;
+    @Getter private WebElement searchButton;
 
 }
