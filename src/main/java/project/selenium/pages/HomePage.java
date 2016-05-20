@@ -12,7 +12,7 @@ public class HomePage extends PageBase{
 
     private @Getter
     SearchPanel search;
-    @Override
+
     public void setPageLoadText(String pageLoadText) {
         // todo
     }

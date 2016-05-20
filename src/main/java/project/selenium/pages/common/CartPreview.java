@@ -12,30 +12,33 @@ import project.selenium.PageBase;
  */
 public class CartPreview extends PageBase {
 
-
-    private Entry[] addedItems;
     @FindBy(xpath = "")
     @Getter
     private WebElement cart;
-    @FindBy(xpath = "")
-    @Getter
-    private WebElement viewCart;
-    @FindBy(xpath = "")
-    @Getter
-    private WebElement checkOut;
 
-    public CartPreview(WebDriver driver){
-        super(driver);
-        for(int i=0; i<getEntryNumber(); i++){
-            addedItems[i]=new Entry(driver);
+
+    class CartSummary extends PageBase {
+        private Entry[] addedItems;
+        @FindBy(xpath = "")
+        @Getter
+        private WebElement viewCart;
+        @FindBy(xpath = "")
+        @Getter
+        private WebElement checkOut;
+
+        public CartSummary(WebDriver driver) {
+            super(driver);
+            for (int i = 0; i < getEntryNumber(); i++) {
+                addedItems[i] = new Entry(driver);
+            }
+        }
+
+        private int getEntryNumber() {
+            return 2;//todo this will return number of items listed in preview.
         }
     }
 
-    private int getEntryNumber(){
-        return 2;//todo this will return number of items listed in preview.
-    }
-
-    class Entry extends PageBase{
+    class Entry extends PageBase {
         @FindBy(xpath = "")
         @Getter
         private WebElement delete;

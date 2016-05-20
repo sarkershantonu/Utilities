@@ -12,7 +12,7 @@ import project.selenium.PageBase;
  */
 public class SearchResultPage extends PageBase{
 
-    @Override
+
     public void setPageLoadText(String pageLoadText) {
 
     }

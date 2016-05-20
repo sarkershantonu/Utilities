@@ -26,11 +26,11 @@ public abstract class PageBase {
     //todo , need fto decide how to validate load
     // public abstract void setPageLoadText(String pageLoadText);
 
-    public PageBase(){
+    protected PageBase(){
         this.driver = Browser.getInstance();
         initElement(this);
     }
-    public PageBase(WebDriver aDriver){
+    protected PageBase(WebDriver aDriver){
         this.driver =aDriver;
         initElement(this);
     }
