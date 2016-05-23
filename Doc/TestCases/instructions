@@ -6,3 +6,11 @@ TC_AreaOfTesting_typeOfTesting
 Example :
 
 TC_LoginRegistration_Acceptance
+
+in template, mandatory items are
+1. Test area : Class Name or part of class for tests
+2. Test steps : Functions/test
+3. Expected value : Assertion
+
+
+Final goal : see project-structure.txt, this will be used to write test to fit inside this structure. 
