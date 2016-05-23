@@ -12,3 +12,17 @@ deploy - done in the build environment, copies the final package to the remote r
 
 clean - handles project cleaning,
 site - handles the creation of your project's site documentation.
+
+
+Maven Plugins :
+
+We use this following plugins :
+
+Our Project maven commands:
+Compile :
+
+Run tests :
+
+Making result site :
+
+Running the results locally :
