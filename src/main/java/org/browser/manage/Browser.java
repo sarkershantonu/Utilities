@@ -40,7 +40,7 @@ public class Browser {
      * All waiting
      */
     private static void initiDriver(){
-        // TODO: initation of driver items like screen resolation, timeout etc.
+        setImplicitWait(30);
     }
     public static void resetImplicitWait(){
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
