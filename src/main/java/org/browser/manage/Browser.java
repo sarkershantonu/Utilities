@@ -11,6 +11,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by shantonu on 4/2/16.
  * Maintain Singleton behavior for driver object
+ * Responsibilities
+ * => get all type of browser
+ * => get JS executor
  */
 public class Browser {
 
@@ -50,4 +53,7 @@ public class Browser {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     }
 
+    public static JavascriptExecutor getJSexcutor(){
+        return (JavascriptExecutor)driver;
+    }
 }

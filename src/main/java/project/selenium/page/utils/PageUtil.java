@@ -19,6 +19,7 @@ public class PageUtil extends UtilBase {
         //todo , this can be ajax based page load check or JS base page load check => generic for all pages
     }
     public boolean isPageLoaded(){
+
         return false; //todo
     }
 }
