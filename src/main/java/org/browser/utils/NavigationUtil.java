@@ -10,12 +10,12 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by shantonu on 4/10/16.
  */
-public class Navigation {
+public class NavigationUtil {
 
     private Map<String, Object> timing = null;
     private static final String JS4perf="var performance = window.performance || window.webkitPerformance || window.mozPerformance || window.msPerformance || {};var timings = performance.timing || {};return timings;";
     public WebDriver driver = null;
-    public Navigation(WebDriver aDriver){
+    public NavigationUtil(WebDriver aDriver){
         this.driver=aDriver;
     }
     public void goBack(){
