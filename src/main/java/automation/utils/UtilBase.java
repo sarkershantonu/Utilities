@@ -1,5 +1,6 @@
 package automation.utils;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import org.slf4j.LoggerFactory;
 public abstract class UtilBase {
     protected Logger log = null;
     protected WebDriver driver = null;
+    protected JavascriptExecutor executor ;
 
     public UtilBase(WebDriver aDriver){
         this.driver = aDriver;

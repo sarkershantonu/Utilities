@@ -2,10 +2,7 @@ package project.selenium.page.utils;
 
 import automation.utils.UtilBase;
 import org.browser.manage.Browser;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,6 +15,7 @@ import java.util.List;
 public class ElementUtil extends UtilBase {
     public ElementUtil(WebDriver aDriver) {
         super(aDriver);
+
     }
     public boolean isTextPresent(WebDriver driver, By by, String text)
     {
@@ -143,7 +141,10 @@ public class ElementUtil extends UtilBase {
         return aElement;
     }
 
-
+    public String getTextByJS(WebElement element){
+        executor = (JavascriptExecutor)driver;
+        return (String)executor.executeScript("", new Object[]{element});
+    }
 
 
 }

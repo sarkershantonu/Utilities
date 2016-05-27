@@ -1,5 +1,6 @@
 package org.browser.utils;
 
+import automation.utils.UtilBase;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
@@ -10,13 +11,13 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by shantonu on 4/10/16.
  */
-public class NavigationUtil {
+public class NavigationUtil extends UtilBase {
 
     private Map<String, Object> timing = null;
     private static final String JS4perf="var performance = window.performance || window.webkitPerformance || window.mozPerformance || window.msPerformance || {};var timings = performance.timing || {};return timings;";
     public WebDriver driver = null;
     public NavigationUtil(WebDriver aDriver){
-        this.driver=aDriver;
+        super(aDriver);
     }
     public void goBack(){
         driver.navigate().back();

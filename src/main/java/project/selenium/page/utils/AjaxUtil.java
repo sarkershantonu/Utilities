@@ -16,7 +16,9 @@ public class AjaxUtil extends UtilBase {
     private static String scrollDown_JS="arguments[0].scrollIntoView(true);";
     private static String rowExpand_JS="arguments[0].setAttribute('class', 'open');";
     private static String isLoad_JS="return document.readyState";
-    private JavascriptExecutor executor ;
+    private static String formUpload_JS="document.getElementById('uploadNonDocStoreDocumentForm').submit()";
+    private static String fileUpload_JS="document.getElementsByName('uploadedDocument')[0].click()";
+
     public AjaxUtil(WebDriver aDriver) {
         super(aDriver);
         executor =(JavascriptExecutor)driver;
@@ -44,6 +46,18 @@ public class AjaxUtil extends UtilBase {
     public boolean isPageLoaded(){
         return  (Boolean) executor.executeScript(isLoad_JS, new Object[0].equals("complete"));
     }
+
+    /**
+     * For the page which will have this
+     */
+    public void clickUpload(){
+        executor.executeScript(formUpload_JS, new Object[0]);
+    }
+
+    public void clickFileUpload(){
+        executor.executeScript(fileUpload_JS, new Object[0]);
+    }
+
 
 /**
  * Mouse Movements ******************************************************
