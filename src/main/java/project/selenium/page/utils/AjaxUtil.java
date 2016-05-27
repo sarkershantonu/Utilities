@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.server.SystemClock;
 
 /**
  * Created by shantonu on 4/14/16.
@@ -73,5 +74,32 @@ public class AjaxUtil extends UtilBase {
 
     public void expandTableContains(WebElement row){
         executor.executeScript(rowExpand_JS, new Object[]{row});
+    }
+
+    
+
+    /**
+     * inject JS in page : Fully experimental part.
+     *
+     */
+
+    public void addJS_TO_Current_Page(String jsFileName, String pageName){
+        String jsFullPath = System.getProperty("user.dir")+"src/main/resources/js/"+jsFileName+".js";
+        String script = "var oHead = document.getElementsByTagName(\'HEAD\').item(0)var oScript = document.createElement(\"script\");oScript.type = \"text/javascript\";oScript.src = "
+                + jsFullPath + "oHead.appendChild(oScript);";
+        executor.executeScript(script, new Object[0]);
+    }
+
+    /**
+     *
+     * @param newJSFunction = functions should be plain and simple statement.
+     * @param elementIdentifier : first one tag, 2nd one item array position indesx (zero based)
+     * @param event
+     * Example = "document.getElementsByTagName(\"input\").item(2).click = new function(){window.location=\"http://google.com\"};";
+     * identifiers  => input,2.
+     */
+    public void addJsToItemAsync(String event, String newJSFunction, String... elementIdentifier ){
+        String script = "document.getElementsByTagName(\""+elementIdentifier[0]+"\").item("+elementIdentifier[1]+")."+event+"="+"new function(){"+newJSFunction+"};";
+        executor.executeAsyncScript(script);
     }
 }
