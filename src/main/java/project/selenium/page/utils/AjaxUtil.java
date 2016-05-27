@@ -86,7 +86,15 @@ public class AjaxUtil extends UtilBase {
         return scrollWidth>clientWidth;
     }
 
-    
+    /**
+     * TODO =>
+     * Adding new function to day on a button click.. all by JS
+     * @param element
+     * @param sec
+     */
+    public void clickButtonWithDelayByJS(String element , int sec){
+
+    }
     /**
      * inject JS in page : Fully experimental part.
      *
