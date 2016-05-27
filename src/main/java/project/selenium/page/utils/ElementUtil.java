@@ -13,6 +13,8 @@ import java.util.List;
  * Created by shantonu on 4/10/16.
  */
 public class ElementUtil extends UtilBase {
+    private static String getText_JS = "return arguments[0].innerHTML";
+
     public ElementUtil(WebDriver aDriver) {
         super(aDriver);
 
@@ -143,7 +145,7 @@ public class ElementUtil extends UtilBase {
 
     public String getTextByJS(WebElement element){
         executor = (JavascriptExecutor)driver;
-        return (String)executor.executeScript("", new Object[]{element});
+        return (String)executor.executeScript(getText_JS, new Object[]{element});
     }
 
 
