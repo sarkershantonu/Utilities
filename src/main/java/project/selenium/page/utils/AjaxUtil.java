@@ -19,7 +19,7 @@ public class AjaxUtil extends UtilBase {
     private static String isLoad_JS="return document.readyState";
     private static String formUpload_JS="document.getElementById('uploadNonDocStoreDocumentForm').submit()";
     private static String fileUpload_JS="document.getElementsByName('uploadedDocument')[0].click()";
-
+    private static String confirmAlert_JS="function() { browser.alert.ok }";
     public AjaxUtil(WebDriver aDriver) {
         super(aDriver);
         executor =(JavascriptExecutor)driver;
@@ -76,8 +76,17 @@ public class AjaxUtil extends UtilBase {
         executor.executeScript(rowExpand_JS, new Object[]{row});
     }
 
-    
+    public void confirmAlert(){
+        executor.executeScript(confirmAlert_JS, new Object[0]);
+    }
 
+    public boolean isHorizScrollPresent(WebElement element){
+        long clientWidth = ((Long)executor.executeScript("return arguments[0].clientWidth", new Object[]{element})).longValue();
+        long scrollWidth = ((Long)executor.executeScript("return arguments[0].scrollWidth", new Object[]{element})).longValue();
+        return scrollWidth>clientWidth;
+    }
+
+    
     /**
      * inject JS in page : Fully experimental part.
      *
