@@ -15,6 +15,7 @@ public class AjaxUtil extends UtilBase {
     private static String ajaxCompletion_JS="return $.active == 0";
     private static String scrollDown_JS="arguments[0].scrollIntoView(true);";
     private static String rowExpand_JS="arguments[0].setAttribute('class', 'open');";
+    private static String isLoad_JS="return document.readyState";
     private JavascriptExecutor executor ;
     public AjaxUtil(WebDriver aDriver) {
         super(aDriver);
@@ -34,6 +35,14 @@ public class AjaxUtil extends UtilBase {
      */
     public boolean isAjaxComplete(){
         return ((Boolean) executor.executeScript(ajaxCompletion_JS, new Object[0])).booleanValue();
+    }
+
+    /**
+     * Page load checking
+     * @return
+     */
+    public boolean isPageLoaded(){
+        return  (Boolean) executor.executeScript(isLoad_JS, new Object[0].equals("complete"));
     }
 
 /**

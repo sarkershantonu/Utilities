@@ -20,12 +20,7 @@ public class Click<T extends PageBase> extends MouseBase<T> {
         return page;
     }
     T byJS(WebElement element, int second) {
-        try {
-            new JavaScriptUtil(Browser.getInstance()).getJsExecutor().executeScript(clickJS, new Object[]{element});
-        }catch (Exception e)
-        {
-            //todo make own exception type and add logging
-        }
+       Browser.getJSexcutor().executeScript(clickJS, new Object[]{element});
         return page;
     }
 
