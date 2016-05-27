@@ -14,7 +14,8 @@ public class AjaxUtil extends UtilBase {
 
     private static String ajaxCompletion_JS="return $.active == 0";
     private static String scrollDown_JS="arguments[0].scrollIntoView(true);";
-    JavascriptExecutor executor ;
+    private static String rowExpand_JS="arguments[0].setAttribute('class', 'open');";
+    private JavascriptExecutor executor ;
     public AjaxUtil(WebDriver aDriver) {
         super(aDriver);
         executor =(JavascriptExecutor)driver;
@@ -42,4 +43,12 @@ public class AjaxUtil extends UtilBase {
         executor.executeScript(scrollDown_JS, new Object[]{element});
     }
 
+
+/**
+ * Expand table
+  */
+
+    public void expandTableContains(WebElement row){
+        executor.executeScript(rowExpand_JS, new Object[]{row});
+    }
 }

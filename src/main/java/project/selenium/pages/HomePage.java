@@ -10,8 +10,7 @@ import project.selenium.pages.common.SearchPanel;
 
 public class HomePage extends PageBase{
 
-    private @Getter
-    SearchPanel search;
+    private @Getter SearchPanel search;
 
     public void setPageLoadText(String pageLoadText) {
         // todo
