@@ -86,6 +86,10 @@ public class AjaxUtil extends UtilBase {
         return scrollWidth>clientWidth;
     }
 
+    public String getNameFromWebElement(WebElement element)
+    {
+        return null; // todo shantnu , review please.
+    }
     /**
      * TODO =>
      * Adding new function to day on a button click.. all by JS
