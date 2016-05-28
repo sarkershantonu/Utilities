@@ -5,10 +5,8 @@ Implemented by all drivers, so, if you cast, you can take.
 
 2 method :
 
-Synch run :
-if you want to run immidiately
-Async run:
-it will run not concurrent with your page load rather later.
+Sync run :if you want to run immidiately
+Async run:it will run not concurrent with your page load rather later.
 
 Parameters :
 Both takes String as input... now, what you can put.
@@ -18,8 +16,14 @@ Single/multiple statement
 Or even a Full JS file, it will read and get.
 
 And, you can insert array of object as parameter.
+new Object[]{element1, elemet2,.... }
+ you can call from JS functions (arguments[]),
 
-
+Parameter Run => like as fun.apply
+=> so, all parameters will be added as array. So, if you need to use any argument.
+use arguments[0] (0,1,2... like wise)
+Example, => executeScript("return arguments[0].innerHTML", new Object[]{element}), in here, the element is used when we
+write arguments[0] inside JS.
 
 Returns :
 
@@ -40,14 +44,12 @@ run for each context. So, if you want to click a JS popup, so you need to consid
 And you need to call the event that shows the popup then you can run the JS.
 [If our project JS events are written in seperate util, you need to use scope wise, directly]
 
+Scopes => Current Document .
+So, variable decleared in function will not be shared with other JS functions.
+The global variable which are already present those can be used.(form page references)
 
 
 Best practices : (I follow)
 1. Before running with selenium , run this in browser console (F12/ Devtools has JS console) , see if it is working, that will work with selenium
 2. Check if the JS is compatible with different browser
 
-Parameter Run => like as fun.apply
-=> so, all parameters will be added as array. So, if you need to use any argument.
-use arguments[0] (0,1,2... like wise)
-Example, => executeScript("return arguments[0].innerHTML", new Object[]{element}), in here, the element is used when we
-write arguments[0] inside JS. 
