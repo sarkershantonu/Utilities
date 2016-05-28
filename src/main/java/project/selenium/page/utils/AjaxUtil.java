@@ -89,11 +89,17 @@ public class AjaxUtil extends UtilBase {
     /**
      * TODO =>
      * Adding new function to day on a button click.. all by JS
-     * @param element
+     * @param elementAttribute
      * @param sec
      */
-    public void clickButtonWithDelayByJS(String element , int sec){
+    public void clickButtonWithDelayByJS(int sec, String elementAttribute ){
 
+        String script = String.format(
+                "setInterval(function(){ var btn = document.querySelector(\'#%s\'); btn && btn.click(); "
+                +"setInterval(function(){var btn = document.querySelector(\'span.ui-button-text\');btn && btn.click();},"
+                        +" 5*1000);}, %s*1000);",
+                new Object[]{elementAttribute, Integer.toString(sec)});
+        executor.executeScript(script, new Object[0]);
     }
     /**
      * inject JS in page : Fully experimental part.
