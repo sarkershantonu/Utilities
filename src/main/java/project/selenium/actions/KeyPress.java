@@ -1,11 +1,14 @@
 package project.selenium.actions;
 
+import com.sun.javafx.css.StyleCacheEntry;
 import org.browser.manage.Browser;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import project.selenium.PageBase;
+
+import java.util.Arrays;
 
 /**
  * Created by shantonu on 5/11/16.
@@ -24,6 +27,7 @@ public class KeyPress<T extends PageBase> {
 
     T perform(WebElement element,Keys key, int second) {
         element.sendKeys(key);
+
         return page;
     }
 
@@ -39,7 +43,7 @@ public class KeyPress<T extends PageBase> {
      * @return
      * Todo fine tuning , testing, making a whole new util for specifying keys based on type of keys.
      */
-    T perform(WebElement element,Keys[] keys,  int second) {
+    T perform(WebElement element,Keys[] keys, int second) {
         Actions keypress = new Actions(Browser.getInstance());
         if(keys.length==3){
             keypress.keyDown(element,keys[0]);
@@ -56,6 +60,11 @@ public class KeyPress<T extends PageBase> {
             // no action perform, invalid operation, todo exception + logging
         }
 
+        return page;
+    }
+
+    T perform(Keys[] keys, int second, WebElement element) {
+        element.sendKeys(Keys.chord(Arrays.asList(keys)));
         return page;
     }
 }
