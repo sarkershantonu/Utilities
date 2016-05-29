@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
  * This is mother of all utils
  * Must wired with driver
  * Static method only contains global items, except that all are actually object items.
+ * All utils keeping this as base are contextualized on page.
  */
 public abstract class UtilBase {
     protected Logger log = null;

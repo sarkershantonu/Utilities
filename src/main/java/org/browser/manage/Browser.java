@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -35,6 +36,23 @@ public class Browser {
 
     private Browser(){}
 
+    public static void close(){
+
+        try {
+            driver.close();
+        }catch (Exception e){
+            driver.quit();
+        }
+    }
+
+    public static void closeAllChild(String parentHandle){
+        Set<String> windows =   driver.getWindowHandles();
+        windows.remove(parentHandle);
+        for(String s : windows){
+            driver.switchTo().window(s);
+            close();
+        }
+    }
     /**
      * Size of screen
      * Timeout
