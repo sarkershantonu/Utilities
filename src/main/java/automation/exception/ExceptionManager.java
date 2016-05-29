@@ -1,6 +1,7 @@
-package automation.utils;
+package automation.exception;
 
-import automation.entity.TestError;
+
+import automation.exception.TestError;
 
 public class ExceptionManager {
 

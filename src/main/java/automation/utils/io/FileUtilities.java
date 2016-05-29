@@ -1,4 +1,4 @@
-package automation.utils;
+package automation.utils.io;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * Created by shantonu on 4/14/16.
  */
-public class FileManager {
+public class FileUtilities {
     public static String ReadFile(String name) {
         String value=null;
         try {
