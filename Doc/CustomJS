@@ -48,7 +48,7 @@ Scopes => Current Document .
 So, variable decleared in function will not be shared with other JS functions.
 The global variable which are already present those can be used.(form page references)
 
-JS timeout : default 0, i have added a method in Browser class to define the default timeout 5s which is changable  
+JS timeout : default 0, i have added a method in Browser class to define the default timeout 5s which is changable
  public static void setJSTimeOut(int sec){
         driver.manage().timeouts().setScriptTimeout(sec,TimeUnit.SECONDS);
     }

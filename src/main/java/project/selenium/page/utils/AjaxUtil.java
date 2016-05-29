@@ -40,6 +40,9 @@ public class AjaxUtil extends UtilBase {
         return ((Boolean) executor.executeScript(ajaxCompletion_JS, new Object[0])).booleanValue();
     }
 
+    public void waitByJS(int sec){
+        executor.executeAsyncScript("window.setTimeout(arguments[0])", new Object[]{sec});
+    }
     /**
      * Page load checking
      * @return
@@ -60,6 +63,9 @@ public class AjaxUtil extends UtilBase {
     }
 
 
+    public void click(WebElement element){
+        executor.executeScript("arguments[0].click();", element);
+    }
 /**
  * Mouse Movements ******************************************************
  */
@@ -86,12 +92,9 @@ public class AjaxUtil extends UtilBase {
         return scrollWidth>clientWidth;
     }
 
-    public String getNameFromWebElement(WebElement element)
-    {
-        return null; // todo shantnu , review please.
-    }
+
     /**
-     * TODO =>
+     * TODO => currently it is getting only 'span.ui-button-text', based on page behavior, we should make it generic
      * Adding new function to day on a button click.. all by JS
      * @param elementAttribute
      * @param sec
@@ -99,12 +102,19 @@ public class AjaxUtil extends UtilBase {
     public void clickButtonWithDelayByJS(int sec, String elementAttribute ){
 
         String script = String.format(
-                "setInterval(function(){ var btn = document.querySelector(\'#%s\'); btn && btn.click(); "
-                +"setInterval(function(){var btn = document.querySelector(\'span.ui-button-text\');btn && btn.click();},"
-                        +" 5*1000);}, %s*1000);",
+                "setInterval(function(){ "
+                        +"var btn = document.querySelector(\'#%s\'); "
+                        +"btn && btn.click(); "
+                +"setInterval(function(){"
+                        +"var btn = document.querySelector(\'span.ui-button-text\');"
+                        +"btn && btn.click();"
+                        +"},"
+                        +" 5*1000);"
+                        +"}, %s*1000);",
                 new Object[]{elementAttribute, Integer.toString(sec)});
         executor.executeScript(script, new Object[0]);
     }
+
     /**
      * inject JS in page : Fully experimental part.
      *
