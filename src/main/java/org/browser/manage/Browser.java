@@ -41,6 +41,7 @@ public class Browser {
      */
     private static void initiDriver(){
         setImplicitWait(30);
+        setJSTimeOut(5);
     }
     public static void resetImplicitWait(){
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -55,5 +56,8 @@ public class Browser {
 
     public static JavascriptExecutor getJSexcutor(){
         return (JavascriptExecutor)driver;
+    }
+    public static void setJSTimeOut(int sec){
+        driver.manage().timeouts().setScriptTimeout(sec,TimeUnit.SECONDS);
     }
 }
