@@ -1,11 +1,8 @@
 package automation.utils;
 
-import automation.utils.UtilBase;
-
-import org.apache.commons.collections.iterators.ObjectArrayIterator;
+import automation.utils.io.*;
 import org.apache.commons.io.FileUtils;
 import org.browser.manage.Browser;
-import org.browser.utils.PageSourceUtil;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -157,7 +154,7 @@ public class ScreenShotUtil extends UtilBase {
             file.append(PropertyUtil.getSystemProperty("file.separator")).append("screenshot_");
         }
         file.append(testname+"_").append(time.format(screenDate));
-        file = FileManager.trimLimit(file);
+        file = FileUtilities.trimLimit(file);
         file.append(ConfigHelper.screenshotType);
         return file;
     }
