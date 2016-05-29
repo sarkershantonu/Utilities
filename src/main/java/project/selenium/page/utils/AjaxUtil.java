@@ -10,6 +10,8 @@ import org.openqa.selenium.remote.server.SystemClock;
 
 /**
  * Created by shantonu on 4/14/16.
+ * todo => this is not a proper class, this will devided to other classes based on responsibility types.
+ * this is initial, so , will be fixed in releases.
  */
 public class AjaxUtil extends UtilBase {
 

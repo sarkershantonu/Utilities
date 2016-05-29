@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 /**
  * This is created to unitfied logging, it is now default behavior
  * Todo => addind extra logging runtime behavior while creating log instance. (like environment depnendent)
+ * this will be refactored, logging will be replaced by lombok style, this class will manager log storing not logging.
  */
 
 public class LogManager {

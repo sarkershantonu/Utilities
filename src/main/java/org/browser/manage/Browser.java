@@ -12,8 +12,9 @@ import java.util.concurrent.TimeUnit;
  * Created by shantonu on 4/2/16.
  * Maintain Singleton behavior for driver object
  * Responsibilities
- * => get all type of browser
+ * => get browser but singletone way
  * => get JS executor
+ * Note : we are not maintaining browser instance logic here. That will be maintain by Browser factory.
  */
 public class Browser {
 

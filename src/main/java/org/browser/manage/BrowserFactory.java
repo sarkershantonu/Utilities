@@ -43,6 +43,23 @@ class BrowserFactory {
     }
     */
 
+    /***
+     * This is responsible for local remote hub initiation, not finalized, separated from default function dule to minimize complexity.
+     * @param intranetHub = hostIP:PORT
+     * @param browser = browser name
+     * @return
+     * TODO , seperate & specify capability.
+     */
+    public static WebDriver getABrowser(String intranetHub, String browser){
+        try {
+            return new RemoteWebDriver(new URL(intranetHub), DesiredcapabilityFactory.getCapability(browser) );
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            return aBrowser;
+        }
+
+    }
+
     public static WebDriver getABrowser(){
 
         if(nameOfBrowser=="firefox"){
