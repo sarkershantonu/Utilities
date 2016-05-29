@@ -1,13 +1,17 @@
 package project.selenium.page.utils;
 
 import automation.utils.UtilBase;
+import com.google.common.base.Function;
 import org.browser.manage.Browser;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by shantonu on 4/10/16.
@@ -143,9 +147,90 @@ public class ElementUtil extends UtilBase {
         return aElement;
     }
 
+    public WebElement findElementAsyc(final By by , int timeSec){
+        FluentWait wait = new FluentWait(driver).withTimeout(Browser.DEFAULT_WAIT_4_ELEMENT, TimeUnit.SECONDS)
+                .pollingEvery(timeSec, TimeUnit.SECONDS)
+                .ignoring(NoSuchElementException.class);
+        WebElement found = (WebElement) wait.until(new ExpectedCondition<WebElement>() {
+            @Override
+            public WebElement apply(WebDriver aDriver) {
+                aDriver = driver;
+                return aDriver.findElement(by);
+            }
+        });
+        return found;
+    }
+
+    /**
+     * FInding item async with 15s delay
+     * @param by
+     * @return
+     */
+    public WebElement findElementAsyc(final By by){
+        return findElementAsyc(by,15);
+    }
+    public List<WebElement> findElementsAsyc(final By by){
+        return findElementsAsyc(by,15);
+    }
+    public List<WebElement> findElementsAsyc(final By by , int timeSec){
+        FluentWait wait = new FluentWait(driver).withTimeout(Browser.DEFAULT_WAIT_4_ELEMENT, TimeUnit.SECONDS)
+                .pollingEvery(timeSec, TimeUnit.SECONDS)
+                .ignoring(NoSuchElementException.class);
+        List<WebElement> found = (List<WebElement>) wait.until(new ExpectedCondition<List<WebElement>>() {
+            @Override
+            public List<WebElement> apply(WebDriver aDriver) {
+                aDriver = driver;
+                return aDriver.findElements(by);
+            }
+        });
+        return found;
+    }
+
+    /**
+     * Alias function to wait for individual items with multiple selectors. This will be used to get group of items together
+     * like Grid items. Wait will apply individual items. 
+     * @param timeSec
+     * @param by
+     * @return
+     */
+    public List<WebElement> findElementsAsyc(int timeSec, final By... by ){
+        List<WebElement> elements = new ArrayList();
+        for(By b: by){
+            FluentWait wait = new FluentWait(driver).withTimeout(Browser.DEFAULT_WAIT_4_ELEMENT, TimeUnit.SECONDS)
+                    .pollingEvery(timeSec, TimeUnit.SECONDS)
+                    .ignoring(NoSuchElementException.class);
+            WebElement found = (WebElement) wait.until(new ExpectedCondition<WebElement>() {
+                @Override
+                public WebElement apply(WebDriver aDriver) {
+                    aDriver = driver;
+                    return aDriver.findElement(b);
+                }
+            });
+            elements.add(found);
+        }
+        return elements;
+    }
+
+
     public String getTextByJS(WebElement element){
         executor = (JavascriptExecutor)driver;
         return (String)executor.executeScript(getText_JS, new Object[]{element});
+    }
+
+    public void waitForAjaxComplete(int sec){
+        Browser.setWebDriverWait(sec).until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver aDriver) {
+                return new AjaxUtil(aDriver).isAjaxComplete();
+            }
+        });
+    }
+
+    public void isPageLoaded(int sec){
+        Browser.setWebDriverWait(sec).until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver aDriver) {
+                return new AjaxUtil(aDriver).isPageLoaded();
+            }
+        });
     }
 
 

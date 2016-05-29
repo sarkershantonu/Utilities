@@ -3,6 +3,7 @@ package org.browser.manage;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,8 +21,8 @@ import java.util.concurrent.TimeUnit;
 public class Browser {
 
     //todo => need to read from property
-    public static int DEFAULT_WAIT_4_PAGE = 30;
-    public static int DEFAULT_WAIT_4_ELEMENT = 10;
+    public static final long DEFAULT_WAIT_4_PAGE = 30;
+    public static final long DEFAULT_WAIT_4_ELEMENT = 10;
 
 
     private static WebDriver driver = null;
@@ -59,13 +60,14 @@ public class Browser {
      * All waiting
      */
     private static void initiDriver(){
-        setImplicitWait(30);
+        setImplicitWait(DEFAULT_WAIT_4_PAGE);
         setJSTimeOut(5);
+        new WebDriverWait(driver,DEFAULT_WAIT_4_ELEMENT);
     }
     public static void resetImplicitWait(){
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
-    public static void setImplicitWait(int newWaittime_InSeconds) {
+    public static void setImplicitWait(long newWaittime_InSeconds) {
         nullifyImplicitWait();
         driver.manage().timeouts().implicitlyWait(newWaittime_InSeconds, TimeUnit.SECONDS);
     }
@@ -76,7 +78,18 @@ public class Browser {
     public static JavascriptExecutor getJSexcutor(){
         return (JavascriptExecutor)driver;
     }
-    public static void setJSTimeOut(int sec){
+    public static void setJSTimeOut(long sec){
         driver.manage().timeouts().setScriptTimeout(sec,TimeUnit.SECONDS);
     }
+    public static WebDriverWait setWebDriverWait(long sec){
+        WebDriverWait wait ;
+        if(DEFAULT_WAIT_4_ELEMENT<sec){
+            wait =  new WebDriverWait(driver, sec);
+        }else
+        {
+            wait = new WebDriverWait(driver,DEFAULT_WAIT_4_ELEMENT);
+        }
+        return wait;
+    }
+
 }

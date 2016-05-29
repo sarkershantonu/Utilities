@@ -1,6 +1,6 @@
 package project.selenium.page.utils;
 
-import automation.entity.TestError;
+import automation.exception.TestError;
 import automation.exception.ExceptionManager;
 import automation.utils.UtilBase;
 import org.apache.commons.io.IOUtils;
