@@ -33,16 +33,15 @@ public class ElementUtil extends UtilBase {
     }
     public boolean isElementPresent(WebDriver driver, By by) {
         try {
-            driver.findElement(by);//if it does not find the element throw NoSuchElementException, which calls "catch(Exception)" and returns false;
-            return true;
+            return driver.findElement(by)!=null;//if it does not find the element throw NoSuchElementException, which calls "catch(Exception)" and returns false;
         } catch (NoSuchElementException e) {
             return false;
         }
     }
     public boolean areElementsPresent(WebDriver driver, By by) {
         try {
-            driver.findElements(by);
-            return true;
+            return driver.findElements(by)!=null;
+
         } catch (NoSuchElementException e) {
             return false;
         }
@@ -73,6 +72,32 @@ public class ElementUtil extends UtilBase {
         return isPresent;
     }
 
+    /**
+     * wait for elements and if noxception on visibility, sents true.
+     * @param element
+     * @param sec
+     * @return
+     */
+    public boolean waitForElementVisibility(WebElement element, int sec){
+        WebDriverWait wait = Browser.setWebDriverWait(sec);
+        try{
+            wait.until(ExpectedConditions.visibilityOf(element));
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean waitForElementsVisibility(List<WebElement> elements, int sec){
+        WebDriverWait wait = Browser.setWebDriverWait(sec);
+        try{
+            wait.until(ExpectedConditions.visibilityOfAllElements(elements));
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
     public WebElement waitForElementRefresh(final By by, int timeOutInSeconds) {
         WebElement element=null;
         try{
@@ -92,14 +117,15 @@ public class ElementUtil extends UtilBase {
         return element;
     }
 
-    public List<WebElement> waitForListElementsPresent(final By by, int timeOutInSeconds) {
+
+    public List<WebElement> waitForElements(final By by, int timeOutInSeconds) {
         List<WebElement> elements=null;
         try{
             Browser. nullifyImplicitWait();
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
             wait.until((new ExpectedCondition<Boolean>() {
-
                 public Boolean apply(WebDriver driverObject) {
+
                     return areElementsPresent(driverObject, by);
                 }
             }));
@@ -118,7 +144,7 @@ public class ElementUtil extends UtilBase {
         try{
             Browser. nullifyImplicitWait();
 
-            WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+            WebDriverWait wait =Browser.setWebDriverWait(timeOutInSeconds);
             element = wait.until(ExpectedConditions.presenceOfElementLocated(by));
 
             Browser. resetImplicitWait();
@@ -128,6 +154,21 @@ public class ElementUtil extends UtilBase {
         }
         return element;
     }
+
+    public List<WebElement> waitForElementsPresent(int timeOutInSeconds, final By by) {
+        List<WebElement> elements=new ArrayList();
+        try{
+            Browser. nullifyImplicitWait();
+            WebDriverWait wait =Browser.setWebDriverWait(timeOutInSeconds);
+            elements = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
+            Browser. resetImplicitWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return elements;
+    }
+
     public WebElement waitForElement(final By by, int timeOutInSeconds) {
         WebElement element = null;
         try{
@@ -172,6 +213,9 @@ public class ElementUtil extends UtilBase {
     public List<WebElement> findElementsAsyc(final By by){
         return findElementsAsyc(by,15);
     }
+    public List<WebElement> findElementsAsyc(final By... by){
+        return findElementsAsyc(15,by);
+    }
     public List<WebElement> findElementsAsyc(final By by , int timeSec){
         FluentWait wait = new FluentWait(driver).withTimeout(Browser.DEFAULT_WAIT_4_ELEMENT, TimeUnit.SECONDS)
                 .pollingEvery(timeSec, TimeUnit.SECONDS)
@@ -188,7 +232,7 @@ public class ElementUtil extends UtilBase {
 
     /**
      * Alias function to wait for individual items with multiple selectors. This will be used to get group of items together
-     * like Grid items. Wait will apply individual items. 
+     * like Grid items. Wait will apply individual items.
      * @param timeSec
      * @param by
      * @return
