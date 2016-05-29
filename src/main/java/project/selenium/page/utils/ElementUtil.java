@@ -2,6 +2,7 @@ package project.selenium.page.utils;
 
 import automation.utils.UtilBase;
 import com.google.common.base.Function;
+import com.google.common.base.Objects;
 import org.browser.manage.Browser;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -102,13 +103,14 @@ public class ElementUtil extends UtilBase {
         WebElement element=null;
         try{
             Browser.nullifyImplicitWait();
-            new WebDriverWait(super.driver, timeOutInSeconds) {}.until(new ExpectedCondition<Boolean>() {
+            new WebDriverWait(driver, timeOutInSeconds) {}.
+                    until(new ExpectedCondition<Boolean>() {
 
                 public Boolean apply(WebDriver driverObject) {
                     driverObject.navigate().refresh(); //refresh the page ****************
                     return isElementPresentAndDisplay(driverObject, by);
                 }});
-            element = super.driver.findElement(by);
+            element = driver.findElement(by);
             Browser.resetImplicitWait();
 
         } catch (Exception e) {
@@ -275,6 +277,18 @@ public class ElementUtil extends UtilBase {
                 return new AjaxUtil(aDriver).isPageLoaded();
             }
         });
+    }
+
+    public boolean checkAttribute(String expectedValueOfAttribute, WebElement element, String attribute ){
+
+        String result =  element.getAttribute(attribute);
+
+        if(result.equals(attribute))// if attribute is not present, this gives the value of the property of attribute.
+            return false;
+        if(result==null|| result.equals("null"))
+            return false;//value is not set of the attribute
+        return result.equals(expectedValueOfAttribute);
+
     }
 
 

@@ -67,4 +67,13 @@ public class KeyPress<T extends PageBase> {
         element.sendKeys(Keys.chord(Arrays.asList(keys)));
         return page;
     }
+    public void type(WebElement element, CharSequence... charSequence){
+        StringBuilder sb = new StringBuilder();
+        for(CharSequence c : charSequence){
+            sb.append(c);
+        }
+        element.clear();
+        //element.sendKeys(charSequence.toString()); // refactored with following
+        element.sendKeys(sb);
+    }
 }
