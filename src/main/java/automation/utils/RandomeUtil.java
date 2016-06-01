@@ -1,8 +1,8 @@
 package automation.utils;
 
+import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by shantonu on 6/1/16.
@@ -10,7 +10,7 @@ import java.util.Random;
 public class RandomeUtil {
     public static Integer getInt(int a, int b){
 
-        return new Random().nextInt(b-a+1)+a;
+        return new SecureRandom().nextInt(b-a+1)+a;
     }
     public static String getString(String a, String b){
 
