@@ -24,7 +24,7 @@ public class ElementUtil extends UtilBase {
         super(aDriver);
 
     }
-    public boolean isTextPresent(WebDriver driver, By by, String text)
+    public boolean isTextPresent(By by, String text)
     {
         try {
             return driver.findElement(by).getText().contains(text);
@@ -32,14 +32,21 @@ public class ElementUtil extends UtilBase {
             return false;
         }
     }
-    public boolean isElementPresent(WebDriver driver, By by) {
+
+    public boolean isElementPresent(WebElement element){
+        
+        return element.isDisplayed();
+    }
+
+    public boolean isElementPresent(By by) {
         try {
             return driver.findElement(by)!=null;//if it does not find the element throw NoSuchElementException, which calls "catch(Exception)" and returns false;
         } catch (NoSuchElementException e) {
             return false;
         }
     }
-    public boolean areElementsPresent(WebDriver driver, By by) {
+
+    public boolean areElementsPresent( By by) {
         try {
             return driver.findElements(by)!=null;
 
@@ -47,7 +54,7 @@ public class ElementUtil extends UtilBase {
             return false;
         }
     }
-    public boolean isElementPresentAndDisplay(WebDriver driver, By by) {
+    public boolean isElementPresentAndDisplay( By by) {
         try {
             return driver.findElement(by).isDisplayed();
         } catch (NoSuchElementException e) {
@@ -61,11 +68,11 @@ public class ElementUtil extends UtilBase {
             new WebDriverWait(super.driver, timeOutInSeconds) {
             }.until(new ExpectedCondition<Boolean>() {
 
-                public Boolean apply(WebDriver driverObject) {
-                    return isTextPresent(driverObject, by, text); //is the Text in the DOM
+                public Boolean apply(WebDriver aDriver) {
+                    return isTextPresent(by, text); //is the Text in the DOM
                 }
             });
-            isPresent = isTextPresent(super.driver, by, text);
+            isPresent = isTextPresent(by, text);
             Browser.resetImplicitWait();
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,9 +113,10 @@ public class ElementUtil extends UtilBase {
             new WebDriverWait(driver, timeOutInSeconds) {}.
                     until(new ExpectedCondition<Boolean>() {
 
-                public Boolean apply(WebDriver driverObject) {
-                    driverObject.navigate().refresh(); //refresh the page ****************
-                    return isElementPresentAndDisplay(driverObject, by);
+                public Boolean apply(WebDriver aDriver) {
+                    aDriver = driver;
+                    aDriver.navigate().refresh(); //refresh the page ****************
+                    return isElementPresentAndDisplay(by);
                 }});
             element = driver.findElement(by);
             Browser.resetImplicitWait();
@@ -126,9 +134,9 @@ public class ElementUtil extends UtilBase {
             Browser. nullifyImplicitWait();
             WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
             wait.until((new ExpectedCondition<Boolean>() {
-                public Boolean apply(WebDriver driverObject) {
+                public Boolean apply(WebDriver aDriver) {
 
-                    return areElementsPresent(driverObject, by);
+                    return areElementsPresent(by);
                 }
             }));
 
