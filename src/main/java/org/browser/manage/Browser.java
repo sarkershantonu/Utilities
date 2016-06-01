@@ -1,6 +1,8 @@
 package org.browser.manage;
 
 
+import automation.exception.ExceptionManager;
+import automation.exception.TestError;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -90,6 +92,13 @@ public class Browser {
             wait = new WebDriverWait(driver,DEFAULT_WAIT_4_ELEMENT);
         }
         return wait;
+    }
+    public static void pause(int sec){
+        try {
+            Thread.sleep((long)sec*1000);
+        } catch (InterruptedException e) {
+            ExceptionManager.performDefaultAction("Pause fail",e, new TestError());
+        }
     }
 
 }

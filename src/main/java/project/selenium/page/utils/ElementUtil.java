@@ -34,7 +34,7 @@ public class ElementUtil extends UtilBase {
     }
 
     public boolean isElementPresent(WebElement element){
-        
+
         return element.isDisplayed();
     }
 
