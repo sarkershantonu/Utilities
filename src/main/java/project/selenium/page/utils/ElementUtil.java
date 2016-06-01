@@ -106,6 +106,11 @@ public class ElementUtil extends UtilBase {
         }
     }
 
+    public void pauseUntillElementInVisible(WebElement element){
+        while (waitForElementVisibility(element,5)){
+            Browser.pause(2);
+        }
+    }
     public WebElement waitForElementRefresh(final By by, int timeOutInSeconds) {
         WebElement element=null;
         try{
@@ -192,11 +197,7 @@ public class ElementUtil extends UtilBase {
         }
         return element;
     }
-    public WebElement waitForElement(WebElement aElement, int timeOutInSeconds){
-        WebDriverWait wait =  new WebDriverWait(driver,timeOutInSeconds);
-        wait.until(ExpectedConditions.visibilityOf(aElement));
-        return aElement;
-    }
+
 
     public WebElement findElementAsyc(final By by , int timeSec){
         FluentWait wait = new FluentWait(driver).withTimeout(Browser.DEFAULT_WAIT_4_ELEMENT, TimeUnit.SECONDS)
