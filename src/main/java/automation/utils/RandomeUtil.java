@@ -8,13 +8,21 @@ import java.util.List;
  * Created by shantonu on 6/1/16.
  */
 public class RandomeUtil {
+    static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    static SecureRandom rnd = new SecureRandom();
     public static Integer getInt(int a, int b){
 
         return new SecureRandom().nextInt(b-a+1)+a;
     }
-    public static String getString(String a, String b){
+    public static String getString(int len){
+        StringBuilder sb = new StringBuilder( len );
+        for( int i = 0; i < len; i++ )
+            sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+        return sb.toString();
 
     }
+
+
 
     public static <T> T getItem(List<T> items){
         int max = items.size()-1;
