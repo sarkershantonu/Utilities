@@ -1,9 +1,10 @@
-package project.selenium.actions;
+package project.selenium.actions.mouse;
 
 import org.browser.manage.Browser;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import project.selenium.PageBase;
+import project.selenium.actions.MouseBase;
 
 /**
  * Created by shantonu on 4/21/16.
