@@ -13,9 +13,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class NavigationUtil extends UtilBase {
 
-    private Map<String, Object> timing = null;
-    private static final String JS4perf="var performance = window.performance || window.webkitPerformance || window.mozPerformance || window.msPerformance || {};var timings = performance.timing || {};return timings;";
-    public WebDriver driver = null;
     public NavigationUtil(WebDriver aDriver){
         super(aDriver);
     }
@@ -30,12 +27,6 @@ public class NavigationUtil extends UtilBase {
     }
     private void makeFullScreen() {
         driver.manage().window().maximize();
-    }
-
-
-    public void openNewWindow(){
-        executor = (JavascriptExecutor)driver;
-        executor.executeScript("window.open()");
     }
 
 

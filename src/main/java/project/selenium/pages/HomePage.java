@@ -1,10 +1,8 @@
 package project.selenium.pages;
 
 import lombok.Getter;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import project.selenium.PageBase;
-import project.selenium.actions.Click;
+import project.selenium.actions.mouse.Click;
 import project.selenium.pages.common.SearchPanel;
 
 

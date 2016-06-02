@@ -3,8 +3,7 @@ package project.selenium.actions.mouse;
 import org.browser.manage.Browser;
 import org.openqa.selenium.WebElement;
 import project.selenium.PageBase;
-import project.selenium.actions.MouseBase;
-import project.selenium.page.utils.JavaScriptUtil;
+
 
 /**
  * Created by shantonu on 4/21/16.

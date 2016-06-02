@@ -111,6 +111,10 @@ public class ElementUtil extends UtilBase {
             Browser.pause(2);
         }
     }
+
+    public WebElement getTableRowByLabel(String label) {
+        return driver.findElement(By.xpath(".//*[contains(text(), \"" + label + "\")]" + "//ancestor::tr"));
+    }
     public WebElement waitForElementRefresh(final By by, int timeOutInSeconds) {
         WebElement element=null;
         try{
