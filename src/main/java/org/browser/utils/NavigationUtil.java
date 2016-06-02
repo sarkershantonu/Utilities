@@ -29,5 +29,9 @@ public class NavigationUtil extends UtilBase {
         driver.manage().window().maximize();
     }
 
+    public void asdasd(){
+
+    }
+
 
 }
