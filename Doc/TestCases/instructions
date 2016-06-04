@@ -1,5 +1,7 @@
 Add test cases for demo.opencart.com
 
+Check this in trello : https://trello.com/c/QtdRQvPD/28-testcases
+
 Naming :
 TC_AreaOfTesting_typeOfTesting
 
@@ -14,3 +16,11 @@ in template, mandatory items are
 
 
 Final goal : see project-structure.txt, this will be used to write test to fit inside this structure.
+
+
+Rule 1 : Sheet name = test case id
+rule 2 : Every file should a sheet "Meta" about test
+
+rule 3 : Col => id, Steps, test data, Expected results
+
+
