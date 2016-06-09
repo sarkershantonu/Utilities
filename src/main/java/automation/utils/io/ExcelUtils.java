@@ -1,10 +1,11 @@
 package automation.utils.io;
 
-import lombok.Getter;
+import lombok.*;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -15,7 +16,7 @@ import java.util.Date;
  * todo, planned to complete ASAP
  */
 public class ExcelUtils {
-    private static HSSFWorkbook workbook;
+    private @Getter static HSSFWorkbook workbook;
     private @Getter static HSSFSheet sheet;
     private static HSSFCell cell;
     private static HSSFCellStyle cellStyleDefault;
@@ -33,7 +34,13 @@ public class ExcelUtils {
     public static String getFileName(){return fileName.toString();}
     private ExcelUtils(){}
 
-    public static void write(String fullFileNameAndPath){
+    public static void write(@NonNull String fullFileNameAndPath){
+        try {
+            FileOutputStream out = new FileOutputStream(new File(fullFileNameAndPath));
+            write(out);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
     public static void write(FileOutputStream outputStream){
