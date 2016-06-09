@@ -34,16 +34,16 @@ public class ExcelUtils {
     public static String getFileName(){return fileName.toString();}
     private ExcelUtils(){}
 
-    public static void write(@NonNull String fullFileNameAndPath){
+    public static void save(@NonNull String fullFileNameAndPath){
         try {
             FileOutputStream out = new FileOutputStream(new File(fullFileNameAndPath));
-            write(out);
+            save(out);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
     }
-    public static void write(FileOutputStream outputStream){
+    public static void save(@NonNull FileOutputStream outputStream){
         try {
             workbook.write(outputStream);
         } catch (IOException e) {
