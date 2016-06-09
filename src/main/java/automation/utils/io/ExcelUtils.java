@@ -58,14 +58,7 @@ public class ExcelUtils {
             Cell cell = row.createCell(i);
 
             if(isHeader){
-                // todo => this part should be replaced by createStyleHeader , need to test.
-                cellStyleDefault.setFillPattern((short) 1);
-                HSSFFont font = workbook.createFont();
-                font.setFontName("Arial");
-                font.setFontHeightInPoints((short) 12);
-                font.setBoldweight((short) 600);
-                font.setColor((short) 21);
-                cellStyleDefault.setFont(font);
+                cellStyleDefault=createStyleForHeader(workbook);
             }
             else {
                 cellStyleDefault =createStyle(workbook);
@@ -77,8 +70,10 @@ public class ExcelUtils {
 
     private static String generateFileName(){return null;}
 
-    private static HSSFCellStyle createStyleHeader(HSSFWorkbook book){
+    private static HSSFCellStyle createStyleForHeader(HSSFWorkbook book){
         HSSFCellStyle style = book.createCellStyle();
+        style.setFillPattern((short) 1);
+
         HSSFFont font = book.createFont();
         font.setFontName("Arial");
         font.setFontHeightInPoints((short) 12);
