@@ -2,9 +2,11 @@ package automation.utils.io;
 
 import lombok.Getter;
 import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Created by shantonu on 6/8/16.
@@ -14,10 +16,11 @@ public class ExcelUtils {
     private static HSSFWorkbook workbook;
     private @Getter static HSSFSheet sheet;
     private static HSSFCell cell;
-    private static HSSFCellStyle cellStypeDefault;
+    private static HSSFCellStyle cellStyleDefault;
     private static StringBuilder fileName = new StringBuilder();
     private static String currentSheet;
     private static String fontDefault = "Calibri-Regular";
+    private static  HSSFCreationHelper createHelper;
 
     public static String getFileName(){return fileName.toString();}
     private ExcelUtils(){}
@@ -26,20 +29,57 @@ public class ExcelUtils {
 
     }
     public static void write(FileOutputStream outputStream){
-
+        try {
+            workbook.write(outputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public static File createXLfile(String filename){
         return null;
     }
-    public static void createSheet(HSSFWorkbook book, String sheetName){}
+    public static void createSheet(HSSFWorkbook book, String sheetName){
+
+    }
     public static void createSheet(HSSFWorkbook book, String sheetName, String... headers){}
     public static void createRow(boolean isHeader , String... values){
-        
+        short ith = (short) (sheet.getLastRowNum()+1);
+        HSSFRow row = sheet.createRow(ith);
+        createHelper = workbook.getCreationHelper();
+        for(int i=0;i<values.length-1; i++){
+            Cell cell = row.createCell(i);
+
+            if(isHeader){
+                // todo => this part should be replaced by createStyleHeader , need to test.
+                cellStyleDefault.setFillPattern((short) 1);
+                HSSFFont font = workbook.createFont();
+                font.setFontName("Arial");
+                font.setFontHeightInPoints((short) 12);
+                font.setBoldweight((short) 600);
+                font.setColor((short) 21);
+                cellStyleDefault.setFont(font);
+            }
+            else {
+                cellStyleDefault =createStyle(workbook);
+
+            }
+            cell.setCellStyle(cellStyleDefault);
+        }
     }
     public static void createCol(boolean isHeader , String... values){}
 
     private static String generateFileName(){return null;}
 
+    private static HSSFCellStyle createStyleHeader(HSSFWorkbook book){
+        HSSFCellStyle style = book.createCellStyle();
+        HSSFFont font = book.createFont();
+        font.setFontName("Arial");
+        font.setFontHeightInPoints((short) 12);
+        font.setBoldweight((short) 600);
+        font.setColor((short) 21);
+        style.setFont(font);
+      return style;
+    }
     private static HSSFCellStyle createStyle(HSSFWorkbook book){
         HSSFCellStyle style = book.createCellStyle();
         HSSFFont font = book.createFont();
