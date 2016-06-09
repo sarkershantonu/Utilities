@@ -3,11 +3,9 @@ package automation.utils.io;
 import lombok.*;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.IndexedColors;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -25,7 +23,7 @@ public class ExcelUtils {
     private static String fontDefault = "Calibri-Regular";
     private static  HSSFCreationHelper createHelper;
 
-    static {
+    static {// screenpath is windows supported path items, so, if you use linux box, you can edit or change
         if(System.getProperty("ScreenPath") != null) {
             fileName.append("ScreenPath").append("\\");
         }
@@ -50,32 +48,99 @@ public class ExcelUtils {
             e.printStackTrace();
         }
     }
-    public static File createXLfile(String filename){
-        return null;
-    }
-    public static void createSheet(HSSFWorkbook book, String sheetName){
 
+    public static HSSFSheet createSheet(HSSFWorkbook book, String sheetName){
+        return createSheet(book, sheetName, null);
     }
-    public static void createSheet(HSSFWorkbook book, String sheetName, String... headers){}
+    public static HSSFSheet createSheet(HSSFWorkbook book, String sheetName, String... headers){
+        workbook=book;
+        // if sheet name is null, use previous, if sheet name is not current, make it current
+        if(!currentSheet.equals(sheetName)||!sheetName.equals(null)){
+           currentSheet=sheetName;
+        }
+        sheet =workbook.getSheet(currentSheet);
+        if(sheet==null){
+            sheet = workbook.createSheet(currentSheet);
+            if (headers!=null)
+                createHeader(sheet, headers);
+            sheet.createFreezePane(0,1);
+        }
+        return sheet;
+    }
+
+    public static File initReport(String fileName, String sheetName, String... columnHeaders) throws IOException {
+
+        File report = new File(fileName);
+        if(report.exists()){
+            workbook = new HSSFWorkbook(new FileInputStream(report));
+        }
+        else{
+            report.getParentFile().mkdir();
+            report.createNewFile();
+            workbook = new HSSFWorkbook();
+            workbook.write(new FileOutputStream(report));
+        }
+        cellStyleDefault = createStyle(workbook);
+        sheet = createSheet(workbook, sheetName, columnHeaders);
+        return report;
+    }
+    private static void createHeader(HSSFSheet sheet,  String... headers){
+        //begining of a sheet
+        if(sheet.getLastRowNum()==0){
+            HSSFCellStyle cellStyle = createStyle(workbook);
+            cellStyle.setFillPattern((short) 1);
+            cellStyle.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());//setting header gray background
+            createRow(true, headers);
+        }
+    }
+
     public static void createRow(boolean isHeader , String... values){
         short ith = (short) (sheet.getLastRowNum()+1);
         HSSFRow row = sheet.createRow(ith);
         createHelper = workbook.getCreationHelper();
         for(int i=0;i<values.length-1; i++){
             Cell cell = row.createCell(i);
-
-            if(isHeader){
+            if(isHeader)
                 cellStyleDefault=createStyleForHeader(workbook);
-            }
-            else {
+            else
                 cellStyleDefault =createStyle(workbook);
-            }
+
             cell.setCellStyle(cellStyleDefault);
+            cell.setCellValue(createHelper.createRichTextString(values[i]));
         }
     }
-    public static void createCol(boolean isHeader , String... values){}
+    private static HSSFCellStyle getResultStyle(HSSFCellStyle style, String status){
+        HSSFCellStyle newStyle = createStyle(workbook);
+        newStyle.setFillPattern((short) 1);
+        if(status.equals("pass")){
+            newStyle.setFillForegroundColor(IndexedColors.LIGHT_GREEN.getIndex());
+        }else if(status.equals("failed")){
+            newStyle.setFillForegroundColor(IndexedColors.RED.getIndex());
+        }
+        else if(status.equals("skipped")){
+            newStyle.setFillForegroundColor(IndexedColors.BROWN.getIndex());
+        }
+        else if(status.equals("ignored")){
+            newStyle.setFillForegroundColor(IndexedColors.ORANGE.getIndex());
+        }
+        else{
+            newStyle = style;
+        }
 
-    private static String generateFileName(){return null;}
+        return newStyle;
+    }
+
+    private static String generateFileName(){
+        return generateFileName(fileName);
+        }
+
+    private static String generateFileName(StringBuilder fileName){
+        return fileName.append(fileName)
+                .append(new SimpleDateFormat("yyyy-MM-dd_HHmmss")
+                        .format(new Date()))
+                .append(".xls")
+                .toString();
+    }
 
     private static HSSFCellStyle createStyleForHeader(HSSFWorkbook book){
         HSSFCellStyle style = book.createCellStyle();
@@ -101,11 +166,5 @@ public class ExcelUtils {
         style.setBorderBottom((short) 1);
         return style;
     }
-    private static String generateName(StringBuilder fileName){
-        return fileName.append(fileName)
-                .append(new SimpleDateFormat("yyyy-MM-dd_HHmmss")
-                        .format(new Date()))
-                .append(".xls")
-                .toString();
-    }
+
 }
