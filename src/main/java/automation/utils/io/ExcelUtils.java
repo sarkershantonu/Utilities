@@ -1,6 +1,9 @@
 package automation.utils.io;
 
-import lombok.*;
+
+
+import lombok.Getter;
+import lombok.NonNull;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -14,7 +17,8 @@ import java.util.Date;
  * todo, planned to complete ASAP
  */
 public class ExcelUtils {
-    private @Getter static HSSFWorkbook workbook;
+    private @Getter
+    static HSSFWorkbook workbook;
     private @Getter static HSSFSheet sheet;
     private static HSSFCell cell;
     private static HSSFCellStyle cellStyleDefault;
@@ -68,7 +72,7 @@ public class ExcelUtils {
         return sheet;
     }
 
-    public static File initReport(String fileName, String sheetName, String... columnHeaders) throws IOException {
+    public static File initReport(@NonNull  String fileName, @NonNull String sheetName, String... columnHeaders) throws IOException {
 
         File report = new File(fileName);
         if(report.exists()){
@@ -134,7 +138,7 @@ public class ExcelUtils {
         return generateFileName(fileName);
         }
 
-    private static String generateFileName(StringBuilder fileName){
+    private static String generateFileName(@NonNull StringBuilder fileName){
         return fileName.append(fileName)
                 .append(new SimpleDateFormat("yyyy-MM-dd_HHmmss")
                         .format(new Date()))
