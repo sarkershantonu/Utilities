@@ -17,6 +17,7 @@ public class ExcelUtils {
     private static HSSFCellStyle cellStypeDefault;
     private static StringBuilder fileName = new StringBuilder();
     private static String currentSheet;
+    private static String fontDefault = "Calibri-Regular";
 
     public static String getFileName(){return fileName.toString();}
     private ExcelUtils(){}
@@ -32,8 +33,23 @@ public class ExcelUtils {
     }
     public static void createSheet(HSSFWorkbook book, String sheetName){}
     public static void createSheet(HSSFWorkbook book, String sheetName, String... headers){}
-    public static void createRow(boolean isHeader , String... values){}
+    public static void createRow(boolean isHeader , String... values){
+        
+    }
     public static void createCol(boolean isHeader , String... values){}
 
     private static String generateFileName(){return null;}
+
+    private static HSSFCellStyle createStyle(HSSFWorkbook book){
+        HSSFCellStyle style = book.createCellStyle();
+        HSSFFont font = book.createFont();
+        font.setFontName(fontDefault);
+        style.setFont(font);
+        style.setWrapText(true);
+        style.setBorderLeft((short) 1);
+        style.setBorderRight((short) 1);
+        style.setBorderTop((short) 1);
+        style.setBorderBottom((short) 1);
+        return style;
+    }
 }
