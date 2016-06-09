@@ -7,6 +7,8 @@ import org.apache.poi.ss.usermodel.Cell;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by shantonu on 6/8/16.
@@ -22,6 +24,12 @@ public class ExcelUtils {
     private static String fontDefault = "Calibri-Regular";
     private static  HSSFCreationHelper createHelper;
 
+    static {
+        if(System.getProperty("ScreenPath") != null) {
+            fileName.append("ScreenPath").append("\\");
+        }
+        fileName.append(System.getProperty("user.dir"));
+    }
     public static String getFileName(){return fileName.toString();}
     private ExcelUtils(){}
 
@@ -61,7 +69,6 @@ public class ExcelUtils {
             }
             else {
                 cellStyleDefault =createStyle(workbook);
-
             }
             cell.setCellStyle(cellStyleDefault);
         }
@@ -91,5 +98,12 @@ public class ExcelUtils {
         style.setBorderTop((short) 1);
         style.setBorderBottom((short) 1);
         return style;
+    }
+    private static String generateName(StringBuilder fileName){
+        return fileName.append(fileName)
+                .append(new SimpleDateFormat("yyyy-MM-dd_HHmmss")
+                        .format(new Date()))
+                .append(".xls")
+                .toString();
     }
 }
