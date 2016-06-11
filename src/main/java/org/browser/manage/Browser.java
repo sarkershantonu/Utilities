@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Browser {
 
+
     //todo => need to read from property
     public static final long DEFAULT_WAIT_4_PAGE = 30;
     public static final long DEFAULT_WAIT_4_ELEMENT = 10;
@@ -63,6 +64,7 @@ public class Browser {
      * Size of screen
      * Timeout
      * All waiting
+     * storing in session manager for re using
      */
     private static void initiDriver(){
         setImplicitWait(DEFAULT_WAIT_4_PAGE);

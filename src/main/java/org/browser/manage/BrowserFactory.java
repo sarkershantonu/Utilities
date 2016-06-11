@@ -1,7 +1,7 @@
 package org.browser.manage;
 
 import automation.utils.PropertyUtil;
-import org.browser.manage.remote.capability.DesiredcapabilityFactory;
+import org.browser.manage.remote.DesiredcapabilityFactory;
 import org.browser.utils.RemoteConfig;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
