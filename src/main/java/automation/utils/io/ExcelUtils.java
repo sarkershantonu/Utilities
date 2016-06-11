@@ -17,8 +17,7 @@ import java.util.Date;
  * todo, planned to complete ASAP
  */
 public class ExcelUtils {
-    private @Getter
-    static HSSFWorkbook workbook;
+    private @Getter static HSSFWorkbook workbook;
     private @Getter static HSSFSheet sheet;
     private static HSSFCell cell;
     private static HSSFCellStyle cellStyleDefault;
@@ -183,6 +182,13 @@ public class ExcelUtils {
         style.setBorderTop((short) 1);
         style.setBorderBottom((short) 1);
         return style;
+    }
+    
+    public static String readCell(String excelFileName, String sheetName, String positionA,String positionB){
+        return null;
+    }
+    private static HSSFRow readRow(HSSFWorkbook workbook, HSSFSheet sheet, String rowNumber){
+        return null;
     }
 
 }
