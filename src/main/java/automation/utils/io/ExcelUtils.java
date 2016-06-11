@@ -59,9 +59,12 @@ public class ExcelUtils {
     public static HSSFSheet createSheet(HSSFWorkbook book, String sheetName, String... headers){
         workbook=book;
         // if sheet name is null, use previous, if sheet name is not current, make it current
-        if(!currentSheet.equals(sheetName)||!sheetName.equals(null)){
-           currentSheet=sheetName;
+        if(!sheetName.equals(null)){
+            if(!currentSheet.equals(sheetName)){
+                currentSheet=sheetName;
+            }
         }
+
         sheet =workbook.getSheet(currentSheet);
         if(sheet==null){
             sheet = workbook.createSheet(currentSheet);
@@ -72,8 +75,19 @@ public class ExcelUtils {
         return sheet;
     }
 
-    public static File initReport(@NonNull  String fileName, @NonNull String sheetName, String... columnHeaders) throws IOException {
+    /**
+     * init report excel file
+     * @param fileName
+     * @param sheetName
+     * @param columnHeaders
+     * @return
+     * @throws IOException
+     */
+    public static File initReport(String fileName, @NonNull String sheetName, String... columnHeaders) throws IOException {
 
+        if(fileName.equals(null)){
+            fileName=getFileName();
+        }
         File report = new File(fileName);
         if(report.exists()){
             workbook = new HSSFWorkbook(new FileInputStream(report));
