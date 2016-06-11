@@ -183,7 +183,7 @@ public class ExcelUtils {
         style.setBorderBottom((short) 1);
         return style;
     }
-    
+
     public static String readCell(String excelFileName, String sheetName, String positionA,String positionB){
         return null;
     }

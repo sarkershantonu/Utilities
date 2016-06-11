@@ -36,7 +36,10 @@ public class Browser {
         }
         return driver;
     }
-
+    public static WebDriver getFreshInstance(){
+        close();
+        return getInstance();
+    }
     private Browser(){}
 
     public static void close(){
