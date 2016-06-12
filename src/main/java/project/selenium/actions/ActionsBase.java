@@ -1,12 +1,12 @@
 package project.selenium.actions;
 
-import org.automation.helpers.ElementHelper;
-import org.automation.helpers.PageFactory;
-import org.automation.testinghelpers.PageNotFoundException;
-import org.automation.WebDriverFactory;
-import org.automation.entity.PageBase;
+
+import automation.exception.PageNotFoundException;
+import automation.experiments.PageFactory;
+import org.browser.manage.Browser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import project.selenium.PageBase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,7 @@ import java.util.Stack;
 
 /**
  * Created by shantonu on 4/14/16.
+ * from very old class, need major refactoring
  */
 public abstract class ActionsBase<T extends PageBase> {
     private static Logger LOG = LoggerFactory.getLogger(ActionsBase.class);
@@ -22,7 +23,7 @@ public abstract class ActionsBase<T extends PageBase> {
     private String restoreUrl = "";
 
     public T getPage() {
-        return PageFactory.getPageByName(this.name);
+        return (T) PageFactory.getPage(this.name);
     }
 
     protected ActionsBase(String name) {
@@ -32,7 +33,7 @@ public abstract class ActionsBase<T extends PageBase> {
     public abstract ActionsBase<T>.Track trackSpecial(ActionsBase<T>.Track var1);
 
     public void restoreUrlToGetThisPage() {
-        this.restoreUrl = WebDriverFactory.getDriver().getCurrentUrl();
+        this.restoreUrl = Browser.getInstance().getCurrentUrl();
     }
 
     public String getRestoreUrl() {
@@ -40,8 +41,8 @@ public abstract class ActionsBase<T extends PageBase> {
     }
 
     public boolean isOnPage() {
-        ElementHelper.waitForPageLoaded();
-        return this.getPage().getName().contains(WebDriverFactory.getDriver().getTitle().trim());
+
+        return this.getPage().getName().contains(Browser.getInstance().getTitle().trim());
     }
 
     public <T1 extends ActionsBase<T>> T1 navigateToPage(Class<T1> clazz, boolean condition) throws PageNotFoundException {
@@ -49,7 +50,7 @@ public abstract class ActionsBase<T extends PageBase> {
             return (T1) clazz.cast(this);
         } else {
             if(!this.getRestoreUrl().isEmpty() && condition) {
-                WebDriverFactory.getDriver().get(this.getRestoreUrl());
+                Browser.getInstance().get(this.getRestoreUrl());
                 this.checkNavigation(clazz);
             } else {
                 this.navigateTo();
@@ -67,7 +68,7 @@ public abstract class ActionsBase<T extends PageBase> {
 
             for(int i = 0; i < tries && !e.isOnPage(); ++i) {
                 LOG.debug("It isn\'t redirecting to the " + pageName + " page, after " + action + "Waiting" + timeout + " seconds more...");
-                ElementHelper.waitForAjaxComplete(timeout);
+                Browser.setWebDriverWait(timeout);
             }
 
             if(!e.isOnPage()) {
@@ -86,7 +87,7 @@ public abstract class ActionsBase<T extends PageBase> {
 
     public <T1 extends ActionsBase<T>> T1 checkNavigation(Class<T1> clazz) throws PageNotFoundException {
         if(this.isOnPage()) {
-            this.getPage().assertPageLoaded();
+//need a replaceing irem, more smarter             this.getPage().assertPageLoaded();
             this.restoreUrlToGetThisPage();
             return (T1) clazz.cast(this);
         } else {

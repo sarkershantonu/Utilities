@@ -25,4 +25,5 @@ public class PageFactory {
     private static void add(String name, PageBase page){
         pages.put(name,page);
     }
+
 }

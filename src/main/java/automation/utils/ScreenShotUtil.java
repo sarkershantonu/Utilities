@@ -37,7 +37,7 @@ public class ScreenShotUtil extends UtilBase {
             }
         }else
         {
-            takeScreenShotByJS(screenShot);
+            screenShotByJS(screenShot);
         }
 
         return saveScreenShot(screenShot, isError);
@@ -93,10 +93,10 @@ public class ScreenShotUtil extends UtilBase {
     /**
      * This is fully based on JS library used by project.. 100% project specific. use different library if you need to
      * @param screenShot
-     * Todo => hafl done, need to cm\omplete
+     * Todo => hafl done, need to complete
      */
 
-    private void takeScreenShotByJS(File screenShot){
+    private void screenShotByJS(File screenShot){
         String screenshotjs;
         String base64js_getImage;
         String base64_imageContant;
@@ -121,10 +121,7 @@ public class ScreenShotUtil extends UtilBase {
                 +"(document.body || document.head || document.documentElement).appendChild(script);", new Object[]{screenshotjs});
         base64_imageContant =  "return window.html2canvas != undefined;";
 
-        boolean i = Convert.objectToBoolean(
-                new JavaScriptUtil(driver).getJsExecutor().executeScript(
-                        base64_imageContant,new Object[0]))
-                .booleanValue();
+        boolean i = ((Boolean) new JavaScriptUtil(driver).getJsExecutor().executeScript(base64_imageContant,new Object[0])).booleanValue();
         if(!i){
             new JavaScriptUtil(driver).getJsExecutor().executeScript(base64js_getImage, new Object[0]);
         }
@@ -160,9 +157,4 @@ public class ScreenShotUtil extends UtilBase {
     }
 
 
-}
-class Convert {
-    public static Boolean objectToBoolean(Object o) {
-        return new Boolean(true);//todo
-    }
 }
