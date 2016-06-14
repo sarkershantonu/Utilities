@@ -1,0 +1,13 @@
+This is guide for easy test library usages
+
+we are going to use easytest , the core module which help us data reading from csv/excel/CSV
+
+
+dependency
+
+<dependency>
+    <groupId>org.easetech</groupId>
+    <artifactId>easytest-core</artifactId>
+    <version>1.4.0</version>
+</dependency>
+
