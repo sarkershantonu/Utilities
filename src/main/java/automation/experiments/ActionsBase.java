@@ -1,20 +1,21 @@
-package project.selenium.actions;
+package automation.experiments;
 
 
 import automation.exception.PageNotFoundException;
-import automation.experiments.PageFactory;
 import org.browser.manage.Browser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import project.selenium.PageBase;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 /**
  * Created by shantonu on 4/14/16.
  * from very old class, need major refactoring
+ * Main usages is to track each action that we perform
+ * This was used in old time,but allure gives supports on tracking
+ *
  */
 public abstract class ActionsBase<T extends PageBase> {
     private static Logger LOG = LoggerFactory.getLogger(ActionsBase.class);
@@ -30,7 +31,7 @@ public abstract class ActionsBase<T extends PageBase> {
         this.name = name;
     }
 
-    public abstract ActionsBase<T>.Track trackSpecial(ActionsBase<T>.Track var1);
+    public abstract Track trackSpecial(Track var1);
 
     public void restoreUrlToGetThisPage() {
         this.restoreUrl = Browser.getInstance().getCurrentUrl();
@@ -97,68 +98,20 @@ public abstract class ActionsBase<T extends PageBase> {
 
     public void track(String actionName, String... values) {
         ArrayList valueList = new ArrayList();
-        String[] arr$ = values;
-        int len$ = values.length;
 
-        for(int i$ = 0; i$ < len$; ++i$) {
-            String value = arr$[i$];
-            valueList.add(value);
+        for(String s:values){
+            valueList.add(s);
         }
-
-        this.tracker.push(this.trackSpecial(new ActionsBase.Track(actionName, valueList)));
+        this.tracker.push(this.trackSpecial(new Track(actionName, valueList)));
     }
 
-    public ActionsBase<T>.Track rollback() {
-        return (ActionsBase.Track)this.tracker.pop();
+    public Track rollback() {
+        return (Track)this.tracker.pop();
     }
 
-    public ActionsBase<T>.Track getLatestAction() {
-        return (ActionsBase.Track)this.tracker.peek();
+    public Track getLatestAction() {
+        return (Track)this.tracker.peek();
     }
 
-    protected class Track {
-        String header;
-        String actionName;
-        List<String> trackValue = new ArrayList();
 
-        public Track(String var1, List<String> actionName) {
-            this.setActionName(var1);
-            this.setTrackValue(trackValue);
-        }
-
-        public String getHeader() {
-            return this.header;
-        }
-
-        public void setHeader(String header) {
-            this.header = header;
-        }
-
-        public String getActionName() {
-            return this.actionName;
-        }
-
-        public void setActionName(String actionName) {
-            this.actionName = actionName;
-        }
-
-        public List<String> getTrackValue() {
-            return this.trackValue;
-        }
-
-        public void setTrackValue(List<String> trackValue) {
-            this.trackValue = trackValue;
-        }
-
-        public void addTrackSpecial(String... listSpecial) {
-            String[] arr$ = listSpecial;
-            int len$ = listSpecial.length;
-
-            for(int i$ = 0; i$ < len$; ++i$) {
-                String value = arr$[i$];
-                this.trackValue.add(value);
-            }
-
-        }
-    }
 }
