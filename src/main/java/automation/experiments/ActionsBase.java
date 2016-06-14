@@ -79,7 +79,7 @@ public abstract class ActionsBase<T extends PageBase> {
         }
     }
 
-    public void track(String actionName, String... values) {
+    public void trackItem(String actionName, String... values) {
         ArrayList valueList = new ArrayList();
         for(String s:values){
             valueList.add(s);
