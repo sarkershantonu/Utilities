@@ -11,3 +11,8 @@ dependency
     <version>1.4.0</version>
 </dependency>
 
+
+
+Rule :
+
+method name should be in data parameter
