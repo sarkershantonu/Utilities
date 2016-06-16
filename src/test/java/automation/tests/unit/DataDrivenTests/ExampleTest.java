@@ -1,4 +1,4 @@
-package automation.tests.unit;
+package automation.tests.unit.DataDrivenTests;
 
 import org.easetech.easytest.annotation.DataLoader;
 import org.easetech.easytest.loader.LoaderType;
@@ -11,8 +11,7 @@ import org.junit.runner.RunWith;
  *
  */
 @RunWith(DataDrivenTestRunner.class)
-
-public class DataDrivenTests {
+public class ExampleTest {
 
     @Test
     @DataLoader(loaderType = LoaderType.CSV, filePaths = {"data/"})
