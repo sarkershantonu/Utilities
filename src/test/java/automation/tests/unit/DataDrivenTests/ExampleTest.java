@@ -24,15 +24,16 @@ public class ExampleTest {
     public void testExcelInputs(){
 
     }
+
     @Test
     @DataLoader(loaderType = LoaderType.XML, filePaths = {"data/ "})
     public void testXMLInputs(){
 
     }
+
     @Test
     @DataLoader(loaderType = LoaderType.CUSTOM, filePaths = {"data/ "})
     public void testCustomInputs(){
 
     }
-
 }
