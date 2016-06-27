@@ -43,6 +43,18 @@ public class FirefoxManager {
         return profile;
     }
 
+    public WebDriver getFirefoxWithFirebug(String pathTofirebugXPI, String firebugVersion){
+        profile = new FirefoxProfile();
+        try {
+            profile.addExtension(new File(pathTofirebugXPI));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        profile.setPreference("extensions.firebug.currentVersion", firebugVersion);
+        driver = new FirefoxDriver(profile);
+        return driver;
+
+    }
     public WebDriver getFirefoxWithProfile(String nameOfProfile){
         driver = new FirefoxDriver(getProfile(nameOfProfile));
         return  driver ;
