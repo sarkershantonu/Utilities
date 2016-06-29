@@ -20,7 +20,7 @@ public class SearchPageTest {
         search = new ProductSearching();
 
     }
-
+/*
     @Test
     public void searchKeyWordTest(){
         SearchResultPage result =  search.searchAProduct("Laptop");
@@ -31,6 +31,6 @@ public class SearchPageTest {
         result.searchButton.getAttribute("id");//todo , see from firebug and validate
         result.searchButton.getAttribute("type");//todo , see from firebug and validate
         result.searchButton.getAttribute("value");//todo , see from firebug and validate
-    }
+    }*/
 
 }

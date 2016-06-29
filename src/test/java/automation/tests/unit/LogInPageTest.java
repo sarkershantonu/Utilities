@@ -18,7 +18,7 @@ public class LogInPageTest {
     @Test
     public void testFirst(){
         HomePage home = new HomePage();
-        home.click.on(home.searchButton);
+        //home.click.on(home.searchButton);
     }
 
 

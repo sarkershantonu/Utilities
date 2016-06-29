@@ -7,18 +7,4 @@ import project.selenium.pages.HomePage;
  */
 public class HomePageSteps {
 
-    private HomePage page;
-
-    public void emptySearchTextBox(){
-        page.searchTextBox.clear();
-    }
-
-    public void insertTextInSerchTextBox(String input){
-        page.searchButton.sendKeys(input);
-    }
-
-    public void clickSerchButton(){
-        page.click.perform(page.searchTextBox);
-    }
-
 }
