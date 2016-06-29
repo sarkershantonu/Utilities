@@ -20,15 +20,15 @@ public class CLIUtil {
     /**
      * Explanation of regular expression
      * The arguments will be start with -
-     *
+     * then the name of the argument,
      *start with =
      *
      * name = name of argument, value = value of the argument
      * This is inside regix pattern to specify grouping with names, to identify common patterns
      * Group 1 = just -
-     * group 2 = argument > I am specifying the groupname as name
+     * group 2 = argument > I am specifying the groupname as name ?<name>
      * group 3 = value
-     * group 4 = value > I am specifying the groupname as value
+     * group 4 = value > I am specifying the groupname as value ?<value>
      */
 
     /**
