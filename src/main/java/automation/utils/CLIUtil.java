@@ -31,6 +31,12 @@ public class CLIUtil {
      * group 4 = value > I am specifying the groupname as value
      */
 
+    /**
+     *
+     * @param inputs
+     * @return
+     *
+     */
     public static Map<String, String> argumentParser(String... inputs){
         final String[] args = Arrays.copyOf(inputs, inputs.length);
         final Pattern pat = Pattern.compile(regix);
@@ -45,7 +51,8 @@ public class CLIUtil {
         }
         return Collections.unmodifiableMap(arguments);
     }
-
+/* TESTING using following parameter
+//-myAppName=sks -Myargs=valVal in the command line parameter
     public static void main(String... args){
         Map<String, String> items = new HashMap<>();
         items = argumentParser(args);
@@ -54,4 +61,5 @@ public class CLIUtil {
             System.out.println("Name = "+key +" : Valeue = "+items.get(key));
         }
     }
+   */
 }
