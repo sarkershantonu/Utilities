@@ -1,6 +1,5 @@
 package org.browser.manage.remote.saucelab;
 
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
@@ -24,7 +23,7 @@ public class SauceLabCapabilities {
      * Sample 3 configuration given
      *todo => Add as much as you can
      */
-    static DesiredCapabilities getCapabilities(DesiredCapabilities capabilities, String config){
+    public static DesiredCapabilities getCapabilities(DesiredCapabilities capabilities, String config){
 
         if(config=="win7.ie8.1024x768") {
             capabilities =  DesiredCapabilities.internetExplorer();

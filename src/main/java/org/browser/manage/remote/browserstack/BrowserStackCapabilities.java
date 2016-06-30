@@ -20,7 +20,7 @@ public class BrowserStackCapabilities {
      * Sample 3 configuration given
      * todo => add as much capability as you can from https://www.browserstack.com/start
      */
-    static DesiredCapabilities getCapabilities(DesiredCapabilities capabilities, String config) {
+    public static DesiredCapabilities getCapabilities(DesiredCapabilities capabilities, String config) {
 
         if (config == "win7.ie8.1024x768") {
             capabilities.setCapability("browser", "IE");

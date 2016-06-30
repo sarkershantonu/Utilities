@@ -22,7 +22,7 @@ public class AppiumCapabilities {
      *todo => Add as much as you can
      *full => https://wiki.saucelabs.com/display/DOCS/Test+Configuration+Options
      */
-    static DesiredCapabilities getCapabilities(DesiredCapabilities capabilities, String config){
+    public  static DesiredCapabilities getCapabilities(DesiredCapabilities capabilities, String config){
 
         if(config=="and41.htc1x.appium151.hybrid") {
             capabilities = DesiredCapabilities.android();
