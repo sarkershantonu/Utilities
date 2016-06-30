@@ -1,5 +1,6 @@
 package org.browser.manage.remote;
 
+import org.browser.manage.BrowserFactory;
 import org.browser.manage.CapabilityFactory;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -21,6 +22,7 @@ public class RemoteWDConnector extends Thread{
     public void run(){
 
         DesiredCapabilities defaultCap = CapabilityFactory.getDefault();
+
 
 
     }
