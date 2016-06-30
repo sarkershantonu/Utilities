@@ -1,11 +1,11 @@
-package org.browser.manage.remote;
+package org.browser.manage.remote.inhouse;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
  * Created by shantonu on 5/3/16.
  */
-public class InHouseRemoteBrowserCapabilities {
+public class InHouseCapabilities {
 
     private static DesiredCapabilities cap = null;
 

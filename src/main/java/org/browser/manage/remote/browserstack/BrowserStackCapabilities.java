@@ -1,4 +1,4 @@
-package org.browser.manage.remote;
+package org.browser.manage.remote.browserstack;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
