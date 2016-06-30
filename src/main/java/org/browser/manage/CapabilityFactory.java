@@ -1,8 +1,10 @@
-package org.browser.manage.remote;
+package org.browser.manage;
 
 import org.browser.manage.remote.appium.AppiumCapabilities;
 import org.browser.manage.remote.browserstack.BrowserStackCapabilities;
+
 import org.browser.manage.remote.saucelab.SauceLabCapabilities;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
@@ -10,10 +12,10 @@ import org.openqa.selenium.remote.DesiredCapabilities;
  * This class is responsible for getting all capabilities(local + remote)
  * TODO => get all compatibility configuration from property file
  */
-public class DesiredcapabilityFactory {
+public class CapabilityFactory {
 
     private static DesiredCapabilities capabilities;
-    private DesiredcapabilityFactory(){}
+    private CapabilityFactory(){}
 
     /**
      *
@@ -104,5 +106,11 @@ public class DesiredcapabilityFactory {
         return capabilities;
     }
 
-
+    public static DesiredCapabilities getDefault(){
+        DesiredCapabilities chrome = DesiredCapabilities.chrome();
+        chrome.setBrowserName("chrome");
+        chrome.setPlatform(Platform.ANY);
+        chrome.setVersion("ANY");
+        return chrome;
+    }
 }
