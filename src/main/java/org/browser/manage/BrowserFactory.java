@@ -26,7 +26,7 @@ import java.net.URL;
  * Created by shantonu on 4/2/16.
  */
 public class BrowserFactory {
-    private static WebDriver aBrowser ;
+    private static WebDriver aBrowser;
     private static String nameOfBrowser = getDefaultLocalBrowserName();
 
     //todo => desire capability property reading for name of browser
@@ -37,56 +37,52 @@ public class BrowserFactory {
 
     /***
      * This is responsible for local remote hub initiation, not finalized, separated from default function dule to minimize complexity.
+     *
      * @param intranetHub = hostIP:PORT
-     * @param browser = browser name
-     * @return
-     * TODO , seperate & specify capability.
+     * @param browser     = browser name
+     * @return TODO , seperate & specify capability.
      */
-    public static WebDriver getABrowser(String intranetHub, String browser){
+    public static WebDriver getABrowser(String intranetHub, String browser) {
         try {
-            return new RemoteWebDriver(new URL(intranetHub), CapabilityFactory.getCapability(browser) );
+            return new RemoteWebDriver(new URL(intranetHub), CapabilityFactory.getCapability(browser));
         } catch (MalformedURLException e) {
             e.printStackTrace();
             return aBrowser;
         }
 
     }
-    public static WebDriver getABrowser(){
+
+    public static WebDriver getABrowser() {
         return getABrowser(nameOfBrowser);
     }
 
-// todo
-    public static WebDriver getARemoteBrowser(){
-        return getARemoteBrowser(nameOfBrowser);
-    }
-    public static WebDriver getARemoteBrowser(String browserName){
 
-        if(browserName=="browserstack"){
+    // todo this two should be replace by enum
+    public static WebDriver getARemoteBrowser(String provider, String browserCapability) {
+
+        if (provider == "browserstack") {
             try {
                 // todo , get this capability config from property
-                return new RemoteWebDriver(new URL(RemoteConfig.browserstack_URL), CapabilityFactory.getCapability("browserstack") );
+                return new RemoteWebDriver(new URL(RemoteConfig.browserstack_URL), CapabilityFactory.getCapability(browserCapability));
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-        }
-        else if(browserName=="soucelab"){
+        } else if (provider == "soucelab") {
 
             try {
-                return new RemoteWebDriver(new URL(RemoteConfig.saucelabs_URL), CapabilityFactory.getCapability("saucelabs") );
+                return new RemoteWebDriver(new URL(RemoteConfig.saucelabs_URL), CapabilityFactory.getCapability(browserCapability));
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-        }
-        else if(browserName=="appium-ios"){
+        } else if (provider == "appium-ios") {
             try {
-                aBrowser = new IOSDriver(new URL(RemoteConfig.appium_URL), CapabilityFactory.getCapability("appium-ios") );
+                aBrowser = new IOSDriver(new URL(RemoteConfig.appium_URL), CapabilityFactory.getCapability(browserCapability));
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-        }
-        else if(browserName=="appium-android"){
+        } else if (provider == "appium-android") {
             try {
-                aBrowser = new AndroidDriver(new URL(RemoteConfig.appium_URL), CapabilityFactory.getCapability("appium-android") );
+                aBrowser = new AndroidDriver(new URL(RemoteConfig.appium_URL), CapabilityFactory.getCapability(browserCapability));
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
@@ -94,36 +90,32 @@ public class BrowserFactory {
         return aBrowser;
     }
 
-    public static WebDriver getABrowser(String browserName){
+    public static WebDriver getABrowser(String browserName) {
         String os = PropertyUtil.getSystemProperty("os.name");
-        if("firefox".equals(browserName)){
+        if ("firefox".equals(browserName)) {
             if (os.contains("windows")) {
-                PropertyUtil.setSystemProperty("webdriver.firefox.bin","place where you unzipped firefox executable");
+                PropertyUtil.setSystemProperty("webdriver.firefox.bin", "place where you unzipped firefox executable");
             } else {
                 PropertyUtil.setSystemProperty("webdriver.firefox.bin", "/home/shantonu/ff46/firefox");
             }
             aBrowser = new FirefoxDriver();
-        }
-        else if("edge".equals(browserName)){
+        } else if ("edge".equals(browserName)) {
             aBrowser = new EdgeDriver();
-        }
-        else if("opera".equals(browserName)){
+        } else if ("opera".equals(browserName)) {
             aBrowser = new OperaDriver();
-        }
-        else if("ie".equals(browserName)){
+        } else if ("ie".equals(browserName)) {
             //File iedriver = new File(getIEPath()); // reading from property //-Dwebdriver.ie.driver=physicall using command line
             File iedriver = new File("Point your Selenium Server exe Path");//todo for your PC
             PropertyUtil.setSystemProperty("webdriver.ie.driver", iedriver.getAbsolutePath());
 
             aBrowser = new InternetExplorerDriver();
-        }
-        else if("chrome".equals(browserName)){
+        } else if ("chrome".equals(browserName)) {
 
             String pathWindows = "C:\\Users\\%USERNAME%\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe";// can be changed for your PC
             String pathlunix = "/usr/local/bin/chromedriver";
-            ChromeDriverService service ;
+            ChromeDriverService service;
             if (os.contains("windows")) {
-                PropertyUtil.setSystemProperty("webdriver.chrome.driver",pathWindows);
+                PropertyUtil.setSystemProperty("webdriver.chrome.driver", pathWindows);
                 service = new ChromeDriverService.Builder()
                         .usingDriverExecutable(new File(pathlunix))
                         .usingAnyFreePort()
@@ -142,52 +134,40 @@ public class BrowserFactory {
             }
             return new RemoteWebDriver(service.getUrl(), DesiredCapabilities.chrome());
 
-        }
-        else if("safari".equals(browserName)){
+        } else if ("safari".equals(browserName)) {
             aBrowser = new SafariDriver();
-        }
-
-
-        else
-        {
-
-            try {
-                return new RemoteWebDriver(new URL(RemoteConfig.inhouse_hubUrl), CapabilityFactory.getInhouseCapabilities(internalRemoteDriverConfig));
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
+        } else {
+            return getDefaultDriver();
         }
 
         return aBrowser;
     }
 
-    private static String getDefaultLocalBrowserName(){
-        try {
-            return PropertyUtil.getProperty("browser.properties","selenium.browser");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    private static String getDefaultRemoteBrowserName(){
-        try {
-            return PropertyUtil.getProperty("browser.properties","selenium.browser");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public static WebDriver getDefaultRemoteDriver() throws MalformedURLException {
+        return new RemoteWebDriver(new URL(RemoteConfig.inhouse_hubUrl), CapabilityFactory.getDefault());
     }
 
-    private static String getIEPath(){
+    public static WebDriver getDefaultDriver() {
+        return getABrowser("chrome");
+    }
+
+    private static String getDefaultLocalBrowserName() {
         try {
-            return PropertyUtil.getProperty("browser.properties","selenium.browser.ie.path");
+            return PropertyUtil.getProperty("browser.properties", "selenium.browser");
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-
+    private static String getIEPath() {
+        try {
+            return PropertyUtil.getProperty("browser.properties", "selenium.browser.ie.path");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
 }
