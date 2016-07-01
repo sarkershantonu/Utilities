@@ -27,6 +27,7 @@ import java.net.URL;
  */
 public class BrowserFactory {
     private static WebDriver aBrowser;
+    private static RemoteWebDriver aRemoteBrowser;
     private static String nameOfBrowser = getDefaultLocalBrowserName();
 
     //todo => desire capability property reading for name of browser
@@ -35,30 +36,19 @@ public class BrowserFactory {
     private static String internalRemoteDriverConfig = "node1.firefox.1920x1080";
 
 
-    /***
-     * This is responsible for local remote hub initiation, not finalized, separated from default function dule to minimize complexity.
-     *
-     * @param intranetHub = hostIP:PORT
-     * @param browser     = browser name
-     * @return TODO , seperate & specify capability.
-     */
-    public static WebDriver getABrowser(String intranetHub, String browser) {
-        try {
-            return new RemoteWebDriver(new URL(intranetHub), CapabilityFactory.getCapability(browser));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return aBrowser;
-        }
 
-    }
 
     public static WebDriver getABrowser() {
         return getABrowser(nameOfBrowser);
     }
 
+    //todo
+    public static RemoteWebDriver getARemoteBrowser(String provider, DesiredCapabilities capabilities){
+        return  aRemoteBrowser;
+    }
 
     // todo this two should be replace by enum
-    public static WebDriver getARemoteBrowser(String provider, String browserCapability) {
+    public static RemoteWebDriver getARemoteBrowser(String provider, String browserCapability) {
 
         if (provider == "browserstack") {
             try {
@@ -76,18 +66,18 @@ public class BrowserFactory {
             }
         } else if (provider == "appium-ios") {
             try {
-                aBrowser = new IOSDriver(new URL(RemoteConfig.appium_URL), CapabilityFactory.getCapability(browserCapability));
+                return new IOSDriver(new URL(RemoteConfig.appium_URL), CapabilityFactory.getCapability(browserCapability));
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
         } else if (provider == "appium-android") {
             try {
-                aBrowser = new AndroidDriver(new URL(RemoteConfig.appium_URL), CapabilityFactory.getCapability(browserCapability));
+                return  new AndroidDriver(new URL(RemoteConfig.appium_URL), CapabilityFactory.getCapability(browserCapability));
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
         }
-        return aBrowser;
+        return aRemoteBrowser;
     }
 
     public static WebDriver getABrowser(String browserName) {
@@ -143,7 +133,7 @@ public class BrowserFactory {
         return aBrowser;
     }
 
-    public static WebDriver getDefaultRemoteDriver() throws MalformedURLException {
+    public static RemoteWebDriver getDefaultRemoteDriver() throws MalformedURLException {
         return new RemoteWebDriver(new URL(RemoteConfig.inhouse_hubUrl), CapabilityFactory.getDefault());
     }
 

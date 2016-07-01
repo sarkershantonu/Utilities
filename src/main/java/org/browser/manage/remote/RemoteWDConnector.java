@@ -5,6 +5,7 @@ import org.browser.manage.CapabilityFactory;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
 import java.util.concurrent.BlockingDeque;
 
 /**
@@ -21,10 +22,15 @@ public class RemoteWDConnector extends Thread{
     @Override
     public void run(){
 
-        DesiredCapabilities defaultCap = CapabilityFactory.getDefault();
-
-
-
+        try {
+            RemoteWebDriver driver =  BrowserFactory.getDefaultRemoteDriver();
+            drivers.put(driver);
+        } catch (InterruptedException e) {
+            this.interrupt();
+        }catch (Exception e){
+            e.printStackTrace();
+            this.hold();
+        }
     }
 
     public final void hold(){
