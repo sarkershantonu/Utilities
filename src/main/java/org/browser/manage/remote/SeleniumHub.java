@@ -11,7 +11,7 @@ import java.util.concurrent.Semaphore;
 /**
  * Created by shantonu on 7/1/16.
  *
- * todo , implement a managable parallal system driven by remote drivers (local support also) 
+ * todo , implement a managable parallal system driven by remote drivers (local support also)
  */
 public class SeleniumHub {
     private Semaphore available = new Semaphore(1, true);
