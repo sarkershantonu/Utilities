@@ -25,11 +25,18 @@ public class SeleniumHub {
     private final boolean isReeusable;
     private final boolean isRemote ;
 
-    public SeleniumHub(Queue<WebDriver> drivers,boolean isReeusable ,boolean isRemote, int timeout) {
+    public SeleniumHub(Queue<WebDriver> drivers,boolean isReeusable ,boolean isRemote, int timeout, int ready) {
         this.drivers = drivers;
         this.isReeusable = isReeusable;
         this.isRemote = isRemote;
         this.timeout = timeout;
 
+
+    }
+
+    public void ready(int drivers){
+        synchronized (this){
+            this.available.release(drivers);
+        }
     }
 }
