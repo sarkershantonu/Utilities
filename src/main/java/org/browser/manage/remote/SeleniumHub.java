@@ -25,11 +25,11 @@ public class SeleniumHub {
     private final boolean isReeusable;
     private final boolean isRemote ;
 
-    public SeleniumHub(Queue<WebDriver> drivers,boolean isReeusable ,boolean isRemote) {
+    public SeleniumHub(Queue<WebDriver> drivers,boolean isReeusable ,boolean isRemote, int timeout) {
         this.drivers = drivers;
         this.isReeusable = isReeusable;
         this.isRemote = isRemote;
-
+        this.timeout = timeout;
 
     }
 }
