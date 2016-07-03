@@ -1,8 +1,11 @@
 package org.browser.manage.remote;
 
+import org.browser.manage.BrowserFactory;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.BlockingDeque;
@@ -34,9 +37,32 @@ public class SeleniumHub {
 
     }
 
+    public WebDriver init(){
+        try {
+            return BrowserFactory.getDefaultRemoteDriver();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void ready(int drivers){
         synchronized (this){
             this.available.release(drivers);
         }
+    }
+    public WebDriver getDriver(){
+        try{
+            this.available.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        WebDriver driver  = null;
+        if(isReeusable){
+            driver =this.drivers.poll();
+        }
+        if (driver.equals(null)){
+            driver = init();
+        }
+        return driver;
     }
 }
