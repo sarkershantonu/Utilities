@@ -15,9 +15,11 @@ import java.util.concurrent.Semaphore;
  */
 public class SeleniumHub {
     private Semaphore available = new Semaphore(1, true);
+    private static int counter = 0;
+    private int timeout;
 
     private Queue<WebDriver> drivers = new LinkedList<>();
-
+    private final LinkedList<RemoteWDConnector> remoteWDConnectors = new LinkedList<>();
     private BlockingDeque<RemoteWebDriver> remoteWebDrivers;
 
     private final boolean isReeusable;
