@@ -43,5 +43,20 @@ public class CryptoUtil {
         byte[] encrypted =  Base64.getUrlDecoder().decode(item.getBytes(charset));
         return new String(encrypted);
     }
-
+    public static String mimeEncrypt(String item){
+        byte[] encrypted =  Base64.getMimeEncoder().encode(item.getBytes(StandardCharsets.ISO_8859_1));//default Charset
+        return new String(encrypted);
+    }
+    public static String mimeEncrypt(String item, Charset charset){
+        byte[] encrypted =  Base64.getMimeEncoder().encode(item.getBytes(charset));
+        return new String(encrypted);
+    }
+    public static String mimeDecrypt(String item){
+        byte[] encrypted =  Base64.getMimeDecoder().decode(item);
+        return new String(encrypted);
+    }
+    public static String mimeDecrypt(String item, Charset charset){
+        byte[] encrypted =  Base64.getMimeDecoder().decode(item.getBytes(charset));
+        return new String(encrypted);
+    }
 }
