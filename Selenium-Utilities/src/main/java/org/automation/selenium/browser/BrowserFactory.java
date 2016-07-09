@@ -3,8 +3,8 @@ package org.automation.selenium.browser;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 
-import org.automation.selenium.common.PropertyUtil;
-import org.automation.selenium.utils.RemoteConfig;
+import org.automation.selenium.browser.remote.RemoteConfig;
+import org.automation.utils.common.PropertyUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.edge.EdgeDriver;

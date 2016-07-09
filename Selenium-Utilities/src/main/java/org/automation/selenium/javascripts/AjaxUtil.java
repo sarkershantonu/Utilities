@@ -1,6 +1,7 @@
 package org.automation.selenium.javascripts;
 
-import automation.utils.UtilBase;
+
+import org.automation.selenium.UtilBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

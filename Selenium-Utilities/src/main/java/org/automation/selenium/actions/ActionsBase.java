@@ -2,11 +2,11 @@ package org.automation.selenium.actions;
 
 
 
-import org.automation.selenium.browser.manage.Browser;
+import org.automation.selenium.browser.Browser;
 import org.automation.selenium.error.PageNotFoundException;
 import org.automation.selenium.page.MyPageFactory;
 import org.automation.selenium.page.PageBase;
-import org.automation.selenium.trackers.Track;
+import org.automation.utils.trackers.Track;
 
 
 import java.util.ArrayList;

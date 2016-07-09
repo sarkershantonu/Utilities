@@ -1,7 +1,10 @@
 package org.automation.selenium.elements;
 
-import automation.utils.UtilBase;
-import org.browser.manage.Browser;
+
+import org.automation.selenium.UtilBase;
+import org.automation.selenium.browser.Browser;
+import org.automation.selenium.javascripts.AjaxUtil;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -158,7 +161,7 @@ public class ElementUtil extends UtilBase {
     public WebElement waitForElementPresent(final By by, int timeOutInSeconds) {
         WebElement element=null;
         try{
-            Browser. nullifyImplicitWait();
+            Browser.nullifyImplicitWait();
 
             WebDriverWait wait =Browser.setWebDriverWait(timeOutInSeconds);
             element = wait.until(ExpectedConditions.presenceOfElementLocated(by));

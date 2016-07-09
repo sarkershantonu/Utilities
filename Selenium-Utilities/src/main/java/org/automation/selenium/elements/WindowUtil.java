@@ -1,8 +1,10 @@
 package org.automation.selenium.elements;
 
-import automation.utils.UtilBase;
+
 import lombok.Getter;
-import org.browser.manage.Browser;
+
+import org.automation.selenium.UtilBase;
+import org.automation.selenium.browser.Browser;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;

@@ -1,8 +1,9 @@
 package org.automation.selenium.actions.mouse;
 
+import org.automation.selenium.page.PageBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import project.selenium.PageBase;
+
 
 /**
  * Created by shantonu on 4/21/16.

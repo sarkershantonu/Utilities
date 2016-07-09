@@ -1,11 +1,14 @@
 package org.automation.selenium.common;
 
 import org.apache.commons.io.FileUtils;
+import org.automation.utils.common.PropertyUtil;
 import org.automation.selenium.UtilBase;
 
 import org.automation.selenium.browser.Browser;
-import org.automation.selenium.common.PropertyUtil;
+import org.automation.selenium.javascripts.JavaScriptUtil;
 import org.automation.selenium.page.PageUtil;
+import org.automation.utils.configuration.ConfigHelper;
+import org.automation.utils.io.FileUtilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -137,20 +140,20 @@ public class ScreenShotUtil extends UtilBase {
         SimpleDateFormat time  = ConfigHelper.timeFormat;
         StringBuilder file = new StringBuilder();
         Date screenDate = new Date();
-        String path = PropertyUtil.getSystemProperty("screenshot.folder");
+        String path = PropertyUtil.getSysProperty("screenshot.folder");
         if(path!=null){
-            file.append(path).append(PropertyUtil.getSystemProperty("file.separator"));
+            file.append(path).append(PropertyUtil.getSysProperty("file.separator"));
         }
-        file.append(PropertyUtil.getSystemProperty("user.dir"));
-        file.append(PropertyUtil.getSystemProperty("file.separator"))
+        file.append(PropertyUtil.getSysProperty("user.dir"));
+        file.append(PropertyUtil.getSysProperty("file.separator"))
                 .append("target")
-                .append(PropertyUtil.getSystemProperty("file.separator"))
+                .append(PropertyUtil.getSysProperty("file.separator"))
                 .append(date.format(screenDate));
         if(isError){
-            file.append(PropertyUtil.getSystemProperty("file.separator")).append("error_");
+            file.append(PropertyUtil.getSysProperty("file.separator")).append("error_");
         }else
         {
-            file.append(PropertyUtil.getSystemProperty("file.separator")).append("screenshot_");
+            file.append(PropertyUtil.getSysProperty("file.separator")).append("screenshot_");
         }
         file.append(testname+"_").append(time.format(screenDate));
         file = FileUtilities.trimLimit(file);

@@ -1,12 +1,14 @@
 package org.automation.selenium.javascripts;
 
-import automation.exception.ExceptionManager;
-import automation.exception.TestError;
-import automation.utils.UtilBase;
+
 import org.apache.commons.io.IOUtils;
-import org.automation.selenium.utils.PageSourceUtil;
-import org.browser.manage.Browser;
-import org.browser.utils.PageSourceUtil;
+import org.automation.selenium.UtilBase;
+import org.automation.selenium.browser.Browser;
+
+import org.automation.selenium.page.PageSourceUtil;
+
+import org.automation.utils.trackers.error.ExceptionManager;
+import org.automation.utils.trackers.error.TestError;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;

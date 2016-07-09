@@ -1,7 +1,11 @@
 package org.automation.selenium.page;
 
-import automation.utils.UtilBase;
-import org.browser.manage.Browser;
+
+import org.automation.selenium.UtilBase;
+import org.automation.selenium.browser.Browser;
+import org.automation.selenium.javascripts.AjaxUtil;
+
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
