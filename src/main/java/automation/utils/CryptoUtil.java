@@ -6,6 +6,7 @@ import java.util.Base64;
 
 /**
  * Created by shantonu on 7/9/16.
+ * this contains all encryption supported by java8 default, if you need to apply company specific encoders/decoders, just add util here to support with existing.
  */
 public class CryptoUtil {
 
