@@ -1,10 +1,5 @@
 package org.automation;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Created by shantonu on 4/10/16.
  * This is mother of all utils

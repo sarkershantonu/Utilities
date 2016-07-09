@@ -1,7 +1,7 @@
 package org.automation.utils;
 
-import automation.exception.TestError;
 import automation.exception.ExceptionManager;
+import automation.exception.TestError;
 import automation.utils.UtilBase;
 import org.apache.commons.io.IOUtils;
 import org.browser.manage.Browser;
@@ -10,8 +10,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.io.InputStream;
+
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by shantonu on 4/10/16.

@@ -1,8 +1,6 @@
 package org.automation.utils;
 
 import automation.utils.UtilBase;
-import com.google.common.base.Function;
-import com.google.common.base.Objects;
 import org.browser.manage.Browser;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;

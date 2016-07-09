@@ -1,12 +1,10 @@
 package org.automation.utils;
 
 import automation.utils.UtilBase;
-import org.browser.manage.Browser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.server.SystemClock;
 
 /**
  * Created by shantonu on 4/14/16.

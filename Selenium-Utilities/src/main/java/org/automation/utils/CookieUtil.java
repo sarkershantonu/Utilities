@@ -1,7 +1,5 @@
 package org.automation.utils;
 
-import automation.utils.UtilBase;
-
 import lombok.Getter;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;

@@ -1,7 +1,6 @@
 package org.automation.browser.manage.remote;
 
 import org.browser.manage.BrowserFactory;
-import org.browser.manage.CapabilityFactory;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.concurrent.BlockingDeque;

@@ -2,6 +2,7 @@ package org.automation.page;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.automation.browser.manage.Browser;
 import org.openqa.selenium.WebDriver;
 
 public abstract class PageBase {
@@ -36,7 +37,7 @@ public abstract class PageBase {
      *
      */
     public <T extends PageBase> void initElement(T t){
-        org.automation.PageFactory.initElements(driver,t);
+        PageFactory.initElements(driver,t);
     }
 
     /**

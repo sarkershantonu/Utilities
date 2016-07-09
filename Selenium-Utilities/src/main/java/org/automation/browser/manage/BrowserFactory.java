@@ -1,18 +1,17 @@
 package org.automation.browser.manage;
 
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import org.browser.utils.RemoteConfig;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.opera.OperaDriver;
-
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.android.AndroidDriver;
 
 import java.io.File;
 import java.io.IOException;

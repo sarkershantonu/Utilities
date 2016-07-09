@@ -6,7 +6,14 @@
 
     <groupId>com.shantonu</groupId>
     <artifactId>AutomationUI</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>Automation-Utilities</module>
+        <module>Selenium-Utilities</module>
+        <module>Testing Utilities</module>
+        <module>Opencart Selenium</module>
+    </modules>
 
     <properties>
         <selenium.version>2.53.0</selenium.version>
@@ -20,6 +27,7 @@
     </properties>
 
     <dependencies>
+
         <!--   <dependency>
                <groupId>org.seleniumhq.selenium</groupId>
                <artifactId>selenium-java</artifactId>
@@ -110,6 +118,7 @@
             <version>1.4.0</version>
         </dependency>
 
+
     </dependencies>
 
     <build>
@@ -164,6 +173,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
                 <configuration>
                     <compilerVersion>1.8</compilerVersion>
                     <source>1.8</source>

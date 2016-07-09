@@ -2,6 +2,7 @@ package org.automation.utils;
 
 import automation.utils.io.*;
 import org.apache.commons.io.FileUtils;
+import org.automation.UtilBase;
 import org.browser.manage.Browser;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;

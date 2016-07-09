@@ -2,7 +2,6 @@ package org.automation.browser.manage;
 
 import org.browser.manage.remote.appium.AppiumCapabilities;
 import org.browser.manage.remote.browserstack.BrowserStackCapabilities;
-
 import org.browser.manage.remote.saucelab.SauceLabCapabilities;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
