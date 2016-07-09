@@ -25,4 +25,23 @@ public class CryptoUtil {
         byte[] encrypted =  Base64.getDecoder().decode(item.getBytes(charset));
         return new String(encrypted);
     }
+    public static String urlEncode(String item){
+        byte[] encrypted =  Base64.getUrlEncoder().encode(item.getBytes(StandardCharsets.ISO_8859_1));
+        return new String(encrypted);
+    }
+
+    public static String urlEncode(String item, Charset charset){
+        byte[] encrypted =  Base64.getUrlEncoder().encode(item.getBytes(charset));
+        return new String(encrypted);
+    }
+    public static String urlDecode(String item){
+        byte[] encrypted =  Base64.getUrlDecoder().decode(item.getBytes(StandardCharsets.ISO_8859_1));
+        return new String(encrypted);
+    }
+
+    public static String urlDecode(String item, Charset charset){
+        byte[] encrypted =  Base64.getUrlDecoder().decode(item.getBytes(charset));
+        return new String(encrypted);
+    }
+
 }
