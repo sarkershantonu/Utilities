@@ -1,0 +1,7 @@
+package org.automation.selenium.groups.crs;
+
+/**
+ * Created by shantonu on 5/5/16.
+ */
+public class ChangRequests_247 {
+}
