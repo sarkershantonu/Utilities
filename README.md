@@ -32,3 +32,9 @@ Maven Test Run
     ->Locally
     ->From Jenkins or any CI (for CLI support , there will be an entry from Program -> main method)
     ->With Webdriver Remote Driver execution
+    
+    
+Converted to multiple Maven Project 
+ 1. Common utils
+ 2. selenium utils
+ 3. project pages + tests
