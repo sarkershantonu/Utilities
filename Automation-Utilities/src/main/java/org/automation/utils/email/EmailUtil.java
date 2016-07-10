@@ -10,11 +10,12 @@ public class EmailUtil {
     private String toEmail = null;
     private String fromEmail = null;
     private String fromPass = null;
-    public EmailUtil(){}
+    private EmailUtil(){}
     public EmailUtil(String toEmail){
         this.toEmail = toEmail;
     }
-    public void sendEmail(){}
+
+    public void sendEmail(Email email){}
     public void sendEmail(String fromEmail, String fromPass){}
     public void sendEmail(String fromEmail, String fromPass, String smtpHost){}
 }
