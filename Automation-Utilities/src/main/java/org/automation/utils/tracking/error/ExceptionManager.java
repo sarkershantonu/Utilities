@@ -1,4 +1,4 @@
-package org.automation.utils.trackers.error;
+package org.automation.utils.tracking.error;
 
 
 public class ExceptionManager {

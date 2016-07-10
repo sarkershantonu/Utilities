@@ -7,7 +7,7 @@ import org.automation.selenium.UtilBase;
 import org.automation.selenium.browser.Browser;
 import org.automation.selenium.javascripts.JavaScriptUtil;
 import org.automation.selenium.page.PageUtil;
-import org.automation.utils.configuration.ConfigHelper;
+import org.automation.utils.config.ConfigHelper;
 import org.automation.utils.io.FileUtilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;

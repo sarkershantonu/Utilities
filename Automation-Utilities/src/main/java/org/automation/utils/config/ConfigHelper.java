@@ -1,4 +1,4 @@
-package org.automation.utils.configuration;
+package org.automation.utils.config;
 
 import java.text.SimpleDateFormat;
 
