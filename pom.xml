@@ -39,7 +39,13 @@
             <version>${selenium.version}</version>
             <scope>compile</scope>
         </dependency>
-
+        
+        <!--Not maintain, so added extra : http://www.seleniumhq.org/download/maven.jsp-->
+         <dependency>
+        <groupId>com.github.detro</groupId>
+        <artifactId>phantomjsdriver</artifactId>
+        <version>1.2.0</version>
+         </dependency> 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-remote-driver</artifactId>
