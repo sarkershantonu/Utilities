@@ -4,6 +4,7 @@ import org.automation.utils.tracking.error.ExceptionManager;
 import org.automation.utils.tracking.error.TestError;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Set;
@@ -64,6 +65,7 @@ public class Browser {
      * storing in session manager for re using
      */
     private static void initiDriver(){
+
         setImplicitWait(DEFAULT_WAIT_4_PAGE);
         setJSTimeOut(5);
         new WebDriverWait(driver,DEFAULT_WAIT_4_ELEMENT);

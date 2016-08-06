@@ -32,6 +32,7 @@
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-leg-rc:2.53.0" level="project" />
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.8" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.10" level="project" />
+    <orderEntry type="library" name="Maven: com.github.detro:phantomjsdriver:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-remote-driver:2.53.0" level="project" />
     <orderEntry type="library" name="Maven: cglib:cglib-nodep:2.1_3" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.3.1" level="project" />
@@ -56,6 +57,7 @@
     <orderEntry type="library" name="Maven: commons-digester:commons-digester:1.8.1" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.4" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.2" level="project" />
     <orderEntry type="library" name="Maven: com.saucelabs:sauce_java_common:2.1.21" level="project" />
     <orderEntry type="library" name="Maven: com.saucelabs:sauce_junit:2.1.21" level="project" />
     <orderEntry type="library" name="Maven: com.saucelabs:saucerest:1.0.32" level="project" />
@@ -88,7 +90,6 @@
     <orderEntry type="library" name="Maven: stax:stax-api:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: dom4j:dom4j:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: org.jvnet.jaxb2_commons:jaxb2-basics-runtime:0.6.2" level="project" />
-    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.2" level="project" />
     <orderEntry type="library" name="Maven: jfree:jfreechart:1.0.13" level="project" />
     <orderEntry type="library" name="Maven: jfree:jcommon:1.0.16" level="project" />
