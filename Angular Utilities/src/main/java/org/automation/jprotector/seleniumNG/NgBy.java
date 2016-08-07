@@ -1,4 +1,4 @@
-package org.automation.jprotector;
+package org.automation.jprotector.seleniumNG;
 
 /**
   * @author Carlos Alexandro Becker (caarlos0@gmail.com)
@@ -6,6 +6,7 @@ package org.automation.jprotector;
   */
 
 
+import org.automation.jprotector.JavaScriptBy;
 import org.automation.jprotector.scripts.*;
 import org.openqa.selenium.By;
 

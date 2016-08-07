@@ -13,9 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Angular Web Element.
+ * Angular Web Element.=> i change implementation
  */
 //public final class NgWebElement implements WebElement, WrapsElement
+    // only thing added are the wait.. no more extra
 public final class NgWebElement extends RemoteWebElement implements WrapsElement
 {
 

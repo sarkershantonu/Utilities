@@ -10,6 +10,9 @@ import java.util.Set;
 
 /**
  * Angular WebDriver Implementation.
+ * Only difference is adding wait for angular JS to run, no extra
+ *
+ * TODO =>  Shantonu, adding all javascript capability to enrich this driver... example form ajax& js examples
  */
 public final class NgWebDriver implements WebDriver, WrapsDriver {
     private final WebDriver driver;
@@ -27,11 +30,11 @@ public final class NgWebDriver implements WebDriver, WrapsDriver {
     /**
      * Ctor.
      * @param drv Parend Web Driver.
-     * @param rootel Root Element.
+     * @param rootElement Root Element.
      */
     public NgWebDriver(
         final WebDriver drv,
-        final String rootel
+        final String rootElement
     ) {
         if (!(drv instanceof JavascriptExecutor)) {
             throw new WebDriverException(
@@ -42,7 +45,7 @@ public final class NgWebDriver implements WebDriver, WrapsDriver {
 
         this.driver = drv;
         this.jsExecutor = (JavascriptExecutor) drv;
-        this.root = rootel;
+        this.root = rootElement;
     }
 
     @Override

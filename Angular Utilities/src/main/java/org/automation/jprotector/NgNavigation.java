@@ -8,6 +8,9 @@ import java.net.URL;
 /**
  * Angular Navigation.
  * @author Carlos Alexandro Becker (caarlos0@gmail.com)
+ * todo, shantonu => adding JS nevigation capability like scrolling
+ *
+ * I think this is useless class, I need to remove after experiment
  */
 public final class NgNavigation implements WebDriver.Navigation {
     /**
