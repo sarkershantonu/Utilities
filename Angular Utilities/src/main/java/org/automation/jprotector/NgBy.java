@@ -5,7 +5,8 @@ package org.automation.jprotector;
   * @author Serguei Kouzmine (kouzmine_serguei@yahoo.com)
   */
 
-import com.jprotractor.scripts.*;
+
+import org.automation.jprotector.scripts.*;
 import org.openqa.selenium.By;
 
 public final class NgBy {

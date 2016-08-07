@@ -1,6 +1,7 @@
 package org.automation.jprotector;
 
-import com.jprotractor.scripts.WaitForAngular;
+
+import org.automation.jprotector.scripts.WaitForAngular;
 import org.openqa.selenium.*;
 import org.openqa.selenium.internal.WrapsDriver;
 

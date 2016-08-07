@@ -1,6 +1,7 @@
 package org.automation.jprotector;
 
-import com.jprotractor.scripts.Script;
+
+import org.automation.jprotector.scripts.Script;
 import org.openqa.selenium.*;
 import org.openqa.selenium.internal.WrapsDriver;
 

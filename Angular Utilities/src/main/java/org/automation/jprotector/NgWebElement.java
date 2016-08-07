@@ -1,8 +1,13 @@
 package org.automation.jprotector;
 
-import com.jprotractor.scripts.Evaluate;
+
+import com.google.common.collect.ImmutableMap;
+import org.automation.jprotector.scripts.Evaluate;
 import org.openqa.selenium.*;
 import org.openqa.selenium.internal.WrapsElement;
+import org.openqa.selenium.remote.DriverCommand;
+import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.remote.Response;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,23 +15,12 @@ import java.util.List;
 /**
  * Angular Web Element.
  */
-public final class NgWebElement implements WebElement, WrapsElement {
+//public final class NgWebElement implements WebElement, WrapsElement
+public final class NgWebElement extends RemoteWebElement implements WrapsElement
+{
 
-    /**
-     * Angular Web Driver.
-     */
     private final transient NgWebDriver driver;
-
-    /**
-     * Element.
-     */
     private final transient WebElement element;
-
-    /**
-     * Ctor.
-     * @param drv Driver.
-     * @param elm Element.
-     */
     public NgWebElement(final NgWebDriver drv, final WebElement elm) {
         this.driver = drv;
         this.element = elm;
@@ -107,6 +101,12 @@ public final class NgWebElement implements WebElement, WrapsElement {
         return this.element.getSize();
     }
 
+
+    @Override
+    public Rectangle getRect() {
+        return super.getRect();
+    }
+
     public String getTagName() {
         this.driver.waitForAngular();
         return this.element.getTagName();
@@ -141,5 +141,12 @@ public final class NgWebElement implements WebElement, WrapsElement {
     public void submit() {
         this.driver.waitForAngular();
         this.element.submit();
+    }
+/**
+ * TOdo => a shot intregration
+ */
+    @Override
+    public <X> X getScreenshotAs(OutputType<X> target) throws WebDriverException {
+        return super.getScreenshotAs(target);
     }
 }
