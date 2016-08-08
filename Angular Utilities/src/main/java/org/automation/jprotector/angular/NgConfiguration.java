@@ -1,4 +1,4 @@
-package org.automation.jprotector;
+package org.automation.jprotector.angular;
 
 import java.io.IOException;
 import java.net.URL;

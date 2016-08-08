@@ -1,4 +1,4 @@
-package org.automation.jprotector.seleniumNG;
+package org.automation.jprotector.angular;
 
 /**
   * @author Carlos Alexandro Becker (caarlos0@gmail.com)

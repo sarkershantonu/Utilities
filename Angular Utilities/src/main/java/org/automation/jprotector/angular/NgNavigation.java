@@ -1,4 +1,4 @@
-package org.automation.jprotector;
+package org.automation.jprotector.angular;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;

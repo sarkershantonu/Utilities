@@ -1,13 +1,11 @@
-package org.automation.jprotector;
+package org.automation.jprotector.angular;
 
 
-import com.google.common.collect.ImmutableMap;
+import org.automation.jprotector.JavaScriptBy;
 import org.automation.jprotector.scripts.Evaluate;
 import org.openqa.selenium.*;
 import org.openqa.selenium.internal.WrapsElement;
-import org.openqa.selenium.remote.DriverCommand;
 import org.openqa.selenium.remote.RemoteWebElement;
-import org.openqa.selenium.remote.Response;
 
 import java.util.ArrayList;
 import java.util.List;
