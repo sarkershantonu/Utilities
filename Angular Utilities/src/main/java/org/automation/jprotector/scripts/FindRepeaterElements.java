@@ -1,5 +1,7 @@
 package org.automation.jprotector.scripts;
 
+import org.automation.jprotector.scripts.io.Loader;
+
 /**
  * @author Serguei Kouzmine (kouzmine_serguei@yahoo.com)
  */
