@@ -40,4 +40,5 @@ Dependency Management + Plugin Mangement => Bothe are different from depencencis
  Profile can be used for
  1. Different repository
  2. different module
- 3. different build
+ 3. different build sequence and definations
+ 4. different dependency set
