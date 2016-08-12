@@ -1,0 +1,10 @@
+this is angular JS utilitie doc:
+
+Objective of the project : It will be like selenium API, providing selenium like access to angular UI components
+
+Principle : Adding all angular View component access function JS , to acess items . And we have to run in browser and get the element
+
+ As we know, selenium actually run, document.(dot) type JS to get element. So , most of the cases, it does not work with angular.
+ So, this utilitie will help to get angular items.
+
+ This is open source initiative from jprotector. I am trying to add more libraries with them. As soon as I increase , I will fork item in there.
