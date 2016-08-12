@@ -26,3 +26,16 @@ Run tests :
 Making result site :
 
 Running the results locally :
+
+
+Multiple maven project :
+
+
+Dependency Management + Plugin Mangement => Bothe are different from depencencises and plugins.
+ Diff : 1. Parent maintain versions, so no need to put version info in child
+ 2. you need to specify which dependency/plugin will go in which child. (without management , child get all item from plugins)
+
+
+ Profile :
+ Profile can be used for
+ 1. Different reposi
