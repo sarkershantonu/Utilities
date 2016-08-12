@@ -38,4 +38,6 @@ Dependency Management + Plugin Mangement => Bothe are different from depencencis
 
  Profile :
  Profile can be used for
- 1. Different reposi
+ 1. Different repository
+ 2. different module
+ 3. different build
