@@ -1,7 +1,8 @@
 package org.automation.opencart.tests.unit;
 
 
-import automation.workflows.ProductSearching;
+
+import org.automation.opencart.workflows.ProductSearching;
 import org.junit.Before;
 
 /**

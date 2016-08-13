@@ -1,8 +1,9 @@
 package org.automation.opencart.tests.unit;
 
+import org.automation.opencart.pages.HomePage;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import project.selenium.pages.HomePage;
+
 
 /**
  * Created by shantonu on 5/5/16.

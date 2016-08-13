@@ -1,5 +1,6 @@
 package org.automation.opencart.tests.unit;
 
+import org.automation.utils.common.PropertyUtil;
 import org.junit.Test;
 
 import java.io.IOException;
