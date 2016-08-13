@@ -16,9 +16,9 @@ import java.util.Properties;
 public class FakeEmailExample {
 
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         sendEmail("sarker.shantonu@gmail.com", "Test from local host");
-    }
+    }*/
 
     public static void sendEmail(String fromEmail, String subject) {
 
