@@ -11,7 +11,7 @@ import java.util.Properties;
 
 /**
  * Created by shantonu on 8/14/16.
- * See
+ * See server source => https://sourceforge.net/projects/fakemail/
  */
 public class FakeEmailExample {
 
