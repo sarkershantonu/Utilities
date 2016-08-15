@@ -13,6 +13,6 @@ public class ConfigHelper {
     // todo read form property
     public static final String screenshotImagerFolder = "/screenshot";
     public static final String loggingFolder = "/Logs";
-    public static final String screenshotType = ".jpeg";
+    public static final String screenshotType = ".png";
 
 }

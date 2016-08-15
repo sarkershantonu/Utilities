@@ -1,5 +1,6 @@
 package org.automation.selenium.tracking;
 
+
 import org.apache.commons.io.FileUtils;
 import org.automation.utils.common.PropertyUtil;
 import org.automation.selenium.SeleniumUtilBase;
@@ -17,8 +18,9 @@ import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
-
+import com.google.common.io.Files;
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -31,16 +33,25 @@ import java.util.Date;
  */
 public class ScreenShotUtil extends SeleniumUtilBase {
 
+    public static String ScreenPath = PropertyUtil.getUserDir()+ConfigHelper.screenshotImagerFolder;//PropertyUtil.getSysProperty("screenshot.folder");
+
     public ScreenShotUtil(WebDriver aDriver) {
         super(aDriver);
     }
-    public String takeScreenShot(String name, boolean isError){
-        StringBuilder fileNama = getFileName(name,isError);
+
+    /**
+     * This is default screenshot using webdriver
+     * @param name
+     * @param isError
+     * @return
+     */
+    public void takeScreenShot(String name, boolean isError){
+        StringBuilder fileNama = new StringBuilder(getFileName(name,isError));
         File screenShot = new File(fileNama.toString());
         screenShot.getParentFile().mkdir();
         new PageUtil(this.driver).waitForPageLoad();
         if(!new PageUtil(this.driver).isPageLoaded()){
-            File srcFile = (File) ((TakesScreenshot) Browser.getInstance()).getScreenshotAs(OutputType.FILE);
+            File srcFile = ((TakesScreenshot) Browser.getInstance()).getScreenshotAs(OutputType.FILE);
             try{
                 FileUtils.copyFile(srcFile,screenShot);
             } catch (IOException e) {
@@ -50,56 +61,8 @@ public class ScreenShotUtil extends SeleniumUtilBase {
         {
             screenShotByJS(screenShot);
         }
-
-        return saveScreenShot(screenShot, isError);
-
-
     }
 
-    /***
-     * TOdo saving to dile
-     * @param screenShot
-     * @param isError
-     * @return
-     */
-    private String saveScreenShot(File screenShot, boolean isError) {
-        return null;
-    }
-
-    /**
-     * This actually get links for image working with Jenkins , preapered for windows environment
-     * todo => make generic conversion to linux systems , file seperator portion only
-     * @param screen
-     * @return
-     */
-    private String getScreenShotLink(File screen){
-        String absScreen  = screen.getAbsolutePath();
-        String url = PropertyUtil.getSysProperty("BUILD_URL");
-        if(url!=null){
-            return "<a href=\'"
-                    +url
-                    +"artifact/"
-                    +absScreen.substring(absScreen.indexOf("target"),absScreen.length()).replaceAll("\\\\", "/")+"\' target=\'_blank\'>"
-                    +"screenshot"
-                    +"</a>";
-        }else {
-            return "<a href=\'" + absScreen + "\' target=\'_blank\' >" + "screenshot" + "</a>";
-        }
-    }
-    private void writeScreenshotToFile(byte[] content, File file){
-
-        try {
-            FileOutputStream out = new FileOutputStream(file);
-            out.write(content);
-            out.close();
-
-        } catch (FileNotFoundException e) {
-           //todo , default behavior
-        } catch (IOException e) {
-            // todo default behavior
-        }
-
-    }
 
     /**
      * This is fully based on JS library used by project.. 100% project specific. use different library if you need to
@@ -142,7 +105,7 @@ public class ScreenShotUtil extends SeleniumUtilBase {
         }
 
     }
-    private StringBuilder getFileName(String testname, boolean isError){
+    private String getFileName(String testname, boolean isError){
         SimpleDateFormat date = ConfigHelper.dateFormat;
         SimpleDateFormat time  = ConfigHelper.timeFormat;
         StringBuilder file = new StringBuilder();
@@ -165,33 +128,29 @@ public class ScreenShotUtil extends SeleniumUtilBase {
         file.append(testname+"_").append(time.format(screenDate));
         file = FileUtilities.trimLimit(file);
         file.append(ConfigHelper.screenshotType);
-        return file;
+        return file.toString();
     }
 
 
-    public static String ScreenPath = PropertyUtil.getUserDir()+"/screenshots/";//PropertyUtil.getSysProperty("screenshot.folder");
-
-    private void saveImage(String name,String type, Screenshot screenshot){
-        File output = new File(ScreenPath+name+"."+type);
+    private void saveImage(String name, BufferedImage image){
+        File output = new File(ScreenPath+name+"."+ConfigHelper.screenshotType);
         try {
-            ImageIO.write(screenshot.getImage(),type,output);
+            ImageIO.write(image,ConfigHelper.screenshotType,output);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    private void saveImage(String name, final Screenshot screenshot){
-        File output = new File(ScreenPath+name+".png");
-        try {
-
-            ImageIO.write(screenshot.getImage(),"png",output);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void takeWith(String name, String type, WebElement element, WebDriver aDriver){
+//************** Bottom items are using Ashot********************//
+    /**
+     * Take screenshot with Ashot
+     * @param element
+     * @param aDriver
+     * @param name
+     */
+    public void takeWith(WebElement element, WebDriver aDriver,String name){
         AShot aShot = new AShot();
         Screenshot screenshot = aShot.takeScreenshot(aDriver,element);
-        saveImage(name,type,screenshot);
+        saveImage(name,screenshot.getImage());
     }
 
 
@@ -206,6 +165,6 @@ public class ScreenShotUtil extends SeleniumUtilBase {
      */
 
     public void takeFullScreen(String name, WebDriver aDriver, int scrollTimeout){
-        saveImage(name, new AShot().shootingStrategy(ShootingStrategies.viewportPasting(scrollTimeout)).takeScreenshot(aDriver));
+        saveImage(name, new AShot().shootingStrategy(ShootingStrategies.viewportPasting(scrollTimeout)).takeScreenshot(aDriver).getImage());
     }
 }
