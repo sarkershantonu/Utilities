@@ -3,7 +3,7 @@ package org.automation.selenium.page;
 
 import org.automation.selenium.SeleniumUtilBase;
 import org.automation.selenium.browser.Browser;
-import org.automation.selenium.javascripts.AjaxSeleniumUtil;
+import org.automation.selenium.javascripts.AJAXUtil;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -280,7 +280,7 @@ public class ElementUtil extends SeleniumUtilBase {
     public void waitForAjaxComplete(int sec){
         Browser.setWebDriverWait(sec).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver aDriver) {
-                return new AjaxSeleniumUtil(aDriver).isAjaxComplete();
+                return new AJAXUtil(aDriver).isAjaxComplete();
             }
         });
     }
@@ -288,7 +288,7 @@ public class ElementUtil extends SeleniumUtilBase {
     public void isPageLoaded(int sec){
         Browser.setWebDriverWait(sec).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver aDriver) {
-                return new AjaxSeleniumUtil(aDriver).isPageLoaded();
+                return new AJAXUtil(aDriver).isPageLoaded();
             }
         });
     }

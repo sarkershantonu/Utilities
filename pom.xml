@@ -12,7 +12,6 @@
         <module>Automation-Utilities</module>
         <module>Selenium-Utilities</module>
         <module>Opencart Selenium</module>
-        <module>Angular Utilities</module>
     </modules>
 
     <properties>

@@ -6,7 +6,7 @@ import org.automation.utils.common.PropertyUtil;
 import org.automation.selenium.SeleniumUtilBase;
 
 import org.automation.selenium.browser.Browser;
-import org.automation.selenium.javascripts.JavaScriptSeleniumUtil;
+import org.automation.selenium.javascripts.JSUtil;
 import org.automation.selenium.page.PageUtil;
 import org.automation.utils.config.ConfigHelper;
 import org.automation.utils.io.FileUtilities;
@@ -18,12 +18,9 @@ import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
-import com.google.common.io.Files;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -77,7 +74,7 @@ public class ScreenShotUtil extends SeleniumUtilBase {
         String base64_imageContant;
 
         try{
-        screenshotjs = new JavaScriptSeleniumUtil(this.driver).readJsLibrary("html2canvas.min.js");
+        screenshotjs = new JSUtil(this.driver).readJsLibrary("html2canvas.min.js");
         /**The main JS => Change this if it does not works
          * function injectHtml2Canvas()
          {
@@ -96,9 +93,9 @@ public class ScreenShotUtil extends SeleniumUtilBase {
                 +"(document.body || document.head || document.documentElement).appendChild(script);", new Object[]{screenshotjs});
         base64_imageContant =  "return window.html2canvas != undefined;";
 
-        boolean i = ((Boolean) new JavaScriptSeleniumUtil(driver).getJsExecutor().executeScript(base64_imageContant,new Object[0])).booleanValue();
-        if(!i){
-            new JavaScriptSeleniumUtil(driver).getJsExecutor().executeScript(base64js_getImage, new Object[0]);
+        boolean isSuccess = ((Boolean) new JSUtil(driver).getJsExecutor().executeScript(base64_imageContant,new Object[0])).booleanValue();
+        if(!isSuccess){
+            new JSUtil(driver).getJsExecutor().executeScript(base64js_getImage, new Object[0]);
         }
         }catch (Exception e){
 
@@ -131,7 +128,6 @@ public class ScreenShotUtil extends SeleniumUtilBase {
         return file.toString();
     }
 
-
     private void saveImage(String name, BufferedImage image){
         File output = new File(ScreenPath+name+"."+ConfigHelper.screenshotType);
         try {
@@ -140,6 +136,7 @@ public class ScreenShotUtil extends SeleniumUtilBase {
             e.printStackTrace();
         }
     }
+
 //************** Bottom items are using Ashot********************//
     /**
      * Take screenshot with Ashot
@@ -152,8 +149,6 @@ public class ScreenShotUtil extends SeleniumUtilBase {
         Screenshot screenshot = aShot.takeScreenshot(aDriver,element);
         saveImage(name,screenshot.getImage());
     }
-
-
     public void takeFullScreen(String name, WebDriver aDriver){
         takeFullScreen(name, aDriver, 500);
     }
