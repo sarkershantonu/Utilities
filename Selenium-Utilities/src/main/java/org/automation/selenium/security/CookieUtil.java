@@ -10,10 +10,10 @@ import java.util.Set;
 /**
  * Created by shantonu on 6/2/16.
  */
-public class CookieSeleniumUtil extends SeleniumUtilBase {
+public class CookieUtil extends SeleniumUtilBase {
     private @Getter
     Set<Cookie> browserCookies = null;
-    public CookieSeleniumUtil(WebDriver aDriver) {
+    public CookieUtil(WebDriver aDriver) {
         super(aDriver);
         init();
     }

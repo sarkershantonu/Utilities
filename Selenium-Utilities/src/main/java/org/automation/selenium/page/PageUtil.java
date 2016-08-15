@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
  * Created by shantonu on 4/14/16.
  * Providing utils for page context
  */
-public class PageSeleniumUtil extends SeleniumUtilBase {
-    public PageSeleniumUtil(WebDriver aDriver) {
+public class PageUtil extends SeleniumUtilBase {
+    public PageUtil(WebDriver aDriver) {
         super(aDriver);
     }
 

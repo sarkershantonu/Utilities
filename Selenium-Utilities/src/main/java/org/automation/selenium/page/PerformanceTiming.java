@@ -11,11 +11,11 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by shantonu on 5/27/16.
  */
-public class PerformanceTimingSeleniumUtil extends SeleniumUtilBase {
+public class PerformanceTiming extends SeleniumUtilBase {
     private Map<String, Object> timing = null;
     private static final String JS4perf="var performance = window.performance || window.webkitPerformance || window.mozPerformance || window.msPerformance || {};var timings = performance.timing || {};return timings;";
 
-    public PerformanceTimingSeleniumUtil(WebDriver aDriver) {
+    public PerformanceTiming(WebDriver aDriver) {
         super(aDriver);
     }
 

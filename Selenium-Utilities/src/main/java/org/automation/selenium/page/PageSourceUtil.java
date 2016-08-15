@@ -9,11 +9,11 @@ import java.io.InputStream;
 /**
  * Created by shantonu on 4/19/16.
  */
-public class PageSourceSeleniumUtil extends SeleniumUtilBase {
+public class PageSourceUtil extends SeleniumUtilBase {
 
 
 
-    public PageSourceSeleniumUtil(WebDriver aDriver) {
+    public PageSourceUtil(WebDriver aDriver) {
         super(aDriver);
     }
 

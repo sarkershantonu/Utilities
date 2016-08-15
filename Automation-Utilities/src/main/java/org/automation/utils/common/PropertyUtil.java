@@ -48,7 +48,7 @@ public class PropertyUtil {
 
     public static Properties read(String propertyFileName) throws IOException {
         prop = new Properties();
-        File currentDirFile = new File(getSysProperty("user.dir"));
+        File currentDirFile = new File(getUserDir());
         String rootFolder = currentDirFile.getAbsolutePath();
         InputStream input = new FileInputStream(rootFolder + propertyRoot + propertyFileName);
         prop.load(input);
@@ -68,7 +68,11 @@ public class PropertyUtil {
         return  prop.getProperty(nameOfProperty);
     }
     public static String getSeperator(){
-        return PropertyUtil.getSysProperty("file.separator");
+        return getSysProperty("file.separator");
+    }
+
+    public static String getUserDir(){
+        return getSysProperty("user.dir");
     }
     
 }

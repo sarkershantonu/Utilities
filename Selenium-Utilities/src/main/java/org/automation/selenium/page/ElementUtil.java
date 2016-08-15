@@ -18,10 +18,10 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by shantonu on 4/10/16.
  */
-public class ElementSeleniumUtil extends SeleniumUtilBase {
+public class ElementUtil extends SeleniumUtilBase {
     private static String getText_JS = "return arguments[0].innerHTML";
 
-    public ElementSeleniumUtil(WebDriver aDriver) {
+    public ElementUtil(WebDriver aDriver) {
         super(aDriver);
 
     }

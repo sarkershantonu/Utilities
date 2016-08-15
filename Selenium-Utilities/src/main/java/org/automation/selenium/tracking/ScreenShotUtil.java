@@ -1,4 +1,4 @@
-package org.automation.selenium.common;
+package org.automation.selenium.tracking;
 
 import org.apache.commons.io.FileUtils;
 import org.automation.utils.common.PropertyUtil;
@@ -6,7 +6,7 @@ import org.automation.selenium.SeleniumUtilBase;
 
 import org.automation.selenium.browser.Browser;
 import org.automation.selenium.javascripts.JavaScriptSeleniumUtil;
-import org.automation.selenium.page.PageSeleniumUtil;
+import org.automation.selenium.page.PageUtil;
 import org.automation.utils.config.ConfigHelper;
 import org.automation.utils.io.FileUtilities;
 import org.openqa.selenium.OutputType;
@@ -29,17 +29,17 @@ import java.util.Date;
 /**
  * Created by shantonu on 4/19/16.
  */
-public class ScreenShotSeleniumUtil extends SeleniumUtilBase {
+public class ScreenShotUtil extends SeleniumUtilBase {
 
-    public ScreenShotSeleniumUtil(WebDriver aDriver) {
+    public ScreenShotUtil(WebDriver aDriver) {
         super(aDriver);
     }
     public String takeScreenShot(String name, boolean isError){
         StringBuilder fileNama = getFileName(name,isError);
         File screenShot = new File(fileNama.toString());
         screenShot.getParentFile().mkdir();
-        new PageSeleniumUtil(this.driver).waitForPageLoad();
-        if(!new PageSeleniumUtil(this.driver).isPageLoaded()){
+        new PageUtil(this.driver).waitForPageLoad();
+        if(!new PageUtil(this.driver).isPageLoaded()){
             File srcFile = (File) ((TakesScreenshot) Browser.getInstance()).getScreenshotAs(OutputType.FILE);
             try{
                 FileUtils.copyFile(srcFile,screenShot);
@@ -151,7 +151,7 @@ public class ScreenShotSeleniumUtil extends SeleniumUtilBase {
         if(ScreenPath!=null){
             file.append(ScreenPath).append(PropertyUtil.getSeperator());
         }
-        file.append(PropertyUtil.getSysProperty("user.dir"));
+        file.append(PropertyUtil.getUserDir());
         file.append(PropertyUtil.getSeperator())
                 .append("target")
                 .append(PropertyUtil.getSeperator())
@@ -169,7 +169,7 @@ public class ScreenShotSeleniumUtil extends SeleniumUtilBase {
     }
 
 
-    public static String ScreenPath = System.getProperty("user.dir")+"/screenshots/";//PropertyUtil.getSysProperty("screenshot.folder");
+    public static String ScreenPath = PropertyUtil.getUserDir()+"/screenshots/";//PropertyUtil.getSysProperty("screenshot.folder");
 
     private void saveImage(String name,String type, Screenshot screenshot){
         File output = new File(ScreenPath+name+"."+type);

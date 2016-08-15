@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by shantonu on 4/10/16.
  */
-public class NavigationSeleniumUtil extends SeleniumUtilBase {
+public class NavigationUtil extends SeleniumUtilBase {
 
-    public NavigationSeleniumUtil(WebDriver aDriver){
+    public NavigationUtil(WebDriver aDriver){
         super(aDriver);
     }
     public void goBack(){

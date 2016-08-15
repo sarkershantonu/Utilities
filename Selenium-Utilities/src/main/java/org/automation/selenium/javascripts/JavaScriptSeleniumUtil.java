@@ -5,7 +5,7 @@ import org.apache.commons.io.IOUtils;
 import org.automation.selenium.SeleniumUtilBase;
 import org.automation.selenium.browser.Browser;
 
-import org.automation.selenium.page.PageSourceSeleniumUtil;
+import org.automation.selenium.page.PageSourceUtil;
 
 import org.automation.utils.tracking.error.ExceptionManager;
 import org.automation.utils.tracking.error.TestError;
@@ -56,7 +56,7 @@ public class JavaScriptSeleniumUtil extends SeleniumUtilBase {
     }
 
     public String readJsLibrary(String jsFileName){
-        InputStream input  = new PageSourceSeleniumUtil(driver).getResourceAsStream(jsFileName);
+        InputStream input  = new PageSourceUtil(driver).getResourceAsStream(jsFileName);
         String html2CanvasLib = "" ;
         try {
                 html2CanvasLib = IOUtils.toString(input);
