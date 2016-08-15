@@ -1,7 +1,7 @@
 package org.automation.selenium.javascripts;
 
 
-import org.automation.selenium.UtilBase;
+import org.automation.selenium.SeleniumUtilBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +12,7 @@ import org.openqa.selenium.WebElement;
  * todo => this is not a proper class, this will devided to other classes based on responsibility types.
  * this is initial, so , will be fixed in releases.
  */
-public class AjaxUtil extends UtilBase {
+public class AjaxSeleniumUtil extends SeleniumUtilBase {
 
     private static String ajaxCompletion_JS="return $.active == 0";
     private static String scrollDown_JS="arguments[0].scrollIntoView(true);";
@@ -21,7 +21,7 @@ public class AjaxUtil extends UtilBase {
     private static String formUpload_JS="document.getElementById('uploadNonDocStoreDocumentForm').submit()";
     private static String fileUpload_JS="document.getElementsByName('uploadedDocument')[0].click()";
     private static String confirmAlert_JS="function() { browser.alert.ok }";
-    public AjaxUtil(WebDriver aDriver) {
+    public AjaxSeleniumUtil(WebDriver aDriver) {
         super(aDriver);
         executor =(JavascriptExecutor)driver;
     }

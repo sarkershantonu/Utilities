@@ -2,10 +2,10 @@ package org.automation.selenium.javascripts;
 
 
 import org.apache.commons.io.IOUtils;
-import org.automation.selenium.UtilBase;
+import org.automation.selenium.SeleniumUtilBase;
 import org.automation.selenium.browser.Browser;
 
-import org.automation.selenium.page.PageSourceUtil;
+import org.automation.selenium.page.PageSourceSeleniumUtil;
 
 import org.automation.utils.tracking.error.ExceptionManager;
 import org.automation.utils.tracking.error.TestError;
@@ -20,11 +20,11 @@ import java.io.InputStream;
 /**
  * Created by shantonu on 4/10/16.
  */
-public class JavaScriptUtil extends UtilBase {
+public class JavaScriptSeleniumUtil extends SeleniumUtilBase {
 
     public static String jqueryProcessString = "return jQuery.active == 0";
 
-    public JavaScriptUtil(WebDriver aDriver) {
+    public JavaScriptSeleniumUtil(WebDriver aDriver) {
         super(aDriver);
     }
     public boolean waitForJavaScriptCondition(final String javaScript, int timeOutInSeconds) {
@@ -56,7 +56,7 @@ public class JavaScriptUtil extends UtilBase {
     }
 
     public String readJsLibrary(String jsFileName){
-        InputStream input  = new PageSourceUtil(driver).getResourceAsStream(jsFileName);
+        InputStream input  = new PageSourceSeleniumUtil(driver).getResourceAsStream(jsFileName);
         String html2CanvasLib = "" ;
         try {
                 html2CanvasLib = IOUtils.toString(input);

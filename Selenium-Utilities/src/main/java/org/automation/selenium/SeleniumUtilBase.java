@@ -13,12 +13,12 @@ import org.slf4j.LoggerFactory;
  * Static method only contains global items, except that all are actually object items.
  * All utils keeping this as base are contextualized on page.
  */
-public abstract class UtilBase {
+public abstract class SeleniumUtilBase {
     protected Logger log = null;
     protected WebDriver driver = null;
     protected JavascriptExecutor executor ;
 
-    public UtilBase(WebDriver aDriver){
+    public SeleniumUtilBase(WebDriver aDriver){
         this.driver = aDriver;
         log = LoggerFactory.getLogger(this.getClass());
     }

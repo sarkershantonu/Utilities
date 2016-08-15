@@ -1,7 +1,7 @@
 package org.automation.selenium.elements;
 
 
-import org.automation.selenium.UtilBase;
+import org.automation.selenium.SeleniumUtilBase;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
  * moving different handles are included
  * This is not page specific, it will support different layers. too
  */
-public class PopUpUtils extends UtilBase {
+public class PopUpUtils extends SeleniumUtilBase {
     public PopUpUtils(WebDriver aDriver) {
         super(aDriver);
     }

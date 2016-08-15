@@ -1,14 +1,14 @@
 package org.automation.selenium.page;
 
-import org.automation.selenium.UtilBase;
+import org.automation.selenium.SeleniumUtilBase;
 import org.openqa.selenium.WebDriver;
 
 /**
  * Created by shantonu on 4/14/16.
  * Providing utils for page context
  */
-public class PageUtil extends UtilBase {
-    public PageUtil(WebDriver aDriver) {
+public class PageSeleniumUtil extends SeleniumUtilBase {
+    public PageSeleniumUtil(WebDriver aDriver) {
         super(aDriver);
     }
 

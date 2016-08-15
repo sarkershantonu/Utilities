@@ -13,9 +13,9 @@ import java.io.IOException;
 /**
  * Created by shantonu on 8/15/16.
  */
-public class ScreenshotUtil {
+public class ScreenShotUtil  {
     private static String ScreenPath = System.getProperty("user.dir")+"/screenshots/";
-    private ScreenshotUtil(){}
+    private ScreenShotUtil(){}
 
     private static void saveImage(String name,String type, final Screenshot screenshot){
         File output = new File(ScreenPath+name+"."+type);
@@ -40,15 +40,17 @@ public class ScreenshotUtil {
         saveImage(name,type,screenshot);
     }
 
+
+    public static void takeFullScreen(String name, WebDriver aDriver){
+        takeFullScreen(name, aDriver, 500);
+    }
     /***
-     * This will waiti 500ms to scroll and take full screenshot
+     * This will waiti 500ms(default) to scroll and take full screenshot
      * This view point, you need to change based on application behavior
      * @param name
      * @param aDriver
      */
-    public static void takeFullScreen(String name, WebDriver aDriver){
-        takeFullScreen(name, aDriver, 500);
-    }
+
     public static void takeFullScreen(String name, WebDriver aDriver, int scrollTimeout){
         saveImage(name, new AShot().shootingStrategy(ShootingStrategies.viewportPasting(scrollTimeout)).takeScreenshot(aDriver));
     }

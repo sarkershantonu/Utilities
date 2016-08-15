@@ -1,6 +1,6 @@
 package org.automation.selenium.page;
 
-import org.automation.selenium.UtilBase;
+import org.automation.selenium.SeleniumUtilBase;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
@@ -11,11 +11,11 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by shantonu on 5/27/16.
  */
-public class PerformanceTimingUtil extends UtilBase {
+public class PerformanceTimingSeleniumUtil extends SeleniumUtilBase {
     private Map<String, Object> timing = null;
     private static final String JS4perf="var performance = window.performance || window.webkitPerformance || window.mozPerformance || window.msPerformance || {};var timings = performance.timing || {};return timings;";
 
-    public PerformanceTimingUtil(WebDriver aDriver) {
+    public PerformanceTimingSeleniumUtil(WebDriver aDriver) {
         super(aDriver);
     }
 

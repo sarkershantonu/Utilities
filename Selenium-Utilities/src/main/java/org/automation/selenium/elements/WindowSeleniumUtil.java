@@ -3,7 +3,7 @@ package org.automation.selenium.elements;
 
 import lombok.Getter;
 
-import org.automation.selenium.UtilBase;
+import org.automation.selenium.SeleniumUtilBase;
 import org.automation.selenium.browser.Browser;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -15,11 +15,11 @@ import java.util.Set;
 /**
  * Created by shantonu on 5/29/16.
  */
-public class WindowUtil extends UtilBase {
+public class WindowSeleniumUtil extends SeleniumUtilBase {
     private @Getter static String parentHandle = null;
     private @Getter static String newHandle = null;
 
-    public WindowUtil(WebDriver aDriver) {
+    public WindowSeleniumUtil(WebDriver aDriver) {
         super(aDriver);
         parentHandle = driver.getWindowHandle();
         executor =(JavascriptExecutor)driver;

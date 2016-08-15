@@ -1,9 +1,10 @@
-package org.automation.selenium.elements;
+package org.automation.selenium.page;
 
 
-import org.automation.selenium.UtilBase;
+import org.automation.selenium.SeleniumUtilBase;
 import org.automation.selenium.browser.Browser;
-import org.automation.selenium.javascripts.AjaxUtil;
+import org.automation.selenium.javascripts.AjaxSeleniumUtil;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,10 +18,10 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by shantonu on 4/10/16.
  */
-public class ElementUtil extends UtilBase {
+public class ElementSeleniumUtil extends SeleniumUtilBase {
     private static String getText_JS = "return arguments[0].innerHTML";
 
-    public ElementUtil(WebDriver aDriver) {
+    public ElementSeleniumUtil(WebDriver aDriver) {
         super(aDriver);
 
     }
@@ -161,7 +162,7 @@ public class ElementUtil extends UtilBase {
     public WebElement waitForElementPresent(final By by, int timeOutInSeconds) {
         WebElement element=null;
         try{
-            Browser.nullifyImplicitWait();
+            Browser. nullifyImplicitWait();
 
             WebDriverWait wait =Browser.setWebDriverWait(timeOutInSeconds);
             element = wait.until(ExpectedConditions.presenceOfElementLocated(by));
@@ -279,7 +280,7 @@ public class ElementUtil extends UtilBase {
     public void waitForAjaxComplete(int sec){
         Browser.setWebDriverWait(sec).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver aDriver) {
-                return new AjaxUtil(aDriver).isAjaxComplete();
+                return new AjaxSeleniumUtil(aDriver).isAjaxComplete();
             }
         });
     }
@@ -287,7 +288,7 @@ public class ElementUtil extends UtilBase {
     public void isPageLoaded(int sec){
         Browser.setWebDriverWait(sec).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver aDriver) {
-                return new AjaxUtil(aDriver).isPageLoaded();
+                return new AjaxSeleniumUtil(aDriver).isPageLoaded();
             }
         });
     }

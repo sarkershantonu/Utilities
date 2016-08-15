@@ -3,6 +3,7 @@ package org.automation.utils.common;
 
 import java.io.*;
 import java.util.Properties;
+import java.util.StringJoiner;
 
 public class PropertyUtil {
 
@@ -66,6 +67,8 @@ public class PropertyUtil {
         }
         return  prop.getProperty(nameOfProperty);
     }
-    
+    public static String getSeperator(){
+        return PropertyUtil.getSysProperty("file.separator");
+    }
     
 }

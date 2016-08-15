@@ -1,7 +1,7 @@
 package org.automation.selenium.security;
 
 import lombok.Getter;
-import org.automation.selenium.UtilBase;
+import org.automation.selenium.SeleniumUtilBase;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 
@@ -10,10 +10,10 @@ import java.util.Set;
 /**
  * Created by shantonu on 6/2/16.
  */
-public class CookieUtil extends UtilBase {
+public class CookieSeleniumUtil extends SeleniumUtilBase {
     private @Getter
     Set<Cookie> browserCookies = null;
-    public CookieUtil(WebDriver aDriver) {
+    public CookieSeleniumUtil(WebDriver aDriver) {
         super(aDriver);
         init();
     }

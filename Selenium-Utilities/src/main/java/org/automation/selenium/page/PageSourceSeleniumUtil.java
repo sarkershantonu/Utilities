@@ -1,6 +1,6 @@
 package org.automation.selenium.page;
 
-import org.automation.selenium.UtilBase;
+import org.automation.selenium.SeleniumUtilBase;
 import org.openqa.selenium.WebDriver;
 
 import java.io.InputStream;
@@ -9,11 +9,11 @@ import java.io.InputStream;
 /**
  * Created by shantonu on 4/19/16.
  */
-public class PageSourceUtil extends UtilBase {
+public class PageSourceSeleniumUtil extends SeleniumUtilBase {
 
 
 
-    public PageSourceUtil(WebDriver aDriver) {
+    public PageSourceSeleniumUtil(WebDriver aDriver) {
         super(aDriver);
     }
 
