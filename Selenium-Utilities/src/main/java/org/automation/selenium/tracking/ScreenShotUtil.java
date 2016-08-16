@@ -2,6 +2,7 @@ package org.automation.selenium.tracking;
 
 
 import org.apache.commons.io.FileUtils;
+
 import org.automation.utils.common.PropertyUtil;
 import org.automation.selenium.SeleniumUtilBase;
 
@@ -43,7 +44,8 @@ public class ScreenShotUtil extends SeleniumUtilBase {
      * @return
      */
     public void takeScreenShot(String name, boolean isError){
-        StringBuilder fileNama = new StringBuilder(getFileName(name,isError));
+        String imageName = getFileName(name,isError);
+        StringBuilder fileNama = new StringBuilder(imageName);
         File screenShot = new File(fileNama.toString());
         screenShot.getParentFile().mkdir();
         new PageUtil(this.driver).waitForPageLoad();
@@ -56,22 +58,35 @@ public class ScreenShotUtil extends SeleniumUtilBase {
             }
         }else
         {
-            screenShotByJS(screenShot);
+            screenShotByJS(imageName);
         }
     }
 
 
     /**
      * This is fully based on JS library used by project.. 100% project specific. use different library if you need to
-     * @param screenShot
      * Todo => hafl done, need to complete
      * main source => https://github.com/niklasvh/html2canvas
      */
 
-    private void screenShotByJS(File screenShot){
+    private void screenShotByJS(String imageName){
         String screenshotjs;
         String base64js_getImage;
         String base64_imageContant;
+//todo testing => http://stackoverflow.com/questions/31656689/how-to-save-img-to-users-local-computer-using-html2canvas
+
+        String script = " $('#save_image_locally').click(function(){\n" +
+                "    html2canvas($('#imagesave'), \n" +
+                "    {\n" +
+                "      onrendered: function (canvas) {\n" +
+                "        var a = document.createElement('a');\n" +
+                "        a.href = canvas.toDataURL(\"image/jpeg\").replace(\"image/jpeg\", \"image/octet-stream\");\n" +
+                "        a.download = '"+imageName+"';\n" +
+                "        a.click();\n" +
+                "      }\n" +
+                "    });\n" +
+                "  });";
+
 
         try{
         screenshotjs = new JSUtil(this.driver).readJsLibrary("/js/html2canvas.js");
