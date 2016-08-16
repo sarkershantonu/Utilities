@@ -2,6 +2,7 @@ package org.automation.selenium.javascripts;
 
 
 import org.automation.selenium.SeleniumUtilBase;
+import org.automation.selenium.browser.Browser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -23,11 +24,9 @@ public class AJAXUtil extends SeleniumUtilBase {
     private static String confirmAlert_JS="function() { browser.alert.ok }";
     public AJAXUtil(WebDriver aDriver) {
         super(aDriver);
-        executor =(JavascriptExecutor)driver;
     }
 
     public void waitForAjax(final By by,int timeout){
-
 
     }
     public void runAjax(String ajaxString){

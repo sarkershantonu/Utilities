@@ -1,9 +1,12 @@
 package org.automation.selenium;
 
+import org.automation.selenium.browser.Browser;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.InputStream;
 
 
 /**
@@ -20,6 +23,10 @@ public abstract class SeleniumUtilBase {
 
     public SeleniumUtilBase(WebDriver aDriver){
         this.driver = aDriver;
+        executor = Browser.getJSexcutor();
         log = LoggerFactory.getLogger(this.getClass());
+    }
+    protected InputStream getResourceAsStream(String resourceName){
+        return this.getClass().getResourceAsStream(resourceName);
     }
 }

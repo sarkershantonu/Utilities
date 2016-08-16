@@ -33,12 +33,11 @@ public class JSUtil extends SeleniumUtilBase {
             Browser.nullifyImplicitWait();
             new WebDriverWait(super.driver, timeOutInSeconds) {
             }.until(new ExpectedCondition<Boolean>() {
-
                 public Boolean apply(WebDriver driverObject) {
                     return (Boolean) ((JavascriptExecutor) driverObject).executeScript(javaScript);
                 }
             });
-            jscondition =  (Boolean) ((JavascriptExecutor) super.driver).executeScript(javaScript);
+            jscondition =  (Boolean) executor.executeScript(javaScript);
             Browser.resetImplicitWait();
             return jscondition;
         }
@@ -51,28 +50,10 @@ public class JSUtil extends SeleniumUtilBase {
         return waitForJavaScriptCondition(jqueryProcessString,timeOutInSeconds);
     }
     public void runJSAsyc(String js){
-        getJsExecutor().executeAsyncScript(js);
+        executor.executeAsyncScript(js);
     }
     public void runJSSyc(String js){
-        getJsExecutor().executeScript(js);
+        executor.executeScript(js);
     }
 
-    public String readJsLibrary(String jsFileName){
-        InputStream input  = new PageSourceUtil(driver).getResourceAsStream(jsFileName);
-        String html2CanvasLib = "" ;
-        try {
-                html2CanvasLib = IOUtils.toString(input);
-            } catch (IOException e) {
-                log.info("Error Loading : "+ jsFileName + "\n"+e.getMessage());
-                ExceptionManager.performDefaultAction("Error Loading : "+ jsFileName , e, new TestError());
-
-            }finally {
-                IOUtils.closeQuietly(input);
-            }
-        return html2CanvasLib;
-    }
-    public JavascriptExecutor getJsExecutor(){
-        return (JavascriptExecutor)driver;
-
-    }
 }

@@ -3,6 +3,7 @@ package org.automation.selenium.tracking;
 
 import org.apache.commons.io.FileUtils;
 
+import org.automation.selenium.page.PageSourceUtil;
 import org.automation.utils.common.PropertyUtil;
 import org.automation.selenium.SeleniumUtilBase;
 
@@ -50,7 +51,7 @@ public class ScreenShotUtil extends SeleniumUtilBase {
         screenShot.getParentFile().mkdir();
         new PageUtil(this.driver).waitForPageLoad();
         if(!new PageUtil(this.driver).isPageLoaded()){
-            File srcFile = ((TakesScreenshot) Browser.getInstance()).getScreenshotAs(OutputType.FILE);
+            File srcFile = ((TakesScreenshot) executor).getScreenshotAs(OutputType.FILE);
             try{
                 FileUtils.copyFile(srcFile,screenShot);
             } catch (IOException e) {
@@ -89,7 +90,7 @@ public class ScreenShotUtil extends SeleniumUtilBase {
 
 
         try{
-        screenshotjs = new JSUtil(this.driver).readJsLibrary("/js/html2canvas.js");
+        screenshotjs = new PageSourceUtil(this.driver).readJsLibrary("/js/html2canvas.js");
         /**The main JS => Change this if it does not works
          * function injectHtml2Canvas()
          {
@@ -108,9 +109,8 @@ public class ScreenShotUtil extends SeleniumUtilBase {
                 +"(document.body || document.head || document.documentElement).appendChild(script);", new Object[]{screenshotjs});
         base64_imageContant =  "return window.html2canvas != undefined;";
 
-        boolean isSuccess = ((Boolean) new JSUtil(driver).getJsExecutor().executeScript(base64_imageContant,new Object[0])).booleanValue();
-        if(!isSuccess){
-            new JSUtil(driver).getJsExecutor().executeScript(base64js_getImage, new Object[0]);
+        boolean isSuccess = ((Boolean) executor.executeScript(base64_imageContant,new Object[0])).booleanValue();
+        if(!isSuccess){ executor.executeScript(base64js_getImage, new Object[0]);
         }
         }catch (Exception e){
 
