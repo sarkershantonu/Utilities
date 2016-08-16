@@ -74,7 +74,7 @@ public class ScreenShotUtil extends SeleniumUtilBase {
         String base64_imageContant;
 
         try{
-        screenshotjs = new JSUtil(this.driver).readJsLibrary("html2canvas.min.js");
+        screenshotjs = new JSUtil(this.driver).readJsLibrary("/js/html2canvas.js");
         /**The main JS => Change this if it does not works
          * function injectHtml2Canvas()
          {

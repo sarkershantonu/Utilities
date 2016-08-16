@@ -10,3 +10,8 @@ I am modifying some function again you can use this in your project.
 I will enrich more scripts so that it is useful to support more typr of angular apps
 
 adding 1.5.8 angular base libraries in resources :  https://code.angularjs.org/
+
+
+# Screenshot util using html2canvas
+Its from https://github.com/niklasvh/html2canvas/releases
+I will only use this 
