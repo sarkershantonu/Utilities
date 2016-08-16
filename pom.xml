@@ -132,8 +132,6 @@
             <artifactId>ashot</artifactId>
             <version>1.5.2</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
@@ -179,5 +177,25 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>runTests</id>
+            <modules>
+                <module>Opencart Selenium</module>
+            </modules>
+        </profile>
+    <profile>
+        <id>PublishUtils</id>
+        <modules>
+            <module>Automation-Utilities</module>
+            <module>Selenium-Utilities</module>
+        </modules>
+        <build>
+            <plugins>
+
+            </plugins>
+        </build>
+    </profile>
+</profiles>
 
 </project>
