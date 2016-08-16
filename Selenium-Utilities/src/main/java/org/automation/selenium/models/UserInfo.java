@@ -1,4 +1,4 @@
-package org.automation.selenium.users;
+package org.automation.selenium.models;
 
 /**
  * Created by shantonu on 7/9/16.

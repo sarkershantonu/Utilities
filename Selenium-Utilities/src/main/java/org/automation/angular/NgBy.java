@@ -6,6 +6,7 @@ package org.automation.angular;
   */
 
 
+import org.automation.angular.scripts.*;
 import org.openqa.selenium.By;
 
 public final class NgBy {

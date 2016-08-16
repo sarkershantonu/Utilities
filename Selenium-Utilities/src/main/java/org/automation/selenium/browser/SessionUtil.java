@@ -1,6 +1,6 @@
 package org.automation.selenium.browser;
 
-import org.automation.selenium.users.UserInfo;
+import org.automation.selenium.models.UserInfo;
 import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;

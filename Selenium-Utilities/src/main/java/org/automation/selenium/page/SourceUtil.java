@@ -13,9 +13,10 @@ import java.io.InputStream;
 /**
  * Created by shantonu on 4/19/16.
  */
-public class PageSourceUtil extends SeleniumUtilBase {
+public class SourceUtil extends SeleniumUtilBase {
 
-    public PageSourceUtil(WebDriver aDriver) {
+
+    public SourceUtil(WebDriver aDriver) {
         super(aDriver);
     }
     public String readJsLibrary(String jsFileName){
@@ -32,4 +33,22 @@ public class PageSourceUtil extends SeleniumUtilBase {
         }
         return jsLib;
     }
+
+    //experiments => JS injection
+   public class AddJs extends SeleniumUtilBase{
+        private String screenshotLib = "<script type=\"text/javascript\" src=\"html2canvas.min.js\"></script>";
+
+        private String ScriptAdding ="function load_script( source ) {\n" +
+                "    var new_script  = document.createElement('script');\n" +
+                "    new_script.type = 'text/javascript';\n" +
+                "    new_script.src = source;\n" +
+                "    new_script.className = 'MyInjectedScript';\n" +
+                "    document.getElementsByTagName('head')[0].appendChild(new_script);\n" +
+                "}";
+
+        public AddJs(WebDriver aDriver) {
+            super(aDriver);
+        }
+    }
 }
+

@@ -3,12 +3,10 @@ package org.automation.selenium.tracking;
 
 import org.apache.commons.io.FileUtils;
 
-import org.automation.selenium.page.PageSourceUtil;
+import org.automation.selenium.page.SourceUtil;
 import org.automation.utils.common.PropertyUtil;
 import org.automation.selenium.SeleniumUtilBase;
 
-import org.automation.selenium.browser.Browser;
-import org.automation.selenium.javascripts.JSUtil;
 import org.automation.selenium.page.PageUtil;
 import org.automation.utils.config.ConfigHelper;
 import org.automation.utils.io.FileUtilities;
@@ -90,7 +88,7 @@ public class ScreenShotUtil extends SeleniumUtilBase {
 
 
         try{
-        screenshotjs = new PageSourceUtil(this.driver).readJsLibrary("/js/html2canvas.js");
+        screenshotjs = new SourceUtil(this.driver).readJsLibrary("/js/html2canvas.js");
         /**The main JS => Change this if it does not works
          * function injectHtml2Canvas()
          {

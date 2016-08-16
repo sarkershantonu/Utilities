@@ -1,21 +1,13 @@
 package org.automation.selenium.javascripts;
 
 
-import org.apache.commons.io.IOUtils;
 import org.automation.selenium.SeleniumUtilBase;
 import org.automation.selenium.browser.Browser;
 
-import org.automation.selenium.page.PageSourceUtil;
-
-import org.automation.utils.tracking.error.ExceptionManager;
-import org.automation.utils.tracking.error.TestError;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Created by shantonu on 4/10/16.
