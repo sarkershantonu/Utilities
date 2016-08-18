@@ -23,38 +23,33 @@ public final class NgWebDriver implements WebDriver, WrapsDriver {
     public boolean IgnoreSynchronization;
     public int MaxIterations;
 
-    /**
-     * Ctor.
-     * @param drv Parent web driver.
-     */
+
     public NgWebDriver(final WebDriver drv) {
         this(drv, "body");
     }
 
-    /**
-     * Ctor.
-     * @param drv Parend Web Driver.
-     * @param rootElement Root Element.
-     */
-    public NgWebDriver(
-        final WebDriver drv,
-        final String rootElement
-    ) {
-        if (!(drv instanceof JavascriptExecutor)) {
-            throw new WebDriverException(
-                "The WebDriver instance must implement the " +
-                    "JavaScriptExecutor interface."
-            );
-        }
 
-        this.driver = drv;
-        this.jsExecutor = (JavascriptExecutor) drv;
-        this.root = rootElement;
+    public NgWebDriver(WebDriver driver, NgModule[] mockModules)
+    {
+        this(driver, "body", mockModules);
     }
     public NgWebDriver(WebDriver driver, boolean ignoreSync)
     {
         this(driver);
         this.IgnoreSynchronization = ignoreSync;
+    }
+    public NgWebDriver(WebDriver driver, String rootElement ,NgModule[] mockModules)
+    {
+        this(driver,rootElement);
+        this.mockModules = mockModules;
+    }
+    public NgWebDriver(final WebDriver drv,final String rootElement) {
+        if (!(drv instanceof JavascriptExecutor)) {throw new WebDriverException("Browser must be capable to run javascript");
+        }
+
+        this.driver = drv;
+        this.jsExecutor = (JavascriptExecutor) drv;
+        this.root = rootElement;
     }
 
 
