@@ -14,12 +14,12 @@ import java.util.List;
  */
 //public final class NgWebElement implements WebElement, WrapsElement
     // only thing added are the wait.. no more extra
-public final class NgWebElement extends RemoteWebElement implements WrapsElement
+public final class WebElementNG extends RemoteWebElement implements WrapsElement
 {
 
-    private final transient NgWebDriver driver;
+    private final transient WebDriverNG driver;
     private final transient WebElement element;
-    public NgWebElement(final NgWebDriver drv, final WebElement elm) {
+    public WebElementNG(final WebDriverNG drv, final WebElement elm) {
         this.driver = drv;
         this.element = elm;
     }
@@ -53,19 +53,19 @@ public final class NgWebElement extends RemoteWebElement implements WrapsElement
     }
 
     @Override
-    public NgWebElement findElement(By by) {
+    public WebElementNG findElement(By by) {
         if (by instanceof JavaScriptBy) {
             ((JavaScriptBy) by).root = this.element;
         }
         this.driver.waitForAngular();
-        return new NgWebElement(this.driver, this.element.findElement(by));
+        return new WebElementNG(this.driver, this.element.findElement(by));
     }
 
-    public List<NgWebElement> findNgElements(By by) {
+    public List<WebElementNG> findNgElements(By by) {
         final List<WebElement> temp = findElements(by);
-        final List<NgWebElement> elements = new ArrayList<>();
+        final List<WebElementNG> elements = new ArrayList<>();
         for (final WebElement element : temp) {
-            elements.add(new NgWebElement(this.driver, element));
+            elements.add(new WebElementNG(this.driver, element));
         }
         return elements;
     }

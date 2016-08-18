@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.*;
 import org.openqa.selenium.internal.WrapsDriver;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -15,7 +16,7 @@ import java.util.Set;
  *
  * TODO =>  Shantonu, adding all javascript capability to enrich this driver... example form ajax& js examples
  */
-public final class NgWebDriver implements WebDriver, WrapsDriver {
+public final class WebDriverNG implements WebDriver, WrapsDriver {
     private final WebDriver driver;
     private final JavascriptExecutor jsExecutor;
     private final String root;
@@ -24,54 +25,73 @@ public final class NgWebDriver implements WebDriver, WrapsDriver {
     public int MaxIterations;
 
 
-    public NgWebDriver(final WebDriver drv) {
-        this(drv, "body");
-    }
+    public WebDriverNG(WebDriver driver)
+    {
+        this(driver,true);//default behavior = ignore sync is true
 
-
-    public NgWebDriver(WebDriver driver, NgModule[] mockModules)
-    {
-        this(driver, "body", mockModules);
     }
-    public NgWebDriver(WebDriver driver, boolean ignoreSync)
+    public WebDriverNG(WebDriver driver, boolean ignoreSync)
     {
-        this(driver);
-        this.IgnoreSynchronization = ignoreSync;
+        this(driver, "body",ignoreSync);
     }
-    public NgWebDriver(WebDriver driver, String rootElement ,NgModule[] mockModules)
-    {
-        this(driver,rootElement);
-        this.mockModules = mockModules;
-    }
-    public NgWebDriver(final WebDriver drv,final String rootElement) {
+    public WebDriverNG(final WebDriver drv, final String rootElement, boolean ignoreSync) {
         if (!(drv instanceof JavascriptExecutor)) {throw new WebDriverException("Browser must be capable to run javascript");
         }
-
         this.driver = drv;
         this.jsExecutor = (JavascriptExecutor) drv;
         this.root = rootElement;
+        this.IgnoreSynchronization = ignoreSync;
+    }
+
+    public WebDriverNG(WebDriver driver, NgModule[] mockModules)
+    {
+        this(driver);
+        this.mockModules = mockModules;
+    }
+    public WebDriverNG(WebDriver driver, boolean ignoreSync, String rootElement , NgModule[] mockModules)
+    {
+        this(driver,rootElement,ignoreSync);
+        this.mockModules = mockModules;
+    }
+
+    public void waitForAngular() {
+        if(this.IgnoreSynchronization){
+            this.jsExecutor.executeScript(new WaitForAngular().content(),this.root);
+        }else {
+            this.jsExecutor.executeAsyncScript(new WaitForAngular().content(),this.root);
+        }
     }
 
 
-    @Override
-    public WebDriver getWrappedDriver() {
-        return this.driver;
-    }
 
-    @Override
-    public void close() {
-        this.driver.close();
-    }
-
-    @Override
-    public NgWebElement findElement(final By by) {
+    public List<WebElementNG> findNGElements(By arg0)
+    {
         this.waitForAngular();
-        return new NgWebElement(this, this.driver.findElement(by));
+        List<WebElement> temp = this.findElements(arg0);
+
+        List<WebElementNG> returnElements = new ArrayList<WebElementNG>();
+        for(WebElement currrentEle : temp)
+        {
+            returnElements.add(new WebElementNG(this, currrentEle));
+        }
+        return returnElements;
+    }
+
+    public WebElementNG findNGElement(final By by) {
+        this.waitForAngular();
+        return new WebElementNG(this, this.driver.findElement(by));
     }
 
     @Override
     public List<WebElement> findElements(final By by) {
+        this.waitForAngular();
         return this.driver.findElements(by);
+    }
+
+    @Override
+    public WebElement findElement(final By by) {
+        this.waitForAngular();
+        return this.driver.findElement(by);
     }
 
     @Override
@@ -80,6 +100,10 @@ public final class NgWebDriver implements WebDriver, WrapsDriver {
         this.driver.get(arg0);
     }
 
+    @Override
+    public WebDriver getWrappedDriver() {
+        return this.driver;
+    }
     @Override
     public String getCurrentUrl() {
         this.waitForAngular();
@@ -130,11 +154,9 @@ public final class NgWebDriver implements WebDriver, WrapsDriver {
     public TargetLocator switchTo() {
         return this.driver.switchTo();
     }
-
-    public void waitForAngular() {
-        this.jsExecutor.executeAsyncScript(
-            new WaitForAngular().content(),
-            this.root
-        );
+    @Override
+    public void close() {
+        this.driver.close();
     }
+
 }

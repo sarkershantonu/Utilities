@@ -18,7 +18,6 @@ var waitForAngular = function(rootSelector, callback) {
                 'client-side navigation, which can interfere with Protractor\'s ' +
                 'bootstrapping. See http://git.io/v4gXM for details');
         }
-
         if (angular.getTestability) {
             angular.getTestability(el).whenStable(callback);
         } else {
