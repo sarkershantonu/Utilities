@@ -19,6 +19,9 @@ public final class NgWebDriver implements WebDriver, WrapsDriver {
     private final WebDriver driver;
     private final JavascriptExecutor jsExecutor;
     private final String root;
+    private NgModule[] mockModules;
+    public boolean IgnoreSynchronization;
+    public int MaxIterations;
 
     /**
      * Ctor.
@@ -48,6 +51,12 @@ public final class NgWebDriver implements WebDriver, WrapsDriver {
         this.jsExecutor = (JavascriptExecutor) drv;
         this.root = rootElement;
     }
+    public NgWebDriver(WebDriver driver, boolean ignoreSync)
+    {
+        this(driver);
+        this.IgnoreSynchronization = ignoreSync;
+    }
+
 
     @Override
     public WebDriver getWrappedDriver() {
