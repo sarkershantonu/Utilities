@@ -36,6 +36,7 @@ public class BrowserMob {
         capabilities.setCapability(CapabilityType.PROXY, proxy);
         return new FirefoxDriver(capabilities);
     }
+    //https://sites.google.com/a/chromium.org/chromedriver/capabilities
     public WebDriver getChromeWithProxy(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments();//=> this part need to simplify with testing.
