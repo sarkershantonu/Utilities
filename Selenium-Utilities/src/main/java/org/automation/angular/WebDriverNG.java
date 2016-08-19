@@ -16,7 +16,7 @@ import java.util.Set;
  *
  * TODO =>  Shantonu, adding all javascript capability to enrich this driver... example form ajax& js examples
  */
-public final class WebDriverNG implements WebDriver, WrapsDriver {
+public final class WebDriverNG implements WebDriver, NgSupport{
     private final WebDriver driver;
     private final JavascriptExecutor jsExecutor;
     private final String root;
@@ -25,9 +25,13 @@ public final class WebDriverNG implements WebDriver, WrapsDriver {
     public int MaxIterations;
 
 
+    @Override
+    public JavascriptExecutor getJsExecutor(){
+        return jsExecutor;
+    }
     public WebDriverNG(WebDriver driver)
     {
-        this(driver,true);//default behavior = ignore sync is true
+        this(driver,false);//default behavior = ignore sync is false
 
     }
     public WebDriverNG(WebDriver driver, boolean ignoreSync)
@@ -54,6 +58,7 @@ public final class WebDriverNG implements WebDriver, WrapsDriver {
         this.mockModules = mockModules;
     }
 
+    @Override
     public void waitForAngular() {
         if(this.IgnoreSynchronization){
             this.jsExecutor.executeScript(new WaitForAngular().content(),this.root);
@@ -61,7 +66,6 @@ public final class WebDriverNG implements WebDriver, WrapsDriver {
             this.jsExecutor.executeAsyncScript(new WaitForAngular().content(),this.root);
         }
     }
-
 
 
     public List<WebElementNG> findNGElements(By arg0)
@@ -159,4 +163,15 @@ public final class WebDriverNG implements WebDriver, WrapsDriver {
         this.driver.close();
     }
 
+    @Override
+    public Object executeScript(String script, Object... args) {
+        waitForAngular();
+        return jsExecutor.executeScript(script,args);
+    }
+
+    @Override
+    public Object executeAsyncScript(String script, Object... args) {
+        waitForAngular();
+        return jsExecutor.executeAsyncScript(script, args);
+    }
 }
