@@ -38,4 +38,8 @@ public class CookieUtil extends SeleniumUtilBase {
     public Cookie getCookie(String name){
         return driver.manage().getCookieNamed(name);
     }
+
+    public WebDriver.Options getCookieOptions(){
+        return driver.manage();
+    }
 }

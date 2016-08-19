@@ -1,4 +1,5 @@
-package org.automation.selenium.common;
+package org.automation.selenium.proxy;
+
 
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.remote.CapabilityType;
@@ -24,6 +25,13 @@ public class ProxyUtils {
     }
 
     public static DesiredCapabilities setProxyCapability(DesiredCapabilities capabilities){
+        proxy = new Proxy();
+        proxy.setHttpProxy(proxyurl).setFtpProxy(proxyurl).setSslProxy(proxyurl);
+        capabilities.setCapability(CapabilityType.PROXY, proxy);
+        return capabilities;
+    }
+    public static DesiredCapabilities getDedaultProxyCapability(){
+        DesiredCapabilities capabilities = new DesiredCapabilities();
         proxy = new Proxy();
         proxy.setHttpProxy(proxyurl).setFtpProxy(proxyurl).setSslProxy(proxyurl);
         capabilities.setCapability(CapabilityType.PROXY, proxy);
