@@ -7,6 +7,8 @@ import net.lightbody.bmp.proxy.http.RequestInterceptor;
 
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -22,7 +24,8 @@ public class BrowserMob {
         server.setCaptureHeaders(true);
         Proxy proxy = server.seleniumProxy(); //org.openqa.selenium.Proxy
         proxy.setHttpProxy(host).setSslProxy(host);
-        server.addRequestInterceptor(new RequestInterceptor() {
+        server.addRequestInterceptor(
+                new RequestInterceptor() {
             @Override
             public void process(BrowserMobHttpRequest browserMobHttpRequest, Har har) {
                 browserMobHttpRequest.addRequestHeader("Referer", addReffer);
@@ -32,5 +35,10 @@ public class BrowserMob {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(CapabilityType.PROXY, proxy);
         return new FirefoxDriver(capabilities);
+    }
+    public WebDriver getChromeWithProxy(){
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments();//=> this part need to simplify with testing.
+        return new ChromeDriver();//// TODO: 8/19/16
     }
 }
