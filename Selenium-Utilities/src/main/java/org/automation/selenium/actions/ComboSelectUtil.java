@@ -34,4 +34,7 @@ public class ComboSelectUtil {
     public static List<WebElement> getAllOptions(WebElement element){
         return new Select(element).getOptions();
     }
+    public static List<WebElement> getAllSelectedOptions(WebElement element){
+        return new Select(element).getAllSelectedOptions();
+    }
 }
