@@ -26,5 +26,5 @@ public abstract class MouseBase<T extends PageBase> {
      * @param second => wait on web element
      * @return
      */
-    abstract T  on(WebElement element, int second) ;
+    public abstract T  on(WebElement element, int second) ;
 }

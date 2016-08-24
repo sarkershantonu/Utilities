@@ -16,7 +16,7 @@ public class Click<T extends PageBase> extends MouseBase<T> {
         super(t);
     }
     @Override
-    T on(WebElement element, int second) {
+    public T on(WebElement element, int second) {
         element.click();
         return page;
     }
