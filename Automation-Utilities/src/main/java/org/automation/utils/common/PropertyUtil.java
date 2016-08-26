@@ -20,10 +20,6 @@ public class PropertyUtil {
         System.setProperty(name, value);
     }
 
-    public static String getSysProperty( String propertyFileName,  String sysProperty) {
-        return System.getProperty(sysProperty);
-    }
-
     public static void setProperty(String nameOfPropertyFile, String nameOfProperty, String valueOfProperty) throws IOException {
         output = new FileOutputStream(nameOfPropertyFile, true);//append mode
 
