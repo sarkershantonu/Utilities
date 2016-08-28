@@ -162,25 +162,23 @@ public class ScreenShotUtil extends SeleniumUtilBase {
     /**
      * Take screenshot with Ashot
      * @param element
-     * @param aDriver
      * @param name
      */
-    public void takeWith(WebElement element, WebDriver aDriver,String name){
+    public void takeScreenShotOf(WebElement element, String name){
         AShot aShot = new AShot();
-        Screenshot screenshot = aShot.takeScreenshot(aDriver,element);
+        Screenshot screenshot = aShot.takeScreenshot(this.driver,element);
         saveImage(name,screenshot.getImage());
     }
-    public void takeFullScreen(String name, WebDriver aDriver){
-        takeFullScreen(name, aDriver, 500);
+    public void takeFullScreen(String name){
+        takeFullScreen(name, 500);
     }
     /***
      * This will waiti 500ms(default) to scroll and take full screenshot
      * This view point, you need to change based on application behavior
      * @param name
-     * @param aDriver
      */
 
-    public void takeFullScreen(String name, WebDriver aDriver, int scrollTimeout){
-        saveImage(name, new AShot().shootingStrategy(ShootingStrategies.viewportPasting(scrollTimeout)).takeScreenshot(aDriver).getImage());
+    public void takeFullScreen(String name, int scrollTimeout){
+        saveImage(name, new AShot().shootingStrategy(ShootingStrategies.viewportPasting(scrollTimeout)).takeScreenshot(this.driver).getImage());
     }
 }
