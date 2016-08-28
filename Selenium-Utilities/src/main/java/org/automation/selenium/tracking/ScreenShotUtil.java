@@ -50,7 +50,7 @@ public class ScreenShotUtil extends SeleniumUtilBase {
      * @param isError
      * @return
      */
-    public void takeScreenShot(String name, boolean isError){
+    public ScreenShotUtil takeScreenShot(String name, boolean isError){
         String imageName = getFileName(name,isError);
         StringBuilder fileNama = new StringBuilder(imageName);
         File screenShot = new File(fileNama.toString());
@@ -67,6 +67,7 @@ public class ScreenShotUtil extends SeleniumUtilBase {
         {
             screenShotByJS(imageName);
         }
+        return this;
     }
 
 
@@ -76,7 +77,7 @@ public class ScreenShotUtil extends SeleniumUtilBase {
      * main source => https://github.com/niklasvh/html2canvas
      */
 
-    private void screenShotByJS(String imageName){
+    private ScreenShotUtil screenShotByJS(String imageName){
         String screenshotjs;
         String base64js_getImage;
         String base64_imageContant;
@@ -121,7 +122,7 @@ public class ScreenShotUtil extends SeleniumUtilBase {
         }catch (Exception e){
 
         }
-
+        return this;
     }
     private String getFileName(String testname, boolean isError){
         SimpleDateFormat date = ConfigHelper.dateFormat;
@@ -149,13 +150,14 @@ public class ScreenShotUtil extends SeleniumUtilBase {
         return file.toString();
     }
 
-    private void saveImage(String name, BufferedImage image){
+    private ScreenShotUtil saveImage(String name, BufferedImage image){
         File output = new File(ScreenPath+name+"."+ConfigHelper.screenshotType);
         try {
             ImageIO.write(image,ConfigHelper.screenshotType,output);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return this;
     }
 
 //************** Bottom items are using Ashot********************//
@@ -164,22 +166,24 @@ public class ScreenShotUtil extends SeleniumUtilBase {
      * @param element
      * @param name
      */
-    public void takeScreenShotOf(WebElement element, String name){
+    public ScreenShotUtil takeScreenShotByAshot(WebElement element, String name){
         AShot aShot = new AShot();
         Screenshot screenshot = aShot.takeScreenshot(this.driver,element);
         saveImage(name,screenshot.getImage());
+        return this;
     }
     /***
      * This will waiti 500ms(default) to scroll and take full screenshot
      * This view point, you need to change based on application behavior
      * @param name
      */
-    public void takeFullScreen(String name){
-        takeFullScreen(name, 500);
+    public ScreenShotUtil takeFullScreenByAshot(String name){
+        return takeFullScreenByAshot(name, 500);
+
     }
 
 
-    public void takeFullScreen(String name, int scrollTimeout){
-        saveImage(name, new AShot().shootingStrategy(ShootingStrategies.viewportPasting(scrollTimeout)).takeScreenshot(this.driver).getImage());
+    public ScreenShotUtil takeFullScreenByAshot(String name, int scrollTimeout){
+        return saveImage(name, new AShot().shootingStrategy(ShootingStrategies.viewportPasting(scrollTimeout)).takeScreenshot(this.driver).getImage());
     }
 }
