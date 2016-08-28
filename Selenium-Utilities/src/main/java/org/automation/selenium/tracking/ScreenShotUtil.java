@@ -32,6 +32,14 @@ public class ScreenShotUtil extends SeleniumUtilBase {
 
     public static String ScreenPath = PropertyUtil.getUserDir()+ConfigHelper.screenshotImagerFolder;//PropertyUtil.getSysProperty("screenshot.folder");
 
+    public byte[] takeScreenShotAsByteArray(){
+        return ((TakesScreenshot) this.driver).getScreenshotAs(OutputType.BYTES);
+
+    }
+    public String takeScreenShotAsString(){
+        return ((TakesScreenshot) this.driver).getScreenshotAs(OutputType.BASE64);
+
+    }
     public ScreenShotUtil(WebDriver aDriver) {
         super(aDriver);
     }
