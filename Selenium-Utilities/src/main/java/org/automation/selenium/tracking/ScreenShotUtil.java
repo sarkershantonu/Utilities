@@ -178,6 +178,7 @@ public class ScreenShotUtil extends SeleniumUtilBase {
      * @param name
      */
     public ScreenShotUtil takeFullScreenByAshot(String name){
+
         return takeFullScreenByAshot(name, 500);
 
     }
