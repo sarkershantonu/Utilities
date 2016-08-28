@@ -1,4 +1,4 @@
-package org.automation.selenium.page;
+package org.automation.selenium.elements;
 
 
 import org.automation.selenium.SeleniumUtilBase;

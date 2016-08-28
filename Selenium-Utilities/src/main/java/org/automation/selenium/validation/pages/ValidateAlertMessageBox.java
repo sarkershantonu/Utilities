@@ -1,4 +1,4 @@
-package org.automation.selenium.validation;
+package org.automation.selenium.validation.pages;
 
 
 import org.automation.selenium.SeleniumUtilBase;
