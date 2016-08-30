@@ -15,13 +15,14 @@ public class JsonUtilResponse {
         return searchAgreementsResponse;
     }
     
-    public static <T> T get(InputStream contentAsStream, T t){
+ public static <T> T get(InputStream contentAsStream, Class<T> t){
         T searchAgreementsResponse = null;
         try {
             ObjectMapper mapper = new ObjectMapper();
-            searchAgreementsResponse = mapper.readValue(contentAsStream, (Class<T>) t.getClass());
+            searchAgreementsResponse = mapper.readValue(contentAsStream, t);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return searchAgreementsResponse;
+    }
 }
