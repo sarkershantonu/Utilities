@@ -28,9 +28,6 @@ import org.apache.http.ssl.SSLContextBuilder;
 
 import javax.net.ssl.*;
 
-/**
- * Created by bulhacm on 3/16/2016.
- */
 public class HttpClient {
 
     private String baseUrl;
