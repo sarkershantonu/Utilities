@@ -1,3 +1,5 @@
+package org.automation.utils.common.models;
+
 public enum UserAccount {
         normal("user3", "pass"), 
 		admin("user1", "pass"),
