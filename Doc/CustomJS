@@ -57,3 +57,4 @@ Best practices : (I follow)
 1. Before running with selenium , run this in browser console (F12/ Devtools has JS console) , see if it is working, that will work with selenium
 2. Check if the JS is compatible with different browser
 
+This is very important section, for single page app.. making seperate file for jprotector
