@@ -1,8 +1,9 @@
-
+package org.automation.utils.db;
 
 
 import com.google.common.collect.ArrayTable;
 import com.google.common.collect.Table;
+import org.automation.utils.db.Query;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

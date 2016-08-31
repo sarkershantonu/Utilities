@@ -1,5 +1,5 @@
-
-
+package org.automation.utils.jms;
+/*
 import com.google.common.base.Joiner;
 import com.google.common.base.Throwables;
 import com..datait.dist.orator.linguamapping.MessageType;
@@ -22,7 +22,7 @@ import static javax.naming.Context.*;
 
 public final class JmsUtils {
 
-    private static final Logger LOG = LoggerFactory.getLogger(FunctionalTestUtils.class);
+    private static final Logger LOG = LoggerFactory.getLogger(JmsUtils.class);
     private static final String SELECTOR_PREFIX = "selector";
     private static final String ORCA_JNDI_PROVIDER_URL_KEY = "orca.jndi.providerUrl";
     private static final String CONNECTION_FACTORY_KEY = "subscriber.connectionfactory";
@@ -146,3 +146,4 @@ public final class JmsUtils {
         }
     }
 }
+*/

@@ -1,4 +1,4 @@
-
+package org.automation.utils.db;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

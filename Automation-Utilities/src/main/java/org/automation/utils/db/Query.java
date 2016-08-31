@@ -1,4 +1,7 @@
-Query<T> 
+package org.automation.utils.db;
+
+import org.slf4j.Logger;
+
 
 
 import org.apache.commons.lang.builder.ToStringBuilder;
