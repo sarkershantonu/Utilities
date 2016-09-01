@@ -6,6 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.lift.TestContext;
 import org.openqa.selenium.lift.find.Finder;
+import org.openqa.selenium.support.ui.Clock;
+import org.openqa.selenium.support.ui.Sleeper;
+import org.openqa.selenium.support.ui.SystemClock;
 
 /**
  * Created by shantonu on 9/1/16.
@@ -13,9 +16,17 @@ import org.openqa.selenium.lift.find.Finder;
  */
 public class WebDriverNGContext implements TestContext {
     private WebDriverNG driverNG;
+    private final Clock clock;
+    private final Sleeper sleeper;
 
-    public WebDriverNGContext(WebDriverNG driver){
+    WebDriverNGContext(WebDriverNG driver, Clock clock, Sleeper sleeper) {
         this.driverNG = driver;
+        this.clock = clock;
+        this.sleeper = sleeper;
+    }
+
+    public WebDriverNGContext(WebDriverNG driver) {
+        this(driver, new SystemClock(), Sleeper.SYSTEM_SLEEPER);
     }
 
     @Override
