@@ -2,7 +2,10 @@ package org.automation.angular.extras.match;
 
 import org.automation.angular.WebElementNG;
 import org.hamcrest.Description;
+import org.hamcrest.Factory;
+import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.openqa.selenium.WebElement;
 
 
 /**
@@ -17,5 +20,10 @@ public class DisplayedMatcherNG extends TypeSafeMatcher<WebElementNG> {
     @Override
     public void describeTo(Description description) {
 
+    }
+
+    @Factory
+    public static Matcher<WebElementNG> displayed() {
+        return new DisplayedMatcherNG();
     }
 }
