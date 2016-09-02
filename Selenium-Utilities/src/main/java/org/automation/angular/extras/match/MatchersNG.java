@@ -1,6 +1,7 @@
 package org.automation.angular.extras.match;
 
 import org.automation.angular.WebElementNG;
+import org.openqa.selenium.lift.match.NumericalMatchers;
 
 /**
  * Created by shantonu on 9/2/16.
@@ -8,28 +9,28 @@ import org.automation.angular.WebElementNG;
 public class MatchersNG {
     public static org.hamcrest.Matcher<WebElementNG> attribute(
             java.lang.String attributeName, org.hamcrest.Matcher<java.lang.String> valueMatcher) {
-        return org.openqa.selenium.lift.match.AttributeMatcher.attribute(attributeName, valueMatcher);
+        return AttributeMatcherNG.attribute(attributeName, valueMatcher);
     }
 
     public static org.hamcrest.Matcher<java.lang.Integer> atLeast(int count) {
-        return org.openqa.selenium.lift.match.NumericalMatchers.atLeast(count);
+        return NumericalMatchers.atLeast(count);
     }
 
     public static org.hamcrest.Matcher<java.lang.Integer> exactly(int count) {
-        return org.openqa.selenium.lift.match.NumericalMatchers.exactly(count);
+        return NumericalMatchers.exactly(count);
     }
 
     public static org.hamcrest.Matcher<WebElementNG> text(
             org.hamcrest.Matcher<java.lang.String> textMatcher) {
-        return org.openqa.selenium.lift.match.TextMatcher.text(textMatcher);
+        return TextMatcherNG.text(textMatcher);
     }
 
     public static org.hamcrest.Matcher< WebElementNG> selection() {
-        return org.openqa.selenium.lift.match.SelectionMatcher.selection();
+        return SelectionMatcherNG.selection();
     }
 
     public static org.hamcrest.Matcher< WebElementNG> value(Object value) {
-        return org.openqa.selenium.lift.match.ValueMatcher.value(value);
+        return ValueMatcherNG.value(value);
     }
 
     public static org.hamcrest.Matcher< WebElementNG> displayed() {
