@@ -9,6 +9,7 @@ import static org.openqa.selenium.lift.Matchers.value;
 
 /**
  * Created by shantonu on 9/2/16.
+ * todo =. error exsists.
  */
 public class InputFinderNG extends HtmlTagFinderNG {
     @Override
@@ -22,37 +23,37 @@ public class InputFinderNG extends HtmlTagFinderNG {
     }
 
     @Factory
-    public static HtmlTagFinder textbox() {
+    public static HtmlTagFinderNG textbox() {
         return new InputFinderNG().with(attribute("type", equalTo("text")));
     }
 
     @Factory
-    public static HtmlTagFinder imageButton() {
+    public static HtmlTagFinderNG imageButton() {
         return new InputFinderNG().with(attribute("type", equalTo("image")));
     }
 
     @Factory
-    public static HtmlTagFinder imageButton(String label) {
+    public static HtmlTagFinderNG imageButton(String label) {
         return imageButton().with(value((label)));
     }
 
     @Factory
-    public static HtmlTagFinder radioButton() {
+    public static HtmlTagFinderNG radioButton() {
         return new InputFinderNG().with(attribute("type", equalTo("radio")));
     }
 
     @Factory
-    public static HtmlTagFinder radioButton(String id) {
+    public static HtmlTagFinderNG radioButton(String id) {
         return radioButton().with(attribute("id", equalTo(id)));
     }
 
     @Factory
-    public static HtmlTagFinder submitButton() {
+    public static HtmlTagFinderNG submitButton() {
         return new InputFinderNG().with(attribute("type", equalTo("submit")));
     }
 
     @Factory
-    public static HtmlTagFinder submitButton(String label) {
+    public static HtmlTagFinderNG submitButton(String label) {
         return submitButton().with(value(label));
     }
 }
