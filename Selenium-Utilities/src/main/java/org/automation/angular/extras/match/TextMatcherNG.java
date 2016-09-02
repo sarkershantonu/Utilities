@@ -7,23 +7,31 @@ import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.openqa.selenium.WebElement;
 
-
 /**
  * Created by shantonu on 9/2/16.
+ * todo
  */
-public class DisplayedMatcherNG extends TypeSafeMatcher<WebElementNG> {
+public class TextMatcherNG extends TypeSafeMatcher<WebElementNG> {
+
+    private final Matcher<String> matcher;
+
+    TextMatcherNG(Matcher<String> matcher) {
+        this.matcher = matcher;
+    }
+
     @Override
     protected boolean matchesSafely(WebElementNG item) {
-        return item.isDisplayed();
+        return matcher.matches(item.getText());
     }
 
     @Override
     public void describeTo(Description description) {
-        description.appendText("displayed");
+        description.appendText("text ");
+        matcher.describeTo(description);
     }
 
     @Factory
-    public static Matcher<WebElementNG> displayed() {
-        return new DisplayedMatcherNG();
+    public static Matcher<WebElementNG> text(final Matcher<String> textMatcher) {
+        return new TextMatcherNG(textMatcher);
     }
 }

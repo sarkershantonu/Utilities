@@ -14,12 +14,12 @@ import org.openqa.selenium.WebElement;
 public class SelectionMatcherNG extends TypeSafeMatcher<WebElementNG> {
     @Override
     protected boolean matchesSafely(WebElementNG item) {
-        return false;
+        return item.isSelected();
     }
 
     @Override
     public void describeTo(Description description) {
-
+        description.appendText("should be selected");
     }
 
     @Factory
