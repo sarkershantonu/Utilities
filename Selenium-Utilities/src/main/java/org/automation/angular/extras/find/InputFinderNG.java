@@ -11,6 +11,7 @@ import static org.openqa.selenium.lift.Matchers.value;
  * Created by shantonu on 9/2/16.
  * todo =. error exsists.
  */
+/*
 public class InputFinderNG extends HtmlTagFinderNG {
     @Override
     protected String tagDescription() {
@@ -57,3 +58,4 @@ public class InputFinderNG extends HtmlTagFinderNG {
         return submitButton().with(value(label));
     }
 }
+*/
