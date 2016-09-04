@@ -16,4 +16,7 @@ public class RuntimeUtil {
     public static void initiateShutdown(Thread hook){
         Runtime.getRuntime().addShutdownHook(hook);
     }
+    public static void avoidShutdown(Thread hook){
+        Runtime.getRuntime().removeShutdownHook(hook);
+    }
 }
