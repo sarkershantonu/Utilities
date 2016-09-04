@@ -13,4 +13,7 @@ public class RuntimeUtil {
     public static void shutdownJVM(){
         Runtime.getRuntime().exit(0);
     }
+    public static void initiateShutdown(Thread hook){
+        Runtime.getRuntime().addShutdownHook(hook);
+    }
 }
