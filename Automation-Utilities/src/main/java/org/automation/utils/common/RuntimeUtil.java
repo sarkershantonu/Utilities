@@ -6,6 +6,11 @@ package org.automation.utils.common;
 public class RuntimeUtil {
 
     public static Long getFreeMemory(){
+
         return Runtime.getRuntime().freeMemory();
+    }
+
+    public static void shutdownJVM(){
+        Runtime.getRuntime().exit(0);
     }
 }
