@@ -1,10 +1,9 @@
-package org.automation.utils.tracking;
+package org.automation.utils.testing;
 import org.hamcrest.Matcher;
 import org.junit.rules.ExpectedException;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
-
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.containsString;
@@ -48,11 +47,11 @@ public class ExpectedRootCauseException implements TestRule {
     }
 
     public void expectRootCauseMessage(Matcher<String> matcher) {
-        expect(hasRootCauseMessage(matcher));
+        expect(ThrowableRootCauseMessageMatcher.hasRootCauseMessage(matcher));
     }
 
     public void expectRootCause(Matcher<? extends Throwable> matcher) {
-        expect(hasRootCause(matcher));
+        expect(ThrowableRootCauseMatcher.hasRootCause(matcher));
     }
 
     public void expectCause(Matcher<? extends Throwable> expectedCause) {

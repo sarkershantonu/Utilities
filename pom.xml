@@ -40,16 +40,16 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-    <groupId>org.hamcrest</groupId>
-    <artifactId>hamcrest-all</artifactId>
-    <version>1.3</version>
-</dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>1.3</version>
+        </dependency>
         <!--Not maintain, so added extra : http://www.seleniumhq.org/download/maven.jsp-->
-         <dependency>
-        <groupId>com.github.detro</groupId>
-        <artifactId>phantomjsdriver</artifactId>
-        <version>1.2.0</version>
-         </dependency> 
+        <dependency>
+            <groupId>com.github.detro</groupId>
+            <artifactId>phantomjsdriver</artifactId>
+            <version>1.2.0</version>
+        </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-remote-driver</artifactId>
@@ -82,6 +82,23 @@
         </dependency>
 
         <dependency>
+            <groupId>org.unitils</groupId>
+            <artifactId>unitils-core</artifactId>
+            <version>3.4.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.unitils</groupId>
+            <artifactId>unitils-easymock</artifactId>
+            <version>3.4.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.unitils</groupId>
+            <artifactId>unitils-inject</artifactId>
+            <version>3.4.3</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>com.saucelabs</groupId>
             <artifactId>sauce_java_common</artifactId>
             <version>${saucelab.version}</version>
@@ -98,13 +115,24 @@
         </dependency>
 
         <!--Logging -->
-
+    <!--    <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.21</version>
         </dependency>
 
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
 
         <!-- allure Junit port -->
         <dependency>
@@ -195,18 +223,18 @@
                 <module>Opencart Selenium</module>
             </modules>
         </profile>
-    <profile>
-        <id>PublishUtils</id>
-        <modules>
-            <module>Automation-Utilities</module>
-            <module>Selenium-Utilities</module>
-        </modules>
-        <build>
-            <plugins>
+        <profile>
+            <id>PublishUtils</id>
+            <modules>
+                <module>Automation-Utilities</module>
+                <module>Selenium-Utilities</module>
+            </modules>
+            <build>
+                <plugins>
 
-            </plugins>
-        </build>
-    </profile>
-</profiles>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

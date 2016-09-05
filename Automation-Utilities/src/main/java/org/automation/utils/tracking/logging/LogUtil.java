@@ -1,4 +1,4 @@
-package org.automation.utils.tracking;
+package org.automation.utils.tracking.logging;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
