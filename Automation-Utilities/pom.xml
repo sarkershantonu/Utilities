@@ -7,7 +7,9 @@
         <groupId>com.shantonu</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
+	<properties>
+	         <activiti.version>5.19.0.1</activiti.version>
+	         </properties>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>utilities</artifactId>
     <packaging>jar</packaging>
@@ -23,6 +25,22 @@
             <artifactId>pdfbox</artifactId>
             <version>2.0.2</version>
         </dependency>
+        
+        <dependency>
+         <groupId>org.activiti</groupId>
+	<artifactId>activiti-engine</artifactId>
+	<version>${activiti.version}</version>
+	<exclusions>
+		<exclusion>
+			<artifactId>slf4j-api</artifactId>
+			<groupId>org.slf4j</groupId>
+		</exclusion>
+		<exclusion>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<groupId>org.slf4j</groupId>
+		</exclusion>
+		</exclusions>
+	</dependency>
     </dependencies>
 
 </project>
