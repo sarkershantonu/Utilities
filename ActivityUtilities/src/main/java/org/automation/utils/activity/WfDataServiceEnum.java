@@ -8,6 +8,6 @@ import org.apache.tools.ant.taskdefs.XSLTProcess;
  */
 public class WfDataServiceEnum {
 
-    public static final XSLTProcess SET_PROC_INST_ID_WORKFLOW = ;
-    public static final XSLTProcess SET_NODE_ATTRIBUTES = ;
+    public static final XSLTProcess SET_PROC_INST_ID_WORKFLOW = new XSLTProcess() ;
+    public static final XSLTProcess SET_NODE_ATTRIBUTES = new XSLTProcess();
 }
