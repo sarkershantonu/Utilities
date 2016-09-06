@@ -15,5 +15,6 @@ public class WFDataService {
     }
 
     public void unlockWorkflowInstanceState(String userGpn, String lockKey) {
+
     }
 }

@@ -22,7 +22,6 @@ import org.activiti.engine.runtime.ExecutionQuery;
 import org.activiti.engine.task.IdentityLink;
 import org.activiti.engine.task.IdentityLinkType;
 import org.activiti.engine.task.Task;
-import org.activiti.engine.task.TaskQuery;
 
 public class ActivitiWF implements WF {
 
