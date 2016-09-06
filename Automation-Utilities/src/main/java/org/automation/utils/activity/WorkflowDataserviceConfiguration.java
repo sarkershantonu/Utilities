@@ -1,4 +1,4 @@
-
+package org.automation.utils.activity;
 
 import javax.sql.DataSource;
 
@@ -11,8 +11,8 @@ public class WorkflowDataserviceConfiguration {
     private static final String WF_DAO_DATA_SERVICE = "wfDaoDataService";
 
     @Bean(name = "bookmasterDataService")
-    public BookmasterDataService bookmasterDataService() {
-        return new BookmasterDataService();
+    public ProjectDataService bookmasterDataService() {
+        return new ProjectDataService();
     }
 
     @Bean(name = "wfDataService")

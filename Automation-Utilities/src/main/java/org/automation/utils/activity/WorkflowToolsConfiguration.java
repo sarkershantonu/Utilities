@@ -1,3 +1,4 @@
+package org.automation.utils.activity;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +16,8 @@ public class WorkflowToolsConfiguration {
     }
 
     @Bean(name = "nodeService")
-    public NodeService nodeService(BookmasterDataService bookmasterDataService) {
-        return new NodeService(bookmasterDataService);
+    public NodeService nodeService(ProjectDataService projectDataService) {
+        return new NodeService(projectDataService);
     }
 
     @Bean(name = "workflowService")

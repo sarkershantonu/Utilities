@@ -1,3 +1,4 @@
+package org.automation.utils.activity;
 
 public class StagingServiceImpl implements StagingService {
 
