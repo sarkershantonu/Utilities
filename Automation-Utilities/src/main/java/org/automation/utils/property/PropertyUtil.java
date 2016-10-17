@@ -79,7 +79,7 @@ public class PropertyUtil {
      * @param folderPath
      * @throws IOException
      */
-    public static void loadAllAsSystemProperty(String folderPath) throws IOException {
+    public static void loadAllPropertyAsSystemProperty(String folderPath) throws IOException {
         List<String> props = new ArrayList<>();
         File[] propertyFiles = new File(folderPath).listFiles();
         for(File aProperty:propertyFiles){
