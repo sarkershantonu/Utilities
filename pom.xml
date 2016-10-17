@@ -6,13 +6,12 @@
 
     <groupId>com.shantonu</groupId>
     <artifactId>AutomationUI</artifactId>
-    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <modules>
         <module>Automation-Utilities</module>
         <module>Selenium-Utilities</module>
         <module>Opencart Selenium</module>
-        <module>ActivityUtilities</module>
     </modules>
 
     <properties>
