@@ -2,6 +2,7 @@ package org.automation.angular;
 
 
 import org.automation.angular.scripts.Script;
+import org.openqa.selenium.*;
 import org.openqa.selenium.internal.WrapsDriver;
 
 import java.util.ArrayList;
