@@ -1,7 +1,9 @@
-package org.automation.utils.common;
+package org.automation.utils.property;
 
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.StringJoiner;
 
@@ -70,5 +72,24 @@ public class PropertyUtil {
     public static String getUserDir(){
         return getSysProperty("user.dir");
     }
-    
+
+
+    /**
+     * Loads all property entry under all property files under a specified path
+     * @param folderPath
+     * @throws IOException
+     */
+    public static void loadAllAsSystemProperty(String folderPath) throws IOException {
+        List<String> props = new ArrayList<>();
+        File[] propertyFiles = new File(folderPath).listFiles();
+        for(File aProperty:propertyFiles){
+            Properties p = new Properties();
+            p.load(new FileInputStream(aProperty));
+            for(String k:p.stringPropertyNames()){
+                System.setProperty(k,p.getProperty(k));
+            }
+        }
+
+
+    }
 }

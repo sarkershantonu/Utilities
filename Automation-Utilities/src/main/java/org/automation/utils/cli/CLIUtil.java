@@ -1,4 +1,4 @@
-package org.automation.utils.common;
+package org.automation.utils.cli;
 
 import java.util.Arrays;
 import java.util.Collections;
