@@ -4,12 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
+        <groupId>org.automation</groupId>
         <artifactId>AutomationUI</artifactId>
-        <groupId>com.shantonu</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>opencart-selenium</artifactId>
 
 <dependencies>
@@ -19,7 +18,7 @@
         <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
-        <groupId>com.shantonu</groupId>
+        <groupId>org.automation</groupId>
         <artifactId>selenium-utilities</artifactId>
         <version>1.0-SNAPSHOT</version>
     </dependency>
