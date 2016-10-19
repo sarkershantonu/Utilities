@@ -1,4 +1,4 @@
-
+package org.automation.utils.github;
 
 import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.client.GitHubClient;
@@ -8,17 +8,11 @@ import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 import org.kohsuke.args4j.spi.BooleanOptionHandler;
 
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
-import java.security.SecureRandom;
-
 
 
 public class Client {
-    private static final String DEFAULT_GITHUB_HOST = "github.ldn.swissbank.com";
+    private static final String DEFAULT_GITHUB_HOST = "github.com";
     
     private static final int ERROR_BAD_OPTIONS = -1;
     private static final int ERROR_IO_EXCEPTION = -2;
