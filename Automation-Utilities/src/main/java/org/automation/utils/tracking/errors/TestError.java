@@ -1,4 +1,4 @@
-package org.automation.utils.tracking.error;
+package org.automation.utils.tracking.errors;
 
 /**
  * Created by shantonu on 5/29/16.

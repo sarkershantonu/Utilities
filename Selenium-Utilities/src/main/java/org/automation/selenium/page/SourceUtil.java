@@ -2,8 +2,8 @@ package org.automation.selenium.page;
 
 import org.apache.commons.io.IOUtils;
 import org.automation.selenium.SeleniumUtilBase;
-import org.automation.utils.tracking.error.ExceptionManager;
-import org.automation.utils.tracking.error.TestError;
+import org.automation.utils.tracking.errors.ExceptionManager;
+import org.automation.utils.tracking.errors.TestError;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;

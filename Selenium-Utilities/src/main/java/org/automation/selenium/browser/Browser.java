@@ -1,10 +1,9 @@
 package org.automation.selenium.browser;
 
-import org.automation.utils.tracking.error.ExceptionManager;
-import org.automation.utils.tracking.error.TestError;
+import org.automation.utils.tracking.errors.ExceptionManager;
+import org.automation.utils.tracking.errors.TestError;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Set;

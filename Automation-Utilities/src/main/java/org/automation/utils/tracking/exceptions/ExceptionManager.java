@@ -1,5 +1,7 @@
-package org.automation.utils.tracking.error;
+package org.automation.utils.tracking.exceptions;
 
+
+import org.automation.utils.tracking.errors.TestError;
 
 public class ExceptionManager {
 
