@@ -10,7 +10,7 @@ import java.io.IOException;
  */
 public class PdfUtils {
 
-    public static void readPdf(String pathOfPdf){
+    public static void read(String pathOfPdf){
         PDDocument document = null ;
         try {
             document = PDDocument.load(pathOfPdf.getBytes());
@@ -18,5 +18,9 @@ public class PdfUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void write(byte[] data){
+
     }
 }

@@ -1,3 +1,5 @@
+package org.automation.compare.xml;
+
 import org.custommonkey.xmlunit.DetailedDiff;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.xml.sax.SAXException;
@@ -21,6 +23,5 @@ public class ComparisonXmlFiles {
         DetailedDiff diff = new DetailedDiff(XMLUnit.compareXML(strExpected, strActual));
         List<?> allDifferences = diff.getAllDifferences();
         assertEquals("Differences for " + rms + " found: " + diff.toString(), 0, allDifferences.size());
-
     }
 }

@@ -13,6 +13,7 @@
         <module>Selenium-Utilities</module>
         <module>Opencart Selenium</module>
         <module>Angular Utilities</module>
+        <module>Validation Utilities</module>
     </modules>
 
     <properties>
