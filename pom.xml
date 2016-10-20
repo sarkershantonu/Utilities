@@ -16,6 +16,8 @@
         <module>Validation Utilities</module>
         <module>Protocol-Utilities</module>
         <module>Data Utilities</module>
+        <module>JDBC Utilities</module>
+        <module>Tracking</module>
     </modules>
 
     <properties>
