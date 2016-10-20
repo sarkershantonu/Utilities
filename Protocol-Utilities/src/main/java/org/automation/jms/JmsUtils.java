@@ -1,4 +1,4 @@
-package org.automation.utils.jms;
+package org.automation.jms;
 /*
 import com.google.common.base.Joiner;
 import com.google.common.base.Throwables;

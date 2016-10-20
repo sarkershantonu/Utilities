@@ -1,3 +1,4 @@
+package org.automation.http;
 
 import java.io.IOException;
 import java.security.*;
@@ -7,9 +8,9 @@ import java.util.List;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.*.tadh.dto.search.rest.response.SearchResponse;
-import com.*.tadh.qa.distribution.util.SoapToolsException;
-import com.*.tadh.qa.distribution.util.XMLUtils;
+.tadh.dto.search.rest.response.SearchResponse;
+.tadh.qa.distribution.util.SoapToolsException;
+.tadh.qa.distribution.util.XMLUtils;
 import org.apache.http.*;
 import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;

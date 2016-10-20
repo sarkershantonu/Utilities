@@ -14,6 +14,8 @@
         <module>Opencart Selenium</module>
         <module>Angular Utilities</module>
         <module>Validation Utilities</module>
+        <module>Protocol-Utilities</module>
+        <module>Data Utilities</module>
     </modules>
 
     <properties>

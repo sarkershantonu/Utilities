@@ -1,3 +1,4 @@
+package org.automation.jms;
 
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
