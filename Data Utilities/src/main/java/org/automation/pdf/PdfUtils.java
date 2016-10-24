@@ -62,7 +62,7 @@ public class PdfUtils {
 
             for (int i = 0; i < Files.length; i++) {
                 String wordfile = Files[i].toString();
-                System.out.println("FILE NAME = " + wordfile);
+                System.out.println("FILE NAME = " + wordfile);// to know selected file
                 word2pdf(wordfile, wordfile.substring(0, wordfile.indexOf('.')) + ".pdf");
             }
             System.out.println("complete");
@@ -71,7 +71,6 @@ public class PdfUtils {
 
     public static void word2pdf(String wordFile, String pdf) {
         try {
-
             FileInputStream fs = new FileInputStream(wordFile);
             XWPFDocument doc = new XWPFDocument(fs);
             Document pdfdoc = new Document(PageSize.A4, 72, 72, 72, 72);
