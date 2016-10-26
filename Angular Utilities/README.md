@@ -8,3 +8,6 @@ I am modifying some function again you can use this in your project.
 I will enrich more scripts so that it is useful to support more typr of angular apps
 
 adding 1.5.8 angular base libraries in resources :  https://code.angularjs.org/
+
+# Target 
+Access NG models from Java Code
