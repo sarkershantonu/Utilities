@@ -10,4 +10,4 @@ I will enrich more scripts so that it is useful to support more typr of angular 
 adding 1.5.8 angular base libraries in resources :  https://code.angularjs.org/
 
 # Target 
-Access NG models from Java Code
+Access NG view/models/controllers from Java Code
