@@ -223,12 +223,7 @@
     </build>
 
     <profiles>
-        <profile>
-            <id>runTests</id>
-            <modules>
-                <module>Opencart Selenium</module>
-            </modules>
-        </profile>
+
         <profile>
             <id>PublishUtils</id>
             <modules>
