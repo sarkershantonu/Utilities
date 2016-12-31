@@ -1,7 +1,6 @@
 package org.automation.selenium.browser;
 
-import org.automation.utils.tracking.errors.ExceptionManager;
-import org.automation.utils.tracking.errors.TestError;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -42,11 +41,9 @@ public class Browser {
 
     public static void close(){
 
-        try {
-            driver.close();
-        }catch (Exception e){
-            driver.quit();
-        }
+        driver.close();
+        driver.quit();
+        driver = null;
     }
 
     public static void closeAllChild(String parentHandle){
@@ -100,7 +97,7 @@ public class Browser {
         try {
             Thread.sleep((long)sec*1000);
         } catch (InterruptedException e) {
-            ExceptionManager.performDefaultAction("Pause fail",e, new TestError());
+            e.printStackTrace();
         }
     }
 
