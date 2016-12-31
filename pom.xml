@@ -9,11 +9,9 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>Automation-Utilities</module>
         <module>Selenium-Utilities</module>
         <module>Angular Utilities</module>
         <module>Validation Utilities</module>
-        <module>Protocol-Utilities</module>
         <module>Data Utilities</module>
         <module>JDBC Utilities</module>
         <module>Tracking</module>
@@ -21,6 +19,11 @@
         <module>BrowserStack</module>
         <module>Saucelab</module>
         <module>Appium</module>
+        <module>Apache-Http</module>
+        <module>JmsUtils</module>
+        <module>Email</module>
+        <module>System</module>
+        <module>Security</module>
     </modules>
 
     <properties>

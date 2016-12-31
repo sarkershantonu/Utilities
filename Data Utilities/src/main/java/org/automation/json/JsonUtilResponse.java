@@ -5,7 +5,7 @@ import java.io.InputStream;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonUtilResponse {
-    /*public static SearchResponse getJsonResponse(InputStream contentAsStream){
+/*    public static SearchResponse getJsonResponse(InputStream contentAsStream){
         SearchResponse searchAgreementsResponse = null;
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -14,7 +14,7 @@ public class JsonUtilResponse {
             e.printStackTrace();
         }
         return searchAgreementsResponse;
-    }
+    }*/
     
  public static <T> T get(InputStream contentAsStream, Class<T> t){
         T searchAgreementsResponse = null;
@@ -25,5 +25,5 @@ public class JsonUtilResponse {
             e.printStackTrace();
         }
         return searchAgreementsResponse;
-    }*/
+    }
 }
