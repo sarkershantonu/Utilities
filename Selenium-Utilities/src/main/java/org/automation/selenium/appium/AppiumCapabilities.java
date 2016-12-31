@@ -1,4 +1,4 @@
-package org.automation.selenium.browser.remote.appium;
+package org.automation.selenium.appium;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 

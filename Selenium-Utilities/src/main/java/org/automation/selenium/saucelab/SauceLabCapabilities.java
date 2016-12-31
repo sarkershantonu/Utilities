@@ -1,4 +1,4 @@
-package org.automation.selenium.browser.remote.saucelab;
+package org.automation.selenium.saucelab;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
