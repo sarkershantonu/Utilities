@@ -234,7 +234,6 @@
         <profile>
             <id>PublishUtils</id>
             <modules>
-                <module>Automation-Utilities</module>
                 <module>Selenium-Utilities</module>
             </modules>
             <build>

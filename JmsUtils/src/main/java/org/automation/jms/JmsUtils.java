@@ -1,4 +1,5 @@
-package jms;
+package org.automation.jms;
+/*
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Throwables;
@@ -146,3 +147,4 @@ public final class JmsUtils {
         }
     }
 }
+*/

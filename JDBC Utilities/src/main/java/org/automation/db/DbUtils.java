@@ -1,6 +1,7 @@
 package org.automation.db;
 
-import org.automation.utils.DateTimeUtils;
+
+import org.automation.DateTimeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
