@@ -17,6 +17,10 @@
         <module>Data Utilities</module>
         <module>JDBC Utilities</module>
         <module>Tracking</module>
+        <module>Common</module>
+        <module>BrowserStack</module>
+        <module>Saucelab</module>
+        <module>Appium</module>
     </modules>
 
     <properties>

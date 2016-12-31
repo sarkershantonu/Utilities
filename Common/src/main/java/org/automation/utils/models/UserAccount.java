@@ -1,4 +1,4 @@
-package org.automation.utils.common.models;
+package org.automation.utils.models;
 
 public enum UserAccount {
         normal("user3", "pass"), 

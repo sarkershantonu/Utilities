@@ -1,4 +1,4 @@
-package org.automation.utils.email;
+package org.automation.utils.models;
 
 /**
  * Created by shantonu on 7/10/16.

@@ -1,4 +1,4 @@
-package org.automation.utils.common;
+package org.automation.utils;
 
 import java.io.File;
 import java.io.IOException;
