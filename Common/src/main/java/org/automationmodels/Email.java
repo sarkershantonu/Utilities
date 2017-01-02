@@ -1,4 +1,4 @@
-package org.automation.utils.models;
+package org.automationmodels;
 
 /**
  * Created by shantonu on 7/10/16.
