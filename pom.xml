@@ -10,7 +10,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>Selenium-Utilities</module>
-        <module>Angular Utilities</module>
         <module>Validation Utilities</module>
         <module>Data Utilities</module>
         <module>JDBC Utilities</module>
