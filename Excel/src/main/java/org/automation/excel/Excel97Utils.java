@@ -42,8 +42,9 @@ public class Excel97Utils {
         String excelPath = excelFolder+System.getProperty("file.separator")+excelFileName;
         return readCell(excelPath, sheetNo, rowNo, colno);
     }
-    private static HSSFRow readRow(HSSFWorkbook workbook, HSSFSheet sheet, String rowNumber){
-        return null;
+    private static HSSFRow readRow(HSSFWorkbook workbook,@NonNull int sheetNo, @NonNull int rowNo) {
+        HSSFSheet sheet = workbook.getSheetAt(sheetNo);
+        return sheet.getRow(rowNo);
     }
 
     public static String getFileName(){return fileName.toString();}
