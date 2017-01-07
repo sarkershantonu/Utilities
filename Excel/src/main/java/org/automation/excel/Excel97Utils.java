@@ -20,44 +20,40 @@ import java.util.Date;
 public class Excel97Utils {
     private @Getter static HSSFWorkbook workbook;
     private @Getter static HSSFSheet sheet;
+    private @Getter static String excelFolder = System.getProperty("user.dir");
     private static HSSFCell cell;
     private static HSSFCellStyle cellStyleDefault;
     private static StringBuilder fileName = new StringBuilder();
     private static String currentSheet;
     private static String fontDefault = "Calibri-Regular";
     private static  HSSFCreationHelper createHelper;
+    private Excel97Utils(){}
 
-
-    public static String readUrlFrom(@NonNull String excelPath,@NonNull int sheetNo,@NonNull int rowNo, @NonNull int colno) throws IOException {
-
-        String url = "https://";
+    public static String readCell(@NonNull String excelPath,@NonNull int sheetNo,@NonNull int rowNo, @NonNull int colno) throws IOException {
         InputStream in = new FileInputStream(excelPath);
         POIFSFileSystem fs = new POIFSFileSystem(in);
         HSSFWorkbook wb = new HSSFWorkbook(fs);
         HSSFSheet sheet = wb.getSheetAt(sheetNo);
         HSSFRow aRow = sheet.getRow(rowNo);
         HSSFCell cell =  aRow.getCell(colno);
-        return url+cell.getStringCellValue();
+        return cell.getStringCellValue();
+    }
+    public static String readCellFrom(String excelFileName,@NonNull int sheetNo,@NonNull int rowNo, @NonNull int colno) throws IOException {
+        String excelPath = excelFolder+System.getProperty("file.separator")+excelFileName;
+        return readCell(excelPath, sheetNo, rowNo, colno);
+    }
+    private static HSSFRow readRow(HSSFWorkbook workbook, HSSFSheet sheet, String rowNumber){
+        return null;
     }
 
     public static String getFileName(){return fileName.toString();}
-    private Excel97Utils(){}
 
-    public static void save(@NonNull String fullFileNameAndPath){
-        try {
+    public static void save(@NonNull String fullFileNameAndPath) throws IOException {
             FileOutputStream out = new FileOutputStream(new File(fullFileNameAndPath));
             save(out);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
     }
-    public static void save(@NonNull FileOutputStream outputStream){
-        try {
+    public static void save(@NonNull FileOutputStream outputStream) throws IOException {
             workbook.write(outputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public static HSSFSheet createSheet(HSSFWorkbook book, String sheetName){
@@ -192,11 +188,5 @@ public class Excel97Utils {
         return style;
     }
 
-    public static String readCell(String excelFileName, String sheetName, String positionA,String positionB){
-        return null;
-    }
-    private static HSSFRow readRow(HSSFWorkbook workbook, HSSFSheet sheet, String rowNumber){
-        return null;
-    }
 
 }
