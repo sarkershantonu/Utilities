@@ -12,11 +12,7 @@
     <artifactId>testing-utils</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
+
 
         <!-- <dependency>
                    <groupId>org.custommonkey.xmlunit</groupId>
