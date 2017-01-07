@@ -5,6 +5,7 @@ package org.automation.excel;
 import lombok.Getter;
 import lombok.NonNull;
 import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.IndexedColors;
 
@@ -16,7 +17,7 @@ import java.util.Date;
  * Created by shantonu on 6/8/16.
  * todo, planned to complete ASAP
  */
-public class ExcelUtils {
+public class Excel97Utils {
     private @Getter static HSSFWorkbook workbook;
     private @Getter static HSSFSheet sheet;
     private static HSSFCell cell;
@@ -26,14 +27,21 @@ public class ExcelUtils {
     private static String fontDefault = "Calibri-Regular";
     private static  HSSFCreationHelper createHelper;
 
-    static {// screenpath is windows supported path items, so, if you use linux box, you can edit or change
-        if(System.getProperty("ScreenPath") != null) {
-            fileName.append("ScreenPath").append("\\");
-        }
-        fileName.append(System.getProperty("user.dir"));
+
+    public static String readUrlFrom(@NonNull String excelPath,@NonNull int sheetNo,@NonNull int rowNo, @NonNull int colno) throws IOException {
+
+        String url = "https://";
+        InputStream in = new FileInputStream(excelPath);
+        POIFSFileSystem fs = new POIFSFileSystem(in);
+        HSSFWorkbook wb = new HSSFWorkbook(fs);
+        HSSFSheet sheet = wb.getSheetAt(sheetNo);
+        HSSFRow aRow = sheet.getRow(rowNo);
+        HSSFCell cell =  aRow.getCell(colno);
+        return url+cell.getStringCellValue();
     }
+
     public static String getFileName(){return fileName.toString();}
-    private ExcelUtils(){}
+    private Excel97Utils(){}
 
     public static void save(@NonNull String fullFileNameAndPath){
         try {
