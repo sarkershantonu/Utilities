@@ -1,17 +1,17 @@
-
+package org.automation;
 
 import java.util.HashMap;
 
 
 public class MyCache {
 
-	public static final ThreadLocal<HashMap<String, Object>> cacheSpaceHolder = new ThreadLocal<HashMap<String, Object>>() {
+	private static final ThreadLocal<HashMap<String, Object>> cacheSpaceHolder = new ThreadLocal<HashMap<String, Object>>() {
 
-		HashMap<String, Object> inMemoryCache = new HashMap<>();
+		HashMap<String, Object> imc = new HashMap<>();
 
 		@Override
 		public HashMap<String, Object> initialValue() {
-			return inMemoryCache;
+			return imc;
 		}
 	};
 
@@ -34,7 +34,7 @@ public class MyCache {
 		getCacheDB().remove(key);
 	}
 
-	public static HashMap<String, Object> getCacheDB() {
+	private static HashMap<String, Object> getCacheDB() {
 		return cacheSpaceHolder.get();
 	}
 
