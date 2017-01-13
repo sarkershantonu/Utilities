@@ -5,7 +5,7 @@ import javax.crypto.*;
 import javax.crypto.spec.*;
 
 public class MyCrypt {
-	private static byte[] AESKey = "%ms9!sZpP#0_q3&m".getBytes();
+	private static byte[] AESKey = "SampleAESKeysWithAllTypesOfCharacters".getBytes();
 
 	private static byte[][] encryptCipher = {{1,2,3},{4,5,6}};//sample cypher 
 	private static byte[][] decryptCipher = {{1,2,3},{4,5,6}};//sample dcypher 
@@ -133,7 +133,7 @@ public class MyCrypt {
 
 	public static void test(String[] args) {
 		if (args.length != 2) {
-			System.err.println("usage: java com.att.eai.util.MadCrypt (-e|-d|-e2|-d2) password");
+			System.err.println("usage: myCrypt (-e|-d|-e2|-d2) password");
 			System.exit(1);
 		}
 
@@ -147,7 +147,7 @@ public class MyCrypt {
 			} else if (args[0].startsWith("-d")) {
 				System.out.println(MadCrypt.decode(args[1]));
 			} else {
-				System.err.println("usage: java com.att.eai.util.MadCrypt (-encode|-decode) password");
+				System.err.println("usage: myCrypt (-encode|-decode) password");
 				System.exit(1);
 			}
 			System.exit(0);
