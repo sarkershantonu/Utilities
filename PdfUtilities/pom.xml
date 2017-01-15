@@ -11,5 +11,17 @@
 
     <artifactId>pdf-utilities</artifactId>
 
+<dependencies>
+    <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>${poi.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.itextpdf</groupId>
+        <artifactId>itextpdf</artifactId>
+        <version>5.5.10</version>
+    </dependency>
 
+</dependencies>
 </project>

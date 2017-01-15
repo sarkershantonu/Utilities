@@ -1,4 +1,4 @@
-package pdf;
+package org.automation.pdf;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.Document;

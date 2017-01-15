@@ -24,6 +24,7 @@
     </modules>
 
     <properties>
+        <poi.version>3.15</poi.version>
         <activiti.version>5.19.0.1</activiti.version>
         <selenium.version>2.53.0</selenium.version>
         <appium.version>3.4.1</appium.version>
