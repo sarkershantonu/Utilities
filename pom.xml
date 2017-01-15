@@ -21,6 +21,7 @@
         <module>Security</module>
         <module>Excel</module>
         <module>PdfUtilities</module>
+        <module>JSON</module>
     </modules>
 
     <properties>
