@@ -42,4 +42,12 @@ public class ResultSetUtils {
             System.out.println("");
         }
     }
+  //bad way to get, traverse full result set
+   public static int getRowCount(ResultSet rs) throws SQLException {
+        int count = 0;
+        while (rs.next()){
+            count++;
+        }
+        return count;
+    }
 }
