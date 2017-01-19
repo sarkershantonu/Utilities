@@ -10,14 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jms</artifactId>
-<dependencies>
 
-
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-context-support</artifactId>
-        <version>4.3.5.RELEASE</version>
-    </dependency>
-</dependencies>
 
 </project>
