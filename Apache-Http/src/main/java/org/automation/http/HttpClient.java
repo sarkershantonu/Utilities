@@ -8,9 +8,11 @@ import java.util.List;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-.tadh.dto.search.rest.response.SearchResponse;
+/*.tadh.dto.search.rest.response.SearchResponse;
 .tadh.qa.distribution.util.SoapToolsException;
-.tadh.qa.distribution.util.XMLUtils;
+.tadh.qa.distribution.util.XMLUtils;*/
+import com.sun.javaws.jnl.XMLUtils;
+import org.apache.commons.httpclient.HttpMethod;
 import org.apache.http.*;
 import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
