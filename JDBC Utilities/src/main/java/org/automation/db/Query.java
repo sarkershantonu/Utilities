@@ -66,7 +66,7 @@ public abstract class Query<T> {
             throw new RuntimeException(e.getMessage(),e);
         } finally {
 
-            QueryHelper.closeResultSetAndStatement(rs, stmt);
+            ResultSetUtils.closeResultSetAndStatement(rs, stmt);
         }
     }
 
