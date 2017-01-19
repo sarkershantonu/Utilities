@@ -15,7 +15,7 @@ public class CalendarUtils {
         return cal;
     }
     static {
-        cal.setFirstDayOfWeek(MONDAY);
+        cal.setFirstDayOfWeek(Calendar.MONDAY);
         cal.setTimeZone(TimeZone.getTimeZone("EST"));
 
     }

@@ -66,15 +66,6 @@ public class SqlHelper {
     }
 
 
-    /**
-     * Create Query Object for retreinving result as a guava Table
-     * First table row is 1. Column names are String, values are Objects.
-     * Not memory-efficient or fast. Thanks to google for NOT supporting nulls.
-     * @param sql  SQL to be executed
-     * @param paramMap  SQL parameters (substituted with dumb simple String.replace())
-     * @param connection  JDBC Connection
-     * @return table with resultSet fetching result. row keys are row numbers (starts from 1)
-     */
     public static Query<Table<Integer, String, Object>> getQueryForTable(String sql, Map<String, String> paramMap, Connection connection) {
         return new Query<Table<Integer, String, Object>>(sql, paramMap, connection) {
             @Override

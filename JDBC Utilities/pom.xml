@@ -11,13 +11,11 @@
 
     <artifactId>jdbc-utilities</artifactId>
     <dependencies>
-
         <dependency>
-            <groupId>org.automation</groupId>
-            <artifactId>data-utilities</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>21.0</version>
         </dependency>
-
     </dependencies>
 
 </project>
