@@ -3,6 +3,7 @@ package org.automation.db;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,5 +50,25 @@ public class ResultSetUtils {
             count++;
         }
         return count;
+    }
+
+    public static void closeResultSet(ResultSet rs) throws SQLException {
+        if (rs != null) {
+            rs.close();
+        }
+    }
+
+    public static void closeStatement(Statement stmt) throws SQLException {
+        if (stmt != null) {
+            stmt.close();
+        }
+    }
+
+    public static void closeResultSetAndStatement(ResultSet rs, Statement stmt) throws SQLException {
+        try {
+            closeResultSet(rs);
+        } finally {
+            closeStatement(stmt);
+        }
     }
 }
