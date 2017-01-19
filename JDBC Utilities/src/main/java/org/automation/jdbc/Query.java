@@ -1,4 +1,4 @@
-package org.automation.db;
+package org.automation.jdbc;
 
 import org.slf4j.Logger;
 

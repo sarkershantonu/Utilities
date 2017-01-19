@@ -1,4 +1,4 @@
-package org.automation.db;
+package org.automation.jdbc;
 
 import java.sql.ResultSet;
 
