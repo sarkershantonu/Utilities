@@ -13,6 +13,38 @@ import java.util.List;
  */
 public class ResultSetUtils {
 
+  /**
+  *Assume that you have a DB table and you have a model class where each field name matched to DB column names 
+  *and types of the class fields are  are big enought to contains values from DB. you can use this util to get all records 
+*  to a list. Make sure you put setters of all fields. And result set has some default unit conversion rules when returning as object.THose will be applied 
+* Example : String ss = "Select * from MyTable";
+* Statement stmt = Gateway.getConnection().createStatement();
+* ResultSet rs = stmt.executeQuery(ss);
+* List<MyClass> items = createObjects(rs, MyClass.class); 
+* and you get whole table as list. 
+*Note : In here, my table , my class had a newmeric & a string filed. working fine, test and let me know in which cases does not work
+  **/
+    public static <T> List<T> createObjects(ResultSet resultSet, Class<T> tClass) throws
+      SQLException, IllegalAccessException, InstantiationException, IntrospectionException, InvocationTargetException {
+        List<T> listImtes = new ArrayList<T>();
+        while (resultSet.next()) {
+            T intance = tClass.newInstance();
+            for (Field field : tClass.getDeclaredFields()) {
+                PropertyDescriptor pd = new PropertyDescriptor(field.getName(), tClass);
+                //System.out.println("PD " + pd.getName());
+                Method method = pd.getWriteMethod();
+              /*  System.out.println("Method : " + method.getName());
+                System.out.println("Method : Parameter count " + method.getParameterCount());*/
+                Class[] types = method.getParameterTypes();
+                //System.out.println("Method : Parameter type "+types[0]);
+                Object value = resultSet.getObject(field.getName());
+                method.invoke(intance, (types[0]).cast(value));
+            }
+            listImtes.add(intance);
+        }
+        return listImtes;
+    }
+  
   public static List<List<String>> getAllResutlsInTable(final ResultSet resultSet) throws SQLException {
         final List<List<String>> table = new ArrayList<>();
         ResultSetMetaData rsmd = resultSet.getMetaData();
