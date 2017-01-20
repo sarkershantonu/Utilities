@@ -34,6 +34,12 @@ public class DateTimeUtils {
             throw new IllegalArgumentException(e);
         }
     }
+public static Date subtractMonthFromDate(Date date) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.add(Calendar.MONTH, -1);
+		return cal.getTime();
+	}
     public static Date getPreviousMonday(Date date) {
 		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		LocalDate lastMonday = localDate.minusDays(6);
