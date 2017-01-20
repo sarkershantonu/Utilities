@@ -49,7 +49,12 @@ public static Date subtractMonthFromDate(Date date) {
         Preconditions.checkNotNull(date, "Input date must not be null");
         return new SimpleDateFormat(format).format(date);
     }
+    public static Date getLastSunday(Date date) {
+	LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+	LocalDate lastSunday = localDate.with(TemporalAdjusters.lastInMonth(DayOfWeek.SUNDAY));
 
+		return Date.from(lastSunday.atTime(23, 59, 59).atZone(ZoneId.systemDefault()).toInstant());
+	}
     public static String format(Date date) {
         return format(date, DEFAULT_DATE_FORMAT);
     }
