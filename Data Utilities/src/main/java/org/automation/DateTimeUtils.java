@@ -40,6 +40,13 @@ public static Date subtractMonthFromDate(Date date) {
 		cal.add(Calendar.MONTH, -1);
 		return cal.getTime();
 	}
+	
+	public static Date getFirstDayOfFirstSunday(Date date) {
+		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate firstDayOfFirstWeek = localDate.with(TemporalAdjusters.firstInMonth(DayOfWeek.SUNDAY));
+		firstDayOfFirstWeek = firstDayOfFirstWeek.minusDays(6);
+		return Date.from(firstDayOfFirstWeek.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	}
     public static Date getPreviousMonday(Date date) {
 		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		LocalDate lastMonday = localDate.minusDays(6);
