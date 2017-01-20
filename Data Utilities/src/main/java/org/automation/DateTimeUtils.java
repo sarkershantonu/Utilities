@@ -34,7 +34,11 @@ public class DateTimeUtils {
             throw new IllegalArgumentException(e);
         }
     }
-
+    public static Date getPreviousMonday(Date date) {
+		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate lastMonday = localDate.minusDays(6);
+		return Date.from(lastMonday.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	}
     public static String format(Date date, String format) {
         Preconditions.checkNotNull(date, "Input date must not be null");
         return new SimpleDateFormat(format).format(date);
