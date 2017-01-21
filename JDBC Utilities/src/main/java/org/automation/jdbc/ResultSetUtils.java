@@ -45,6 +45,11 @@ public class ResultSetUtils {
         return listImtes;
     }
   
+   private static <T> List<T> loadAll(String query, Class<T> tClass) throws 
+     SQLException, InvocationTargetException, IntrospectionException, InstantiationException, IllegalAccessException {
+        return createObjects(runQuery(query), tClass);
+    }
+  
   public static List<List<String>> getAllResutlsInTable(final ResultSet resultSet) throws SQLException {
         final List<List<String>> table = new ArrayList<>();
         ResultSetMetaData rsmd = resultSet.getMetaData();
