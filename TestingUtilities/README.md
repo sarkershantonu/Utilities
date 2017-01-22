@@ -1,3 +1,3 @@
-# Validation Utilities
+# Junit/Testing Utilities
 
-# Junit Based
+All helpers & rules based on Junit4.12+
