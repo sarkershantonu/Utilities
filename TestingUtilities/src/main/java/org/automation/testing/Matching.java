@@ -2,6 +2,7 @@ package org.automation.testing;
 import java.util.List;
 
 public class Matching {
+ // you can use comparable interface also.. 
  public static <E1,E2>int compare(List<E1> original, List<E2> expected){
         int i = -1;
        
