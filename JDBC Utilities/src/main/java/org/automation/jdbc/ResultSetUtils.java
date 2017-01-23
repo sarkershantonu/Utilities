@@ -50,6 +50,11 @@ public class ResultSetUtils {
         return createObjects(runQuery(query), tClass);
     }
   
+   public static String getFirstItem(ResultSet rs) throws SQLException {
+        rs.next();
+        return rs.getString(1);
+    }
+  
   public static List<List<String>> getAllResutlsInTable(final ResultSet resultSet) throws SQLException {
         final List<List<String>> table = new ArrayList<>();
         ResultSetMetaData rsmd = resultSet.getMetaData();
