@@ -55,6 +55,11 @@ public class ResultSetUtils {
         return rs.getString(1);
     }
   
+   public static <T> T getFirstItem(ResultSet rs, Class<T> aClass) throws SQLException {
+        rs.next();
+        return (T)rs.getObject(1);
+    }
+  
   public static List<List<String>> getAllResutlsInTable(final ResultSet resultSet) throws SQLException {
         final List<List<String>> table = new ArrayList<>();
         ResultSetMetaData rsmd = resultSet.getMetaData();
