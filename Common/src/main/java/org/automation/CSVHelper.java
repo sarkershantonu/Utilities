@@ -31,4 +31,31 @@ public class CSVHelper {
         }
         return output;
     }
+   
+       public static List<Detail_output_do> readDetailsFile(String filePath, String dateFormat) throws IOException {
+        List<Detail_output_do> allRecordsOfDetail = new ArrayList<>();
+        CSVFormat format = CSVFormat.TDF.withHeader(Detail_output_do.FILE_HEADERS);
+        Reader in = new FileReader(filePath);
+        CSVParser parser = new CSVParser(in, format);
+        List<CSVRecord> recs = parser.getRecords();
+        for (int i = 1; i < recs.size(); i++) {
+            CSVRecord record = recs.get(i);
+            Detail_output_do rec = new Detail_output_do(
+                    record.get(Detail_output_do.column_1),
+                    record.get(Detail_output_do.column_2),
+
+                    WeekUtils.convertWithFprmat((record.get(Detail_output_do.column_3)), dateFormat),
+                    record.get(Detail_output_do.column_4),
+                    Long.getLong(record.get(Detail_output_do.column_5)),
+                    Double.valueOf(record.get(Detail_output_do.column_6)),
+                    Double.valueOf(record.get(Detail_output_do.column_7)),
+                    Long.getLong(record.get(Detail_output_do.column_8)),
+                    Long.getLong(record.get(Detail_output_do.column_9)),
+                    Double.valueOf(record.get(Detail_output_do.column_10)),
+                    Double.valueOf(record.get(Detail_output_do.column_11)));
+            allRecordsOfDetail.add(rec);
+        }
+        return allRecordsOfDetail;
+    }
+
 }
