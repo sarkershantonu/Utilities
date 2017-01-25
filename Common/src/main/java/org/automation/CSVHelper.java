@@ -57,5 +57,7 @@ public class CSVHelper {
         }
         return allRecordsOfDetail;
     }
-
+public static List<Detail_output_do> readDetailsFile(String filePath) throws IOException {
+        return readDetailsFile(filePath, "MM/dd/yyyy");
+    }
 }
