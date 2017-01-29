@@ -34,12 +34,19 @@ public class DateTimeUtils {
             throw new IllegalArgumentException(e);
         }
     }
+	
+	
 public static Date subtractMonthFromDate(Date date) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
 		cal.add(Calendar.MONTH, -1);
 		return cal.getTime();
 	}
+	
+	 public static String getDayOfAWeek(Date date){
+        DateFormat format2=new SimpleDateFormat("EEEE");
+        return format2.format(date);
+    }
 	
 	public static Date getFirstDayOfFirstSunday(Date date) {
 		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
