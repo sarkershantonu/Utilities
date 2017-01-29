@@ -34,7 +34,16 @@ public class DateTimeUtils {
             throw new IllegalArgumentException(e);
         }
     }
-	
+	  public static Date convert(String dd_mmm_yy) {
+        DateFormat df = new SimpleDateFormat("dd-MMM-yy");
+        Date aDate = null;
+        try {
+            aDate = df.parse(dd_mmm_yy);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return aDate;
+    }
 	  public static Date convertWithFormat(String date, String format) {
         DateFormat df = new SimpleDateFormat(format);
         Date aDate = null;
