@@ -65,7 +65,11 @@ public static Date subtractMonthFromDate(Date date) {
         DateFormat format2=new SimpleDateFormat("EEEE");
         return format2.format(date);
     }
-	
+	  private static int getDays(String startDate, String endDate) {
+        //http://www.calculator.net/date-calculator.html?
+        return (int) (((convert(endDate)).getTime() - (convert(startDate)).getTime()) / (1000 * 60 * 60 * 24)) + 1;
+
+    }
 	public static Date getFirstDayOfFirstSunday(Date date) {
 		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		LocalDate firstDayOfFirstWeek = localDate.with(TemporalAdjusters.firstInMonth(DayOfWeek.SUNDAY));
