@@ -17,6 +17,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DateTimeUtils {
+	private static Calendar cal = new GregorianCalendar();
     public static final String DEFAULT_DATE_FORMAT = "dd/MM/yy";
     public static final String dd_MM_yyyy = "dd-MM-yyyy";
     public static final String DD_MM_YY = "dd-MM-yy";
