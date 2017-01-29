@@ -23,6 +23,24 @@ public class DateTimeUtils {
     public static final String DD_MMM_YYYY = "dd-MMM-yyyy";
     public static final String DDD_MMM_yyyy = "DD-MMM-yyyy";
     public static final String DD_M_yyyy = "DD-M-yyyy";
+ 
+	public static int getWeeksBetween(Date a, Date b) {
+
+        if (b.before(a)) {
+            return -getWeeksBetween(b, a);
+        }
+        a = resetTime(a);
+        b = resetTime(b);
+
+
+        cal.setTime(a);
+        int weeks = 0;
+        while (cal.getTime().before(b)) {
+            cal.add(Calendar.WEEK_OF_YEAR, 1);
+            weeks++;
+        }
+        return weeks;
+    }
 
     public static Date parse(String date, String format) {
         Preconditions.checkNotNull(date, "Input date must not be null");
