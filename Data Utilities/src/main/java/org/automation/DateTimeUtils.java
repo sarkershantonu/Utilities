@@ -35,7 +35,16 @@ public class DateTimeUtils {
         }
     }
 	
-	
+	  public static Date convertWithFormat(String date, String format) {
+        DateFormat df = new SimpleDateFormat(format);
+        Date aDate = null;
+        try {
+            aDate = df.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return aDate;
+    }
 public static Date subtractMonthFromDate(Date date) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
