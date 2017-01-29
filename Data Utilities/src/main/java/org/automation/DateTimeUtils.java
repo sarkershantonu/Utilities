@@ -81,6 +81,13 @@ public static Date subtractMonthFromDate(Date date) {
 		LocalDate lastMonday = localDate.minusDays(6);
 		return Date.from(lastMonday.atStartOfDay(ZoneId.systemDefault()).toInstant());
 	}
+	
+	 private static int getWeek(String startDate, String endDate) {
+        //http://www.calculator.net/date-calculator.html?
+        return getWeeksBetween((convert(startDate)), (convert(endDate)));
+    }
+	
+	
     public static String format(Date date, String format) {
         Preconditions.checkNotNull(date, "Input date must not be null");
         return new SimpleDateFormat(format).format(date);
