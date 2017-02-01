@@ -26,6 +26,7 @@ public class DateTimeUtils {
     public static final String DD_MMM_YYYY = "dd-MMM-yyyy";
     public static final String DDD_MMM_yyyy = "DD-MMM-yyyy";
     public static final String DD_M_yyyy = "DD-M-yyyy";
+    public static final String NameOfDay="EEEE";
      
 	public static Date resetTime(Date d) {
 
