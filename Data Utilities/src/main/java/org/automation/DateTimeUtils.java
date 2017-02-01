@@ -24,7 +24,16 @@ public class DateTimeUtils {
     public static final String DD_MMM_YYYY = "dd-MMM-yyyy";
     public static final String DDD_MMM_yyyy = "DD-MMM-yyyy";
     public static final String DD_M_yyyy = "DD-M-yyyy";
- 
+     
+	public static Date resetTime(Date d) {
+
+        cal.setTime(d);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTime();
+    }
 	public static int getWeeksBetween(Date a, Date b) {
 
         if (b.before(a)) {
