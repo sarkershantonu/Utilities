@@ -21,4 +21,26 @@ public class Matching {
         }
         return i;
     }
+  public static <T> void compare(T a, T b) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        AssertionError error = null;
+        Class A = a.getClass();
+        Class B = a.getClass();
+        for (Method mA : A.getDeclaredMethods()) {
+            if (mA.getName().startsWith("get")) {
+                System.out.println("Method name in B = " + B.getMethod(mA.getName(), null));
+                Method mB = B.getMethod(mA.getName(),null );
+                try {
+                    Assert.assertEquals("Not Matched = ",mA.invoke(a),mB.invoke(b));
+                }catch (AssertionError e){
+                    if(error==null){
+                        error = new AssertionError(e);
+                    }
+                    error.addSuppressed(e);
+                }
+            }
+        }
+        if(error!=null){
+            throw error ;
+        }
+    }
 }
