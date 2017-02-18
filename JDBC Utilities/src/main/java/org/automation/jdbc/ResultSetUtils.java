@@ -1,5 +1,10 @@
 package org.automation.jdbc;
 
+import javax.management.IntrospectionException;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -25,7 +30,7 @@ public class ResultSetUtils {
 *Note : In here, my table , my class had a newmeric & a string filed. working fine, test and let me know in which cases does not work
   **/
     public static <T> List<T> createObjects(ResultSet resultSet, Class<T> tClass) throws
-      SQLException, IllegalAccessException, InstantiationException, IntrospectionException, InvocationTargetException {
+            SQLException, IllegalAccessException, InstantiationException, IntrospectionException, InvocationTargetException, java.beans.IntrospectionException {
         List<T> listImtes = new ArrayList<T>();
         while (resultSet.next()) {
             T intance = tClass.newInstance();
@@ -45,10 +50,7 @@ public class ResultSetUtils {
         return listImtes;
     }
   
-   private static <T> List<T> loadAll(String query, Class<T> tClass) throws 
-     SQLException, InvocationTargetException, IntrospectionException, InstantiationException, IllegalAccessException {
-        return createObjects(runQuery(query), tClass);
-    }
+
   
    public static String getFirstItem(ResultSet rs) throws SQLException {
         rs.next();
