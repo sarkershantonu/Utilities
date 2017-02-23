@@ -120,4 +120,8 @@ public class ResultSetUtils {
             closeStatement(stmt);
         }
     }
+    public static String getFirstItem(ResultSet rs) throws SQLException {
+        rs.next();
+        return rs.getString(1);
+    }
 }
