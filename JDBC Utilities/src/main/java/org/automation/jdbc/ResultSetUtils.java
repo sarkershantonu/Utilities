@@ -124,4 +124,9 @@ public class ResultSetUtils {
         rs.next();
         return rs.getString(1);
     }
+  
+   public static <T> T getFirstItem(ResultSet rs, Class<T> aClass) throws SQLException {
+        rs.next();
+        return (T)rs.getObject(1);
+    }
 }
