@@ -51,7 +51,19 @@ public class ResultSetUtils {
     }
   
 
-  public static void savefile(String filename){
+  public static void savefile(final String file){
+    int BUFFER_SIZE = 50000;
+        File m_file = new File(file);
+        Blob blob = Step_Identify_Broadcast_Weeks_Days.getMediaFile(propid.toString());
+        InputStream inputStream  =blob.getBinaryStream();
+        OutputStream outputStream = new FileOutputStream(m_file);
+        int bytes = -1;
+        byte[] buffer = new byte[BUFFER_SIZE];
+        while ((bytes=inputStream.read(buffer))!=-1){//read untill bytes end of stream
+            outputStream.write(buffer,0,bytes);
+        }
+        inputStream.close();
+        outputStream.close();
   }
   
    public static String getFirstItem(ResultSet rs) throws SQLException {
