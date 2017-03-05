@@ -51,6 +51,8 @@ public class ResultSetUtils {
     }
   
 
+  public static void savefile(String filename){
+  }
   
    public static String getFirstItem(ResultSet rs) throws SQLException {
         rs.next();
