@@ -50,7 +50,7 @@ public class ResultSetUtils {
         return listImtes;
     }
   
-
+//result set that has blob return for its select method can use this
   public static void savefile(ResultSet rs, final String file){
     int BUFFER_SIZE = 50000;
         File m_file = new File(file);
