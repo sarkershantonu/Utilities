@@ -51,7 +51,7 @@ public class ResultSetUtils {
     }
   
 
-  public static void savefile(final String file){
+  public static void savefile(ResultSet rs, final String file){
     int BUFFER_SIZE = 50000;
         File m_file = new File(file);
         Blob blob = Step_Identify_Broadcast_Weeks_Days.getMediaFile(propid.toString());
