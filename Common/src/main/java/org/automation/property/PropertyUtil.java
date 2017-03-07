@@ -34,7 +34,13 @@ public class PropertyUtil {
         }
         output.close();
     }
-
+public static void loadProperties(String path) throws IOException {
+        Properties p = new Properties();
+        p.load(new FileInputStream(new File(path)));
+        for(String k:p.stringPropertyNames()){
+            System.setProperty(k,p.getProperty(k));
+        }
+    }
     public static String read(String propertyFileName, String name) {
         try {
             prop = read(propertyFileName);
