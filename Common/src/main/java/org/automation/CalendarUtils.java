@@ -19,7 +19,10 @@ public class CalendarUtils {
         cal.setTimeZone(TimeZone.getTimeZone("EST"));
 
     }
-
+public static String getDayOfAWeek(Date date){
+        DateFormat format2=new SimpleDateFormat("EEEE");
+        return format2.format(date);
+    }
     public static Date resetTime(Date d) {
         cal.setTime(d);
         cal.set(Calendar.HOUR_OF_DAY, 0);
