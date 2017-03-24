@@ -39,8 +39,3 @@ Commit your changes (git commit -am "Added feature")
 Push to the branch (git push origin myBranch)
 Create a new Issue with a link to your branch, or just make a Pull Request.
 
-
-
-I will enrich more scripts so that it is useful to support more typr of angular apps
-
-adding 1.5.8 angular base libraries in resources :  https://code.angularjs.org/
