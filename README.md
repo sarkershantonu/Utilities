@@ -2,17 +2,10 @@
 
 This project targetd for having all common utilities that I used in different project which are not under NDA. 
 
-Level In Source :
-1. Common Usages : -> Package Start with Org.
-    -> Utils
-    -> Managers
-    ->
-2. Project Specific : -> Package Start with Project.
-    -> Helpers : Project Specific Helpers
-    -> Pages : POM Model
-3.
+#Level In Source :
+1. This is multimaven project. so, it can be build partially and deployable independent. 
 
-Level in Test :
+#Level in Test :
 1. Test Steps -> Reusable test steps, all are test
 2. Workflows (group of test steps preset for testing)
 3. Tests, for specific purposes
