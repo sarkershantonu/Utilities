@@ -1,6 +1,6 @@
 # Utilities
 
-Initial Plan :
+This project targetd for having all common utilities that I used in different project which are not under NDA. 
 
 Level In Source :
 1. Common Usages : -> Package Start with Org.
