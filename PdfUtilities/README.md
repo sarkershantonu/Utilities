@@ -1,5 +1,3 @@
 # PDF Utilities
-
-
-# Purpose 
-To use quick code or dependencies in projects. 
+-PDF report generation templates
+-PDF read/write utilities 
