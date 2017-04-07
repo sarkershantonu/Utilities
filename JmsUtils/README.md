@@ -1,9 +1,6 @@
-# Common Testing Utilities
-1. Commandline Utils
-2. File handling
-3. Properties 
-4. JMS
-5. HTTP client
+#JMS Utilities 
+Common JMS client utilities for testing
 
-# Purpose 
-To use quick code or dependencies in projects. 
+- Connections
+- Utilities to parse
+- Response/reply common items
