@@ -1,9 +1,4 @@
-# Common Testing Utilities
-1. Commandline Utils
-2. File handling
-3. Properties 
-4. JMS
-5. HTTP client
+# Security
 
-# Purpose 
-To use quick code or dependencies in projects. 
+Commonly used security utils like crypto, private key management , different encryption etc utilites 
+
