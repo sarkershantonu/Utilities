@@ -1,5 +1,4 @@
 # DataType Utilities
 
-1. HTTP(S)
-
+1.HTTP(s)
 2.JMS
