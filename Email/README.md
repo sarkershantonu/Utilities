@@ -1,4 +1,6 @@
 # Email Utilities
+Email templating 
 
 # Purpose 
-To use quick code or dependencies in projects. 
+- HTML
+- XML
