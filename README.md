@@ -5,6 +5,7 @@ This project targetd for having all common utilities that I used in different pr
 #Level In Source :
 1. This is multimaven project. so, it can be build partially and deployable independent. 
 2. No unit test planned
+3. only intregration test 
 
 #Level in Test :
 1. Test Steps -> Reusable test steps, all are test
