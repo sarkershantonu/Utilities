@@ -15,10 +15,10 @@ This project targetd for having all common utilities that I used in different pr
 5. Tests Suits.
 
 
-Libs:(gradually Increments)
+
 Selenium-java
 Junit
-Allure-Junit
+
 
 
 
