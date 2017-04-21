@@ -19,8 +19,8 @@ Libs:(gradually Increments)
 Selenium-java
 Junit
 Allure-Junit
-SL4J
-AspectJ
+
+
 
 Running The tests :
 Maven Test Run
