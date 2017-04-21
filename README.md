@@ -16,8 +16,8 @@ This project targetd for having all common utilities that I used in different pr
 
 
 
-Selenium-java
-Junit
+
+
 
 
 
