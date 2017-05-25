@@ -17,4 +17,10 @@ public class FileNameUtils{
         this.filePath =path;
         
     }
+    public String getExtention(){
+        String filename= new File(this.filePath).getName();
+        String searchPattern = "\\.(\\w+)";
+        Matcher m = Pattern.compile(searchPattern).matcher(filename);
+        return m.find()?m.group():"";
+    }
 }
