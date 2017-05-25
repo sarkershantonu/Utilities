@@ -11,5 +11,10 @@ import java.util.regex.Pattern;
 
 //this is regular expression based utilities on file names
 public class FileNameUtils{
-  
+    private String filePath;
+    private FileNameUtils(){}
+    public FileNameUtils(String path){
+        this.filePath =path;
+        
+    }
 }
