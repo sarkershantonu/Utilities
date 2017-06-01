@@ -1,4 +1,4 @@
-package com.att.blueprint.util;
+package org.automation;
 
 import java.io.File;
 
