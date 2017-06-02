@@ -1,8 +1,10 @@
-package org.automation;
+package org.automation.csv;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.automation.models.Detail_output_do;
+import org.automation.models.Summary_output_do;
 
 import java.io.*;
 import java.util.ArrayList;
