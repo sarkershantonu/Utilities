@@ -5,6 +5,7 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.automation.models.Detail_output_do;
 import org.automation.models.Summary_output_do;
+import org.automation.CalendarUtils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class CSVHelper {
                     record.get(Detail_output_do.column_1),
                     record.get(Detail_output_do.column_2),
 
-                    WeekUtils.convertWithFprmat((record.get(Detail_output_do.column_3)), dateFormat),
+                    CalendarUtils.convertWithFprmat((record.get(Detail_output_do.column_3)), dateFormat),
                     record.get(Detail_output_do.column_4),
                     Long.getLong(record.get(Detail_output_do.column_5)),
                     Double.valueOf(record.get(Detail_output_do.column_6)),
