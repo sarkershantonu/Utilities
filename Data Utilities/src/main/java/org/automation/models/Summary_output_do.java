@@ -1,6 +1,5 @@
 package org.automation.models; 
 
-package com.att.blueprint.csv;
 
 import lombok.Data;
 
