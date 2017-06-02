@@ -31,4 +31,8 @@ public class FileUtilities {
         }
         return filePath;
     }
+    public static String getWindowsFormatPath(String path_generic){
+        String path = new File(path_generic).getAbsolutePath();
+        return path.replace("/", "\\\\");
+    }
 }
