@@ -2,13 +2,11 @@ package org.automation.jdbc;
 
 import javax.management.IntrospectionException;
 import java.beans.PropertyDescriptor;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +49,7 @@ public class ResultSetUtils {
     }
   
 //result set that has blob return for its select method can use this
-  public static void savefile(ResultSet rs, final String file){
+  public static void savefile(ResultSet rs, final String file) throws IOException, SQLException {
     int BUFFER_SIZE = 50000;
         File m_file = new File(file);
         Blob blob = rs.getBlob(1);
@@ -66,15 +64,7 @@ public class ResultSetUtils {
         outputStream.close();
   }
   
-   public static String getFirstItem(ResultSet rs) throws SQLException {
-        rs.next();
-        return rs.getString(1);
-    }
-  
-   public static <T> T getFirstItem(ResultSet rs, Class<T> aClass) throws SQLException {
-        rs.next();
-        return (T)rs.getObject(1);
-    }
+
   
   public static List<List<String>> getAllResutlsInTable(final ResultSet resultSet) throws SQLException {
         final List<List<String>> table = new ArrayList<>();
