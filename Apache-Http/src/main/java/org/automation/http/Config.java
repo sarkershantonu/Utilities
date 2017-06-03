@@ -13,8 +13,9 @@ public class Config {
     public static final String PCS_WS_URL = "";
 
     public class FIRST_USER {
-        private static String name;
-        private static String password;
+        private String name;
+        private String password;
+
         public static String getName() {
             return name;
         }
