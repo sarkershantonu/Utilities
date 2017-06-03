@@ -37,11 +37,6 @@
             <artifactId>fluent-hc</artifactId>
             <version>${apache.http.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.automation</groupId>
-            <artifactId>xml-utilities</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
 
     </dependencies>
     <build>
