@@ -5,7 +5,5 @@ package org.automation.http;
  */
 public enum ConfigConstants {
 
-
-    public class LOCAL {
-    }
+    LOCAL,DEV,QA
 }
