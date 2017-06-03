@@ -27,6 +27,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContextBuilder;
+import org.automation.http.exception.SoapException;
 
 import javax.net.ssl.*;
 
@@ -82,7 +83,7 @@ public class HttpClient {
             httpClientResponse.setHttpResponseBody(XMLUtils.parseFileStream2XmlDocument(httpResponse.getEntity().getContent()));
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (SoapToolsException e) {
+        } catch (SoapException e) {
             e.printStackTrace();
         }
         return httpClientResponse;
