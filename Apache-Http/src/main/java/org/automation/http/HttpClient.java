@@ -28,6 +28,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.automation.http.exception.SoapException;
+import org.automation.http.utils.XMLUtils;
 
 import javax.net.ssl.*;
 
