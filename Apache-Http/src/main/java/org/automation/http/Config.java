@@ -12,5 +12,5 @@ public class Config {
 
     public static final String PCS_WS_URL = "";
 
-    public static User FIRST_USER;
+    public static User FIRST_USER = User.FIRST_USER;
 }
