@@ -35,4 +35,38 @@ private static Document parseXML(String filePath) throws ParserConfigurationExce
     doc.getDocumentElement().normalize();
     return doc;
 }
+       
+  public static void readXML(String filePath, String tag_name){
+                
+                Document doc = null;
+    try 
+    {
+        doc = parseXML(filePath);
+    } 
+    catch (ParserConfigurationException e) 
+    {
+        e.printStackTrace();
+    } 
+    catch (SAXException e) 
+    {
+        e.printStackTrace();
+    } 
+    catch (IOException e) 
+    {
+        e.printStackTrace();
+    }
+
+    if(doc != null)
+    {
+        NodeList nList = doc.getElementsByTagName(tag_name);
+        for (int i = 0; i < nList.getLength(); i++) 
+        {
+            Node nNode = nList.item(i);
+            Element eElement = (Element) nNode;
+            Element cElement =  (Element) eElement.getElementsByTagName("<you child tag>").item(0);
+            System.out.println("ID : " + cElement.getAttribute("person"));
+        }
+    }
+}
+        
 }
