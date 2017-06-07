@@ -27,4 +27,12 @@ public static void validXml(String pathToXSD, String pathToXml){
             e.printStackTrace();
         }
     }
+        
+
+private static Document parseXML(String filePath) throws ParserConfigurationException, SAXException, IOException
+{
+    Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(filePath);
+    doc.getDocumentElement().normalize();
+    return doc;
+}
 }
