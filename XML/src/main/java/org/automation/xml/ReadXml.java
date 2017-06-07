@@ -11,6 +11,12 @@ import javax.xml.validation.Validator;
 import java.io.File;
 import java.io.IOException;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
 public class ReadXml {
 public static void validXml(String pathToXSD, String pathToXml){
         Source xmlFile = new StreamSource(new File(pathToXml));
