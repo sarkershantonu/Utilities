@@ -2,12 +2,12 @@
 
 This project targetd for having all common utilities that I used in different project which are not under NDA. 
 
-#Level In Source :
+# Level In Source :
 1. This is multimaven project. so, it can be build partially and deployable independent. 
 2. No unit test planned
 3. only intregration test 
 
-#Level in Test :
+# Level in Test :
 1. Test Steps -> Reusable test steps, all are test
 2. Workflows (group of test steps preset for testing)
 3. Tests, for specific purposes
@@ -15,14 +15,7 @@ This project targetd for having all common utilities that I used in different pr
 5. Tests Suits.
 
 
-
-
-
-
-
-
-
-Running The tests :
+# Running The tests :
 Maven Test Run
     ->Locally
     ->From Jenkins or any CI (for CLI support , there will be an entry from Program -> main method)
