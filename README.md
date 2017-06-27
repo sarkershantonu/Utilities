@@ -4,6 +4,10 @@ This project targetd for having all common utilities that I used in different pr
 
 # Target 
 Having different utilities to make testing life easier 
+# modules
+one for each data handling 
+
+one for persistance
 
 # Level In Source :
 1. This is multimaven project. so, it can be build partially and deployable independent. 
