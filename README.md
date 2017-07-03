@@ -48,4 +48,4 @@ Create a new Issue with a link to your branch, or just make a Pull Request.
 Build & deploy via mvn release 
 
 # Test Helpers
-
+ - Interface that put restriction to apply certain tests
