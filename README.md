@@ -49,3 +49,4 @@ Build & deploy via mvn release
 
 # Test Helpers
  - Interface that put restriction to apply certain tests
+ - integration tests that specified by interfaces
