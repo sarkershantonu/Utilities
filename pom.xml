@@ -22,6 +22,7 @@
         <module>PdfUtilities</module>
         <module>JSON</module>
         <module>XML</module>
+        <module>SoapUi</module>
     </modules>
 
     <properties>
