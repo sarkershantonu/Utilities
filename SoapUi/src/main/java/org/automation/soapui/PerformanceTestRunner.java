@@ -6,10 +6,19 @@ import com.eviware.soapui.tools.SoapUITestCaseRunner;
 /**
  * Created by shantonu on 7/12/17.
  */
-public class PerformanceTestRunner {
-    private String suit_name;
-    private String tc_name;
+public class PerformanceTestRunner extends SoapUiTCRunner implements Runnable{
+
     private SoapUILoadTestRunner runner;
-    private String path_xml_tc;
-    private String[] prop;
+
+    private PerformanceTestRunner(){
+        runner = new SoapUILoadTestRunner();
+    }
+    @Override
+    public void run() {
+        try {
+            runner.run();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -10,15 +10,10 @@ import java.util.Properties;
 /**
  * Created by shantonu on 7/8/17.
  */
-public class FunctionalTestRunner implements Runnable{
-    private String suit_name;
-    private String tc_name;
+public class FunctionalTestRunner extends SoapUiTCRunner implements Runnable{
     private SoapUITestCaseRunner runner;
-    private String path_xml_tc;
-    private String[] prop;
     private FunctionalTestRunner(){
         runner = new SoapUITestCaseRunner();
-
     }
 
     public FunctionalTestRunner(String soap_ui_tc_path) {
@@ -41,29 +36,20 @@ public class FunctionalTestRunner implements Runnable{
         this.tc_name = tcName;
         this.suit_name=tc_suitName;
     }
-    private void init(){
+
+
+
+
+    public void runWithTestCase(String path) {
+
+    }
+    protected void init(){
         runner.setIgnoreErrors(false);
         runner.setExportAll(true);
         runner.setJUnitReport(true);
         runner.setPrintReport(true);
         runner.setEnableUI(true);
         runner.setProjectProperties(prop);
-    }
-
-
-    private String[] initProperties() throws IOException {
-        Properties p = new Properties();
-        String[] props = new String[30];
-
-        int i=0;
-        p.load(new FileInputStream(new File("./testcases/app.properties")));
-        for (String k : p.stringPropertyNames()) {
-            props[i++]=k+"="+p.getProperty(k);
-        }
-        return props;
-    }
-    public void runWithTestCase(String path) {
-
     }
 
     @Override
