@@ -2,16 +2,13 @@ package org.automation.soapui;
 
 import com.eviware.soapui.tools.SoapUITestCaseRunner;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
-
 /**
  * Created by shantonu on 7/8/17.
  */
 public class FunctionalTestRunner extends SoapUiTCRunner implements Runnable{
     private SoapUITestCaseRunner runner;
+
+
     private FunctionalTestRunner(){
         runner = new SoapUITestCaseRunner();
     }
@@ -43,13 +40,19 @@ public class FunctionalTestRunner extends SoapUiTCRunner implements Runnable{
     public void runWithTestCase(String path) {
 
     }
-    protected void init(){
+    protected void init(){//init for functional tests
         runner.setIgnoreErrors(false);
         runner.setExportAll(true);
         runner.setJUnitReport(true);
         runner.setPrintReport(true);
         runner.setEnableUI(true);
         runner.setProjectProperties(prop);
+        runner.setTestCase(tc_name);
+        runner.setTestSuite(suit_name);
+        runner.setDomain(domain);
+        runner.setHost(host);
+        runner.setEndpoint(end_point_url);
+        runner.setSettingsFile(settings_file_path);
     }
 
     @Override

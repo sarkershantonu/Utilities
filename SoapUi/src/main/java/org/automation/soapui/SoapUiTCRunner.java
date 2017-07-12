@@ -15,6 +15,11 @@ public abstract class SoapUiTCRunner {
     protected String tc_name;
     protected String path_xml_tc;
     protected String[] prop;
+    protected String domain;
+    protected String host;
+    protected String end_point_url;
+    protected String output_folder;
+    protected String settings_file_path;
     protected String[] initProperties() throws IOException {
         Properties p = new Properties();
         String[] props = new String[30];
