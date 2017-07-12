@@ -31,6 +31,8 @@ public class SoapUiRunner implements Runnable{
                         String[] properties) {
         this(soap_ui_tc_path);
         this.prop=properties;
+        this.tc_name = "Default Test case name";
+        this.suit_name="Default Test suit name";
     }
     public SoapUiRunner(String soap_ui_tc_path,
                         String[] properties,
