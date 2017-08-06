@@ -37,6 +37,9 @@
         <aspectj.version>1.8.8</aspectj.version>
         <allure.maven.plugin.version>2.5</allure.maven.plugin.version>
         <apache.http.version>4.5.3</apache.http.version>
+        <lombok.plugin.version>1.16.8.0</lombok.plugin.version>
+        <jsoup.version>1.10.2</jsoup.version>
+        <ashot.version>1.5.2</ashot.version>
     </properties>
 
     <dependencies>
