@@ -121,18 +121,7 @@
     </dependencies>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.projectlombok</groupId>
-                    <artifactId>lombok-maven-plugin</artifactId>
-                    <version>1.16.8.0</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
         <plugins>
-
-            <!--lombok support , need compiler and its own plugins with GOAL and encoading-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -146,7 +135,7 @@
             <plugin>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok-maven-plugin</artifactId>
-                <version>1.16.8.0</version>
+                <version>${lombok.plugin.version}</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
