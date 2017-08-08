@@ -22,6 +22,7 @@
         <module>PdfUtilities</module>
         <module>JSON</module>
         <module>XML</module>
+        <module>Examples</module>
 
     </modules>
 
@@ -50,11 +51,6 @@
             <version>${hamcrest.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
 
         <dependency>
             <groupId>com.google.guava</groupId>
