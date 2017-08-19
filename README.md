@@ -1,6 +1,5 @@
 # Utilities
-
-This project targetd for having all common utilities that I used in different project  
+List of common utilities that I used in different project 
 
 # Target 
 Having different utilities to make testing life easier 
