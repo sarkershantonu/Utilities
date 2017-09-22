@@ -45,7 +45,8 @@ Push to the branch (git push origin myBranch)
 Create a new Issue with a link to your branch, or just make a Pull Request.
 
 # Todo 
-Build & deploy via mvn release 
+- Build & deploy via mvn release 
+- Seperate some project to individual repository 
 
 # Test Helpers
  - Interface that put restriction to apply certain tests
