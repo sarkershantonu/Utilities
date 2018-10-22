@@ -54,3 +54,5 @@ Create a new Issue with a link to your branch, or just make a Pull Request.
  - integration tests that specified by interfaces
  
  # Todo
+ -> having indipendent deployment 
+ - Multimodule maven project 
